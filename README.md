@@ -42,6 +42,13 @@ Introducing **Homeco**, an all-in-one home service provider that aims to be both
   * Contractor GUI Interface
     * Payment Control Panel displaying services provided
   * Users can log complaints if services does not reach their expectations
+  
+## Wireframes
+![](https://github.com/GreenRabite/Homeco/blob/master/wireframes/Screenshot%20from%202018-02-16%2012-28-47.png?raw=true)
+![](https://github.com/GreenRabite/Homeco/blob/master/wireframes/Screenshot%20from%202018-02-16%2012-28-57.png?raw=true)
+![](https://github.com/GreenRabite/Homeco/blob/master/wireframes/Screenshot%20from%202018-02-16%2012-29-10.png?raw=true)
+![](https://github.com/GreenRabite/Homeco/blob/master/wireframes/Screenshot%20from%202018-02-16%2012-29-20.png?raw=true)
+![](https://github.com/GreenRabite/Homeco/blob/master/wireframes/Screenshot%20from%202018-02-16%2012-29-29.png?raw=true)
 
 ## Timeline
 ### Day 0
