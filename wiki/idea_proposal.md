@@ -43,6 +43,8 @@ Introducing **Homeco**, an all-in-one home service provider that aims to be both
     * Payment Control Panel displaying services provided
   * Users can log complaints if services does not reach their expectations
 
+## Wireframes
+
 ## Timeline
 ### Day 0
   - [ ] Project Proposal
@@ -72,4 +74,4 @@ Introducing **Homeco**, an all-in-one home service provider that aims to be both
 
 ### Final Weekend
   - [ ] Deploy on Heroku
-  - [ ] Refactor Code and optimize logic
+  - [ ] Finish styling and better UI
