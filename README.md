@@ -79,4 +79,4 @@ Introducing **Homeco**, an all-in-one home service provider that aims to be both
 
 ### Final Weekend
   - [ ] Deploy on Heroku
-  - [ ] Refactor Code and optimize logic
+  - [ ] Finish styling and better UI
