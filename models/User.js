@@ -7,7 +7,7 @@ const userSchema = new Schema({
   googleName: String
 });
 
-userSchema.pre('svae', (next)=>{
+userSchema.pre('save', (next)=>{
   const user = this;
   if (this.isModified('password') || this.isNew) {
     bcrypt.getSalt(10, (err, salt)=>{
@@ -35,5 +35,8 @@ userSchema.methods.comparePwd = function (pwd, callback){
     callback(null, isMatch)''
   });
 }
+
+// should it be? Not sure.
+// module.exports = mongoose.model('User', userSchema);
 
 mongoose.model('users',userSchema);
