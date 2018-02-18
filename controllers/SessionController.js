@@ -5,8 +5,7 @@ module.exports = {
   const findById = (params, callback) => {
     User.findById(id, (err, user)=>{
       if (err) {
-        callback(err, null)
-        return
+        return callback(err, null)
       }
       // Need to implenment check password function.
       // callback(null, user)
@@ -17,8 +16,7 @@ module.exports = {
     // Do we need SessionSchema??
     // Session.create(params, (err, user)=>{
     //   if (err) {
-    //     callback(err, null)
-    //     return
+    //     return callback(err, null)
     //   }
     //   callback(null, user)
     // })
@@ -27,8 +25,7 @@ module.exports = {
   const destroy = (params, callback) => {
     //Session.findBySessionTokenAndRemove(sessionToken, (err)=>{
       // if (err) {
-      //   callback(err, null)
-      //   return
+      //   return callback(err, null)
       // }
       // callback(null, null)
   // })

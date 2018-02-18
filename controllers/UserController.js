@@ -5,8 +5,7 @@ module.exports = {
   const create = (params, callback) => {
     User.create(params, (err, user)=>{
       if (err) {
-        callback(err, null)
-        return
+        return callback(err, null)
       }
       callback(null, user)
     })
