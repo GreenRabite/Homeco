@@ -2,8 +2,8 @@ const User = require('../model/User');
 
 module.exports = {
 
-  const findById = () => {
-    
+  const findById = (params, callback) => {
+
   };
 
   const create = () => {
