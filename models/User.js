@@ -7,6 +7,8 @@ const userSchema = new Schema({
   googleName: String
 });
 
+
+//Salt/Hash password before User.save
 userSchema.pre('save', (next)=>{
   const user = this;
   if (this.isModified('password') || this.isNew) {
@@ -27,6 +29,7 @@ userSchema.pre('save', (next)=>{
   }
 });
 
+//like User.findByCredentials, find user first, then run comparePwd function
 userSchema.methods.comparePwd = function (pwd, callback){
   bcrypt.compare(pwd, this.password, (err, isMatch)=>{
     if (err) {
