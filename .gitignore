@@ -6,4 +6,4 @@ bundle.js.map
 tmp/
 log/
 
-keys.js
+dev.js
