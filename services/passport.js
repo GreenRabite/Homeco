@@ -1,5 +1,7 @@
 // require in passport middleware
 const passport = require('passport');
+//need local strategy as well -- Luuu
+const LocalStrategry = require('passport-local').Strategy;
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const mongoose = require('mongoose');
 const keys = require('../config/keys.js');
@@ -34,3 +36,33 @@ passport.use(
   }
   )
 );
+
+//For local signup, not sure if it's corrrect way to do it
+passport.use('local-signup', new LocalStrategry({
+  usernameField: 'email',
+  passwordField: 'password',
+  passReqToCallback: true
+  },
+  function(req, username, password, done){
+    process.nextTick(function(){
+      User.findOne({'local.username': username}, function(err, user){
+        if (err) {
+          return done(err);
+        } else if (user) {
+          return done(null, false, req.flash('signupMessage', 'Email already taken'));
+        } else {
+          const newUser = new User();
+          newUser.local.username = username;
+          newUser.local.password = password;
+          newUser.save(function(err){
+            if (err) {
+              throw err;
+            }
+            return done(null, newUser);
+          })
+        }
+      })
+    });
+  }
+
+));

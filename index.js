@@ -24,6 +24,9 @@ app.use(passport.session()); //passport.session() - authenticate session for pas
 
 require('./routes/auth_routes')(app);
 
+//need to pass localStrategry, not sure if it's correct
+// require('./routes/auth_routes')(app, passport);
+
 // instruct Node to listen to port 5000
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);

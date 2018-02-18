@@ -10,9 +10,16 @@ module.exports = (app) => {
 
   app.get('/auth/google/callback', passport.authenticate('google'));
 
-  app.post('/api/users', (req, res) => {
+  //local-signup
+  app.post('/api/users', passport.authenticate('local-signup', {
 
-  });
+    })
+  );
+
+  app.post('/api/session', passport.authenticate('local-login', {
+    
+    })
+  );
 
   app.get('/api/logout', (req,res) => {
     req.logout(); //attached from passport. Kills the cookie (nil)
