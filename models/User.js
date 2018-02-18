@@ -9,9 +9,13 @@ const userSchema = new Schema({
 
 
 //Salt/Hash password before User.save
-userSchema.pre('save', (next)=>{
+userSchema.pre('save', function(next){
   const user = this;
-  if (this.isModified('password') || this.isNew) {
+  // console.log(`$$$$$$$$$${this}$$$$$$$$`);
+  // console.log(`========${user.googleId}=========`) => 'undefined';
+  if (user._id) {
+    return next();
+  } else if (this.isModified('password') || this.isNew) {
     bcrypt.getSalt(10, (err, salt)=>{
       if (err) {
         return next(err);
@@ -35,7 +39,7 @@ userSchema.methods.comparePwd = function (pwd, callback){
     if (err) {
       return callback(err);
     }
-    callback(null, isMatch)''
+    callback(null, isMatch)
   });
 }
 

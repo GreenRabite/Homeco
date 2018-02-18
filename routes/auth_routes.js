@@ -10,6 +10,10 @@ module.exports = (app) => {
 
   app.get('/auth/google/callback', passport.authenticate('google'));
 
+  app.post('/api/users', (req, res) => {
+
+  });
+
   app.get('/api/logout', (req,res) => {
     req.logout(); //attached from passport. Kills the cookie (nil)
     res.send(req.user);

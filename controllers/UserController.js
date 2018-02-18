@@ -1,4 +1,5 @@
-const User = require('../model/User');
+// const User = require('../model/User');
+const User = mongoose.model('users');
 
 module.exports = {
 

@@ -27,7 +27,7 @@ passport.use(
       console.log(profile);
       if (existingUser) {
         done(null, existingUser); // Login the user
-      }else {
+      } else {
         new User({googleId: profile.id}).save().then((user)=>(done(null,user)));
       }
     });
