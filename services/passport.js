@@ -6,17 +6,31 @@ const keys = require('../config/keys.js');
 
 const User = mongoose.model('users');
 
+passport.serializeUser((user,done)=>{
+  done(null,user.id); //first argument is error process, second is identfying info
+});
+
+passport.deserializeUser((id,done)=>{
+  User.findById(id).then((user)=>{
+    done(null,user);
+  });
+});
+
 passport.use(
   new GoogleStrategy({
     clientID: keys.googleClientID,
     clientSecret: keys.googleClientSecret,
     callbackURL: "/auth/google/callback"
   },
-    (accessToken, refreshToken, profile, done)=>{
-      new User({
-        googleID: profile.id,
-        googleName: profile.name.givenName
-      }).save();
-    }
+  (accessToken, refreshToken, profile, done)=>{
+    User.findOne({googleId: profile.id}).then((existingUser)=>{
+      console.log(profile);
+      if (existingUser) {
+        done(null, existingUser); // Login the user
+      }else {
+        new User({googleId: profile.id}).save().then((user)=>(done(null,user)));
+      }
+    });
+  }
   )
 );
