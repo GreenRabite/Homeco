@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
@@ -43,7 +44,17 @@ userSchema.methods.comparePwd = function (pwd, callback){
   });
 }
 
+userSchema.methods.generateJwt = function(){
+  const expiry = new Date();
+  expiry.setDate(expiry.getDate() + 7 );
+
+  return jwt.sign({
+    _id: this._id,
+    username: this.username,
+    exp: parseInt(expiry,getTime() / 1000)
+  }, 'SECRET_WORD'); // not sure what's that for
+};
+
 // should it be? Not sure.
 // module.exports = mongoose.model('User', userSchema);
-
 mongoose.model('users',userSchema);

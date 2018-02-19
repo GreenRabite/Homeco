@@ -30,6 +30,7 @@
     "cookie-session": "^2.0.0-beta.3",
     "express": "^4.16.2",
     "figaro": "^0.1.10",
+    "jsonwebtoken": "^8.1.1",
     "lodash": "^4.17.5",
     "mongodb": "^3.0.2",
     "mongoose": "^5.0.6",
