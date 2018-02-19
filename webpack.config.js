@@ -26,7 +26,7 @@ module.exports = {
   entry: './frontend/entry.jsx',
   output: {
     path: path.resolve(__dirname),
-    filename: 'bundle.js'
+    filename: './views/bundle.js'
   },
   plugins: plugins,
   resolve: {
@@ -34,12 +34,7 @@ module.exports = {
   },
 
   module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [ 'style-loader', 'css-loader' ]
-      }
-    ],
+
     loaders: [
       {
         test: /\.jsx?$/,
@@ -50,6 +45,13 @@ module.exports = {
         }
       }
     ]
+
+    // rules: [
+    //   {
+    //     test: /\.css$/,
+    //     use: [ 'style-loader', 'css-loader' ]
+    //   }
+    // ]
   },
   devtool: 'source-map'
 };
