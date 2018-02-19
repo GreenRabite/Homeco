@@ -16,10 +16,10 @@ const userSchema = new Schema({
     type: String,
     // required: true
   },
-  // phoneNumber: {
-  //   type: String,
-  //   required: true
-  // }
+  phoneNumber: {
+    type: String,
+    // required: true
+  },
   created: {
     type: Date,
     default: Date.now
@@ -69,6 +69,5 @@ userSchema.methods.generateJwt = function(){
   }, 'SECRET_WORD'); // not sure what's that for
 };
 
-// should it be? Not sure.
-// module.exports = mongoose.model('User', userSchema);
+
 mongoose.model('users',userSchema);

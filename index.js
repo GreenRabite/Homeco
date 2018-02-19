@@ -20,7 +20,7 @@ app.use(
 );
 
 //Use body-parser to get POST requests for API use
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 // tells passport to use cookies for authentication

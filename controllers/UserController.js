@@ -35,10 +35,20 @@ exports.login = function(req, res){
       return res.send({message: err})
     }
     if (!user || !user.comparePwd(req.body.password)) {
-      return res.send({message: 'Wrong Credentials'})
+      return res.status(401).json({message: 'Wrong Credentials'})
     }
     if (user && user.comparePwd(req.body.password)) {
-      return res.json(user);
+      const token = jwt.sign({
+        email: user.email,
+        userId: user._id
+      }, 'secret_key', {
+        expiresIn: "30d"
+      });
+      user.password = undefined;
+      return res.json({
+        user: user,
+        token: token
+      });
     }
   });
 };
