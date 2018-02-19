@@ -37,6 +37,8 @@ passport.use(
   )
 );
 
+
+//Dumb code now
 //For local signup, not sure if it's corrrect way to do it
 passport.use('local-signup', new LocalStrategry({
   usernameField: 'username',

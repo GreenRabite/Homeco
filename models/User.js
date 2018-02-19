@@ -10,11 +10,11 @@ const userSchema = new Schema({
     type: String,
     trim: true,
     unique: true,
-    required: true
+    // required: true
   },
   password: {
     type: String,
-    required: true
+    // required: true
   },
   // phoneNumber: {
   //   type: String,
@@ -29,29 +29,29 @@ const userSchema = new Schema({
 
 //Salt/Hash password before User.save
 // Dumb Code now
-userSchema.pre('save', function(next){
-  const user = this;
-  // console.log(`$$$$$$$$$${this}$$$$$$$$`);
-  // console.log(`========${user.googleId}=========`) => 'undefined';
-  if (user._id) {
-    return next();
-  } else if (this.isModified('password') || this.isNew) {
-    bcrypt.genSalt(10, (err, salt)=>{
-      if (err) {
-        return next(err);
-      }
-      bcrypt.hash(user.password, salt, (err, hash)=>{
-        if (err) {
-          return next(err);
-        }
-        user.password = hash;
-        next();
-      });
-    });
-  } else {
-    return next();
-  }
-});
+// userSchema.pre('save', function(next){
+//   const user = this;
+//   // console.log(`$$$$$$$$$${this}$$$$$$$$`);
+//   // console.log(`========${user.googleId}=========`) => 'undefined';
+//   if (user._id) {
+//     return next();
+//   } else if (this.isModified('password') || this.isNew) {
+//     bcrypt.genSalt(10, (err, salt)=>{
+//       if (err) {
+//         return next(err);
+//       }
+//       bcrypt.hash(user.password, salt, (err, hash)=>{
+//         if (err) {
+//           return next(err);
+//         }
+//         user.password = hash;
+//         next();
+//       });
+//     });
+//   } else {
+//     return next();
+//   }
+// });
 
 //like User.findByCredentials, find user first, then run comparePwd function
 userSchema.methods.comparePwd = function (pwd){
