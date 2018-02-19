@@ -5,7 +5,24 @@ const { Schema } = mongoose;
 
 const userSchema = new Schema({
   googleID: String,
-  googleName: String
+  googleName: String,
+  email: {
+    type: String,
+    trim: true,
+    required: true
+  },
+  password: {
+    type: String,
+    required: true
+  }
+  // phoneNumber: {
+  //   type: String,
+  //   required: true
+  // }
+  // created: {
+  //   type: Date,
+  //   default: Date.now
+  // }
 });
 
 
@@ -35,13 +52,8 @@ userSchema.pre('save', function(next){
 });
 
 //like User.findByCredentials, find user first, then run comparePwd function
-userSchema.methods.comparePwd = function (pwd, callback){
-  bcrypt.compare(pwd, this.password, (err, isMatch)=>{
-    if (err) {
-      return callback(err);
-    }
-    callback(null, isMatch)
-  });
+userSchema.methods.comparePwd = function (pwd){
+  return bcrypt.compareSync(pwd, this.password);
 }
 
 userSchema.methods.generateJwt = function(){
