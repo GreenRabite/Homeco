@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // }
   // const store = configureStore(preloadedState);
   const store = configureStore();
-  // window.store = store;
+  window.store = store;
   // ReactDOM.render(<div>Hello! Homeco</div>, document.getElementById('root'));
   ReactDOM.render(<Root store={store}/>, document.getElementById('root'));
 });
