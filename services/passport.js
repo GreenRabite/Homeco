@@ -39,7 +39,7 @@ passport.use(
 
 //For local signup, not sure if it's corrrect way to do it
 passport.use('local-signup', new LocalStrategry({
-  usernameField: 'email',
+  usernameField: 'username',
   passwordField: 'password',
   passReqToCallback: true
   },
@@ -49,7 +49,7 @@ passport.use('local-signup', new LocalStrategry({
         if (err) {
           return done(err);
         } else if (user) {
-          return done(null, false, req.flash('signupMessage', 'Email already taken'));
+          return done(null, false, req.flash('signupMessage', 'Username already taken'));
         } else {
           const newUser = new User();
           newUser.local.username = username;
@@ -64,5 +64,30 @@ passport.use('local-signup', new LocalStrategry({
       })
     });
   }
+));
 
+//For local login, not sure if it's corrrect way to do it
+passport.use('local-login', new LocalStrategry({
+  usernameField: 'username',
+  passwordField: 'password',
+  passReqToCallback: true
+  },
+  function(req, username, password, done){
+    process.nextTick(function(){
+      User.findOne({'local.username': username}, function(err, user){
+        if (err) {
+          return done(err)
+        }
+        if (!user) {
+          return done(null, false, req.flash('loginMessage', 'No user found'));
+        }
+        // user comparePwd, not sure how to write it
+        // user.comparePwd(password, function(err, isMatch){
+          // if (err) {
+          //   return done(null, false, req.flash('loginMessage', 'wrong credentials'));
+          // }
+      // })
+      })
+    });
+  }
 ));
