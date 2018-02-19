@@ -3,12 +3,12 @@ const { Schema } = mongoose;
 const bcrpt = require('bcrypt');
 
 const userSchema = new Schema({
-  _id: mongoose.Schema.Types.ObjectId,
+  // _id: mongoose.Schema.Types.ObjectId,
   googleID: String,
   googleName: String,
-  userName: {type: String, required: true, unique: true },
-  passwordDigest: {type: String, required: true},
-  email: {type: String, required: true, unique: true}
+  // userName: {type: String, required: true, unique: true },
+  // passwordDigest: {type: String, required: true},
+  // email: {type: String, required: true, unique: true}
 });
 
 // userSchema.pre('save', function (next) {
