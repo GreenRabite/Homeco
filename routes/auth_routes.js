@@ -12,7 +12,7 @@ module.exports = (app) => {
 
   app.get('/auth/google/callback', passport.authenticate('google'));
 
-  
+
   // local-signup, passport version
   // app.post('/api/users', passport.authenticate('local-signup', {
   //   })
