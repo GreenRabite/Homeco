@@ -9,24 +9,26 @@ const userSchema = new Schema({
   email: {
     type: String,
     trim: true,
+    unique: true,
     required: true
   },
   password: {
     type: String,
     required: true
-  }
+  },
   // phoneNumber: {
   //   type: String,
   //   required: true
   // }
-  // created: {
-  //   type: Date,
-  //   default: Date.now
-  // }
+  created: {
+    type: Date,
+    default: Date.now
+  }
 });
 
 
 //Salt/Hash password before User.save
+// Dumb Code now
 userSchema.pre('save', function(next){
   const user = this;
   // console.log(`$$$$$$$$$${this}$$$$$$$$`);

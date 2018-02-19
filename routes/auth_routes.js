@@ -21,15 +21,19 @@ module.exports = (app) => {
     UserController.register(req, res)
   });
 
+  app.post('/api/session', (req, res)=>{
+    UserController.login(req, res)
+  });
+
   // temporary to check all user from database since I don't have user/pwd for database
   app.get('/api/users', (req, res)=>{
     UserController.findAll(req, res)
   });
-
-  app.post('/api/session', (req, res)=>{
-    UserController.login(req, res)
+  // temporary to remove user from databse
+  app.delete('/api/users', (req, res)=>{
+    UserController.remove(req, res)
   });
-  
+
   // passport version login
   // app.post('/api/session', passport.authenticate('local-login', {
   //   })
