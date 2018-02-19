@@ -32,7 +32,14 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '*']
   },
+
   module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [ 'style-loader', 'css-loader' ]
+      }
+    ],
     loaders: [
       {
         test: /\.jsx?$/,
