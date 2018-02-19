@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
+const bodyParser = require('body-parser');
 const keys = require('./config/keys');
 require('./models/User');
 require("./services/passport");
@@ -17,6 +18,9 @@ app.use(
       keys: [keys.cookieKey]
   })
 );
+
+//Use body-parser to get POST requests for API use
+app.use(bodyParser.json());
 
 // tells passport to use cookies for authentication
 app.use(passport.initialize()); //passport.initialize() - initialize passport library to use it (create an instance?) in our app
