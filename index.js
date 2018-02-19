@@ -27,7 +27,12 @@ app.use(bodyParser.json());
 app.use(passport.initialize()); //passport.initialize() - initialize passport library to use it (create an instance?) in our app
 app.use(passport.session()); //passport.session() - authenticate session for passport that we have created (cookieSession in our case)
 
+
+//setup view engine for index.html page
+app.use(express.static(__dirname + '/views'));
+
 require('./routes/auth_routes')(app);
+require('./routes/index')(app);
 
 //need to pass localStrategry, not sure if it's correct
 // require('./routes/auth_routes')(app, passport);

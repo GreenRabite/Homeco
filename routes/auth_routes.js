@@ -13,12 +13,7 @@ module.exports = (app) => {
   app.get('/auth/google/callback', passport.authenticate('google'));
 
 
-  // local-signup, passport version
-  // app.post('/api/users', passport.authenticate('local-signup', {
-  //   })
-  // );
-
-  // regular way
+  // regular way to signup
   app.post('/api/users', (req, res)=>{
     UserController.register(req, res)
   });

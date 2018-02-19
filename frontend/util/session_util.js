@@ -1,9 +1,9 @@
-export const googleUser = (user) => ({
+export const googleUser = (user) => (
   $.ajax({
     url: '/auth/google',
     method: 'POST'
   })
-});
+);
 
 export const createUser = (user) => (
   $.ajax({
@@ -23,7 +23,7 @@ export const createSession = (user) => (
 
 export const deleteSession = () => (
   $.ajax({
-    url: '/api/session',
-    method: 'DELETE'
+    url: '/api/logout',
+    method: 'GET'
   })
 );
