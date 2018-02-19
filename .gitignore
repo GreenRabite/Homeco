@@ -7,3 +7,5 @@ tmp/
 log/
 
 keys.js
+
+package-lock.json
