@@ -1,3 +1,5 @@
+//materialize css doc: http://materializecss.com/getting-started.html
+import 'materialize-css/dist/css/materialize.min.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/root';
