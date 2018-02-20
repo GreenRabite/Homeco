@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'redux';
+import { connect } from 'react-redux';
 
 class Header extends Component {
   renderContent() {
@@ -7,7 +7,7 @@ class Header extends Component {
       case null:
         return;
       case false:
-        retrun (
+        return (
           <li><a href="/auth/google">Login with Google</a></li>
         );
       default:
@@ -35,4 +35,4 @@ class Header extends Component {
 function mapStateToProps({ auth }) {
   return { auth };
 }
-export default connect()(Header);
+export default connect(mapStateToProps)(Header);
