@@ -36,6 +36,7 @@ app.use(express.static(__dirname + '/views'));
 
 require('./routes/auth_routes')(app);
 require('./routes/index')(app);
+require('./routes/survey_routes')(app);
 
 //need to pass localStrategry, not sure if it's correct
 // require('./routes/auth_routes')(app, passport);

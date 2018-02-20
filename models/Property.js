@@ -6,13 +6,13 @@ const propertySchema = new Schema({
     type: String,
     required: true
   },
-  created: {
-    type: Date,
-    default: Date.now
-  },
   _user: {
     type: Schema.Types.ObjectId,
     ref: 'User'
+  },
+  created: {
+    type: Date,
+    default: Date.now
   }
 });
 
