@@ -2,8 +2,10 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { Schema } = mongoose;
+const bcrpt = require('bcrypt');
 
 const userSchema = new Schema({
+  // _id: mongoose.Schema.Types.ObjectId,
   googleID: String,
   googleName: String,
   email: {
@@ -56,7 +58,7 @@ const userSchema = new Schema({
 //like User.findByCredentials, find user first, then run comparePwd function
 userSchema.methods.comparePwd = function (pwd){
   return bcrypt.compareSync(pwd, this.password);
-}
+};
 
 userSchema.methods.generateJwt = function(){
   const expiry = new Date();

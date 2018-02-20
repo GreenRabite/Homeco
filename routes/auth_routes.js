@@ -15,20 +15,20 @@ module.exports = (app) => {
 
   // regular way to signup
   app.post('/api/users', (req, res)=>{
-    UserController.register(req, res)
+    UserController.register(req, res);
   });
 
   app.post('/api/session', (req, res)=>{
-    UserController.login(req, res)
+    UserController.login(req, res);
   });
 
   // temporary to check all user from database since I don't have user/pwd for database
   app.get('/api/users', (req, res)=>{
-    UserController.findAll(req, res)
+    UserController.findAll(req, res);
   });
   // temporary to remove user from databse
   app.delete('/api/users', (req, res)=>{
-    UserController.remove(req, res)
+    UserController.remove(req, res);
   });
 
   // passport version login
