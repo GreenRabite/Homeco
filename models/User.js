@@ -58,7 +58,7 @@ const userSchema = new Schema({
 //like User.findByCredentials, find user first, then run comparePwd function
 userSchema.methods.comparePwd = function (pwd){
   return bcrypt.compareSync(pwd, this.password);
-}
+};
 
 userSchema.methods.generateJwt = function(){
   const expiry = new Date();

@@ -26,12 +26,25 @@ passport.use(
     proxy: true //allows google to trust the herokuapp proxy server
   },
   (accessToken, refreshToken, profile, done)=>{
-    User.findOne({googleId: profile.id}).then((existingUser)=>{
+    User.findOne({googleID: profile.id}).then((existingUser)=>{
       console.log(profile);
       if (existingUser) {
+        console.log("Im an existing user!");
         done(null, existingUser); // Login the user
       } else {
-        new User({googleId: profile.id}).save().then((user)=>(done(null,user)));
+        new User({
+          googleID: profile.id,
+          googleName: profile.displayName,
+          email: profile.emails[0].value
+        }).save().then((user)=>{
+          console.log(user);
+          return done(null,user);
+        });
+        // new User({
+        //   googleID: profile.id,
+        //   googleName: profile.displayName,
+        //   email: profile.emails[0].value
+        // }).save().then((user)=>(done(null,user)));
       }
     });
   }
