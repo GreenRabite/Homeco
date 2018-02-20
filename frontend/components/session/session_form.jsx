@@ -1,5 +1,4 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
 
 class SessionForm extends React.Component {
   constructor (){
@@ -58,7 +57,7 @@ class SessionForm extends React.Component {
           ""
         )}
         <form>
-          <button>{text} With Google Account</button>
+          <button onClick={(e)=>this.handleGoogleUser(e)}>{text} With Google Account</button>
           <input id='email' onChange={this.handleInput('email')} type='text' value={this.state.email} placeholder='Email Address'/>
           <input id='passowrd' onChange={this.handleInput('password')} type='password' value={this.state.password} placeholder='Password'/>
           <input type='submit' onClick={(e)=>this.handleClick(e)}/>
