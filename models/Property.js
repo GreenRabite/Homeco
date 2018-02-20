@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const serviceSchema = new Schema({
-  serviceType: String,
-  category: {
+const propertySchema = new Schema({
+  address: {
     type: String,
     required: true
   },
@@ -13,4 +12,4 @@ const serviceSchema = new Schema({
   }
 });
 
-mongoose.model('services',serviceSchema);
+mongoose.model('properties',propertySchema);

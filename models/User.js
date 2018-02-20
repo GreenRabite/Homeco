@@ -27,6 +27,7 @@ const userSchema = new Schema({
     type: String,
     // required: true
   },
+  properties: [{type: Schema.Types.ObjectId, ref: 'Property'}],
   created: {
     type: Date,
     default: Date.now
