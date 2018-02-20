@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
-const Property = mongoose.model('properties');
+// const Property = mongoose.model('properties');
 
-exports.sendPackage = function(req, res){
-  
+exports.sendPackage = function(propertyInformation, res){
+  console.log('======propertyInformation logging out from controller');
+  console.log(propertyInformation);
+
+
+
+  return res.json({property: propertyInformation});
 };

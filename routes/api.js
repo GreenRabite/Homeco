@@ -1,12 +1,13 @@
 const keys = require('../config/keys');
 const request = require('request');
 const fastXmlParser = require('fast-xml-parser');
+const PropertyController = require('../controllers/PropertyController');
 
 module.exports = (app) => {
   app.post("/api/property", (req, res)=> {
     const address = req.body.address;
-    console.log('=======Client address is===========');
-    console.log(address);
+    // console.log('=======Client address is===========');
+    // console.log(address);
     const ZWSID = keys.ZWSID;
     const cityStateZip = 'SanFrancisco+CA'
     const url = "http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id="
@@ -15,8 +16,8 @@ module.exports = (app) => {
                 + address
                 + "&citystatezip="
                 + cityStateZip;
-    console.log('=======query url is===========');
-    console.log(url);
+    // console.log('=======query url is===========');
+    // console.log(url);
     request(url, (err, response, body)=>{
       if (err) {
         throw err;
@@ -32,9 +33,10 @@ module.exports = (app) => {
           finishedSqFt: result.finishedSqFt,
           yearBuilt: result.yearBuilt,
           useCode: result.useCode
-        }
-        console.log('=======propertyInformation===========');
-        console.log(propertyInformation);
+        };
+        PropertyController.sendPackage(propertyInformation, res);
+        // console.log('=======propertyInformation===========');
+        // console.log(propertyInformation);
       }
     })
   });
