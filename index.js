@@ -29,6 +29,7 @@ app.use(passport.initialize()); //passport.initialize() - initialize passport li
 app.use(passport.session()); //passport.session() - authenticate session for passport that we have created (cookieSession in our case)
 
 
+app.set('view engine', 'pug');
 //setup view engine for index.html page
 app.use(express.static(__dirname + '/views'));
 
