@@ -45,6 +45,8 @@ exports.login = function(req, res){
         expiresIn: "30d"
       });
       user.password = undefined;
+      res.cookie('user.email', user.email);
+      res.cookie('user._id', user._id);
       return res.json({
         user: user,
         token: token

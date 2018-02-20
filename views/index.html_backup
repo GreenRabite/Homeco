@@ -9,6 +9,9 @@
       crossorigin="anonymous">
     </script>
     <script type="text/javascript" src="bundle.js"></script>
+    <script type="text/javascript">
+
+    </script>
   </head>
   <body>
     <div id="root">
