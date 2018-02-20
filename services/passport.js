@@ -25,12 +25,12 @@ passport.use(
     callbackURL: "/auth/google/callback"
   },
   (accessToken, refreshToken, profile, done)=>{
-    User.findOne({googleId: profile.id}).then((existingUser)=>{
+    User.findOne({googleID: profile.id}).then((existingUser)=>{
       console.log(profile);
       if (existingUser) {
         done(null, existingUser); // Login the user
       } else {
-        new User({googleId: profile.id}).save().then((user)=>(done(null,user)));
+        new User({googleID: profile.id}).save().then((user)=>(done(null,user)));
       }
     });
   }

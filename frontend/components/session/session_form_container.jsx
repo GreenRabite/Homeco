@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import {googleUser, createUser, createSession, logout} from '../../actions/session_actions';
-import {CLEAR_ERRORS} from '../../actions/error_actions';
+import {clearErrors} from '../../actions/error_actions';
 import SessionForm from './session_form';
 
 const mapStateToProps = (state, ownProps) => {
@@ -21,4 +21,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   });
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SessionFrom);
+export default connect(mapStateToProps, mapDispatchToProps)(SessionForm);

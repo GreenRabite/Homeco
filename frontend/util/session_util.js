@@ -1,7 +1,7 @@
 export const googleUser = (user) => (
   $.ajax({
     url: '/auth/google',
-    method: 'POST'
+    method: 'GET'
   })
 );
 
