@@ -9,6 +9,10 @@ const propertySchema = new Schema({
   created: {
     type: Date,
     default: Date.now
+  },
+  _user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
   }
 });
 
