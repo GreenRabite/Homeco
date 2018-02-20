@@ -21,7 +21,8 @@ app.use(
 
 //Use body-parser to get POST requests for API use
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
+app.use(bodyParser.json({extended: false}));
+app.use(bodyParser.raw());
 
 // tells passport to use cookies for authentication
 app.use(passport.initialize()); //passport.initialize() - initialize passport library to use it (create an instance?) in our app
