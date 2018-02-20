@@ -14,6 +14,11 @@ const userSchema = new Schema({
     unique: true,
     // required: true
   },
+  customerType: {
+    type: String,
+    required: true,
+    default: "consumer"
+  },
   password: {
     type: String,
     // required: true

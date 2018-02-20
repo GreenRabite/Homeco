@@ -8,8 +8,6 @@
     "start": "webpack --watch"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/GreenRabite/Homeco.git"
   },
   "keywords": [
     "homeco"
@@ -18,6 +16,11 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/GreenRabite/Homeco/issues"
+  },
+  "proxy" : {
+    "/auth/google": {
+      "target": "http://localhost:5000"
+    }
   },
   "homepage": "https://github.com/GreenRabite/Homeco#readme",
   "dependencies": {
