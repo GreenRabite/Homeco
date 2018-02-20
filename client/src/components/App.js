@@ -7,9 +7,9 @@ const Dashboard = () => <h2>Dashboard</h2>
 const Home = () => <h2>Home</h2>
 const Landing = () => <h2>Landing</h2>
 
-const App extends Component {
+class App extends Component {
   componentDidMount() {
-    
+
   }
 
   render() {
