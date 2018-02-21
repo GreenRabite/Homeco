@@ -1,3 +1,17 @@
+body{
+  font-family: 'Rubik', sans-serif;
+  color: #666;
+}
+
+.home{
+  width: 50%;
+
+}
+
+.home-page-address>input{
+
+}
+
 .package-index{
   display: flex;
   justify-content: space-around;
@@ -18,4 +32,26 @@
 
 .package-img-container>img:hover{
   opacity: 1;
+}
+
+.session-form{
+  width: 50%;
+  margin: 200px auto;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.session-form>form{
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 70%;
+}
+
+.session-form>form>input{
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 10px;
 }

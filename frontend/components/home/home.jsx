@@ -20,12 +20,12 @@ class Home extends React.Component {
 
   render(){
     return (
-      <div>
+      <div className='home'>
         <h1>Homeco</h1>
         <div className='home-page-background-container'>
           <img src=''/>
         </div>
-        <form onSubmit={(e)=>this.handleSubmit(e)}>
+        <form className='home-page-address' onSubmit={(e)=>this.handleSubmit(e)}>
           <input type='text' onChange={this.handleInput('address')} value={this.state.address} placeholder='Please input your homeadress to get quote'/>
           <input type='text' onChange={this.handleInput('zipcode')} value={this.state.zipcode} placeholder='zipcode'/>
           <input type='submit' onClick={(e)=>this.handleSubmit(e)}/>
