@@ -7,6 +7,7 @@ const mapStateToProps = (state, ownProps) => {
   let formType = ownProps.match.path === '/signup' ? 'signup' : 'login';
   return ({
     formType,
+    pac: state.entities.packages.pac,
     errors: state.errors
   });
 };
