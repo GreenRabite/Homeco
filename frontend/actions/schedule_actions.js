@@ -4,8 +4,13 @@ import {receiveErrors} from './error_actions';
 
 export const RECEIVE_SCHEDULE = 'RECEIVE_SCHEDULE';
 
-export const receiveSchedule = (payload) => ({
+export const receiveSchedule = (schedule) => ({
   type: RECEIVE_SCHEDULE,
-  property: payload.property,
-  packages: payload.packages
+  schedule
 });
+
+export const createSchedule = (schedule) => (dispatch) => (
+  APIUtilSchedule.createSchedule(schedule).then(
+    (newSchedule)=> (dispatch(receiveSchedule(newSchedule)))),
+    (errors) => (dispatch(receiveErrors(errors.responseJSON)))
+);
