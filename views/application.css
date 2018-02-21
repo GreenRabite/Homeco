@@ -1,0 +1,10 @@
+.package-img-container{
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+}
+
+.package-img-container>img{
+  object-fit: cover;
+  height: 100%;
+}

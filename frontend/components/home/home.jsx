@@ -9,7 +9,7 @@ class Home extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
-    this.props.propertyRequire(this.state).then(()=>{console.log('*****send api call*****')});
+    this.props.propertyRequire(this.state).then(this.props.history.push('/packages'));
   }
 
   handleInput(type){

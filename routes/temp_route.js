@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const Service = mongoose.model('services');
 
-
 module.exports = (app) => {
 
   app.get('/api/services', (req, res)=> {
