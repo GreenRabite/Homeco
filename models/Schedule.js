@@ -10,6 +10,11 @@ const scheduleSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Package'
   },
+  workDate: Date,
+  _user: {
+     type: Schema.Types.ObjectId,
+     ref: 'User'
+   },
   created: {
     type: Date,
     default: Date.now
