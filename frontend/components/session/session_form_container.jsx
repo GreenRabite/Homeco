@@ -8,7 +8,8 @@ const mapStateToProps = (state, ownProps) => {
   return ({
     formType,
     pac: state.entities.packages.pac,
-    errors: state.errors
+    errors: state.errors,
+    currentUser: state.session.currentUser
   });
 };
 
