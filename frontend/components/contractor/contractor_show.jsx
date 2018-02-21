@@ -12,3 +12,5 @@ class ContractorShow extends React.Component {
   }
 
 }
+
+export default ContractorShow;
