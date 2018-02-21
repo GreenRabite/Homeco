@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Property = mongoose.model('properties');
 const Service = mongoose.model('services');
 const Package = mongoose.model('packages');
+const async = require('async');
 
 exports.fetchPackage = function(p, res){
   let prime = [];
@@ -41,28 +42,40 @@ exports.fetchPackage = function(p, res){
 exports.createProperty = function(req, res){
   console.log('=======creating property=======');
   console.log(req);
-  // const newProperty = new Property(req.property);
-  // newProperty.save((err, property)=>{
-  //   if (err) {
-  //     return res.status(400).send({
-  //       errors: err
-  //     })
-  //   } else {
-      // console.log(prperty);
-      let serviceId = [];
-      req.pac.forEach(service => {
-        console.log(service);
+  const newProperty = new Property(req.property);
+  newProperty.save((err, property)=>{
+    if (err) {
+      return res.status(400).send({
+        errors: err
+      })
+    } else {
+      console.log(property);
+      const serviceId = [];
+      async.forEach(req.pac, (service, callback)=>{
         Service.findOne({serviceType: service}, (servErr, serv)=>{
           if (servErr) {
             throw servErr
           } else {
             console.log(serv._id);
-            serviceId = serviceId.concat([serv._id]);
+            serviceId.push(serv._id);
+          }
+          callback();
+        })
+      }, (err)=>{
+        if (err) { throw err;}
+        console.log('=====log serviceId=======');
+        console.log(serviceId);
+        const newPackage = new Package({_property: property._id, _service: serviceId});
+        newPackage.save((errSavePac, pac)=> {
+          if (errSavePac) {
+            throw errSavePac
+          } else {
+            return res.json({
+              pac: pac
+            })
           }
         })
       });
-      console.log('=====log serviceId=======');
-      console.log(serviceId);
-  //   }
-  // })
+    }
+  })
 };

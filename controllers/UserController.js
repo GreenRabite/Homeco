@@ -49,6 +49,7 @@ exports.login = function(req, res){
       });
       user.password = undefined;
       res.cookie('user.email', user.email);
+      res.cookie('user.customerType', user.customerType)
       res.cookie('user._id', user._id);
       return res.json({
         user: user,

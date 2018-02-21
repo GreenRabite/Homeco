@@ -4,8 +4,7 @@ html
   head
     meta(charset="utf-8")
     title="Homeco"
-    style
-      include application.css
+      
     script(src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js")
     script(type="text/javascript" src="bundle.js")
@@ -13,8 +12,12 @@ html
       if ($.cookie('user.email') && $.cookie('user._id')) {
         window.currentUser = {
           email: $.cookie('user.email'),
-          _id: $.cookie('user._id')
+          _id: $.cookie('user._id'),
+          customerType: $.cookie('user.customerType')
         };
       }
+    style
+      include application.css
+  
   body
     div(id="root")

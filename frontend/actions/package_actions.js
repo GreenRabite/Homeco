@@ -3,8 +3,8 @@ import {receiveErrors} from './error_actions';
 
 export const RECEIVE_PACKAGE = 'RECEIVE_PACKAGE';
 export const receivePackage = (pac) => ({
-  type: RECEIVE_PROPERTY,
-  package: pac
+  type: RECEIVE_PACKAGE,
+  pac: pac
 });
 
 
