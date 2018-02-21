@@ -3,7 +3,7 @@ import ContractorShow from './contractor_show';
 
 const mapStateToProps = (state,ownProps) => {
   return {
-    // services: state.entities.services
+
   };
 };
 
