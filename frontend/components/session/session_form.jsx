@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from '';
 
 class SessionForm extends React.Component {
   constructor (){

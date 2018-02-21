@@ -10,7 +10,7 @@ class Package extends React.Component{
     this.props.createPackage({
       pac: this.props.packages[pacName],
       property: this.props.property
-    }).then(()=>{console.log('sending createPackage api call')});
+    }).then(this.props.history.push('/signup'));
   }
 
   render(){
