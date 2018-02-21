@@ -23,7 +23,7 @@ class Package extends React.Component{
     return(
       <div>
         {Object.values(packages).length > 0 ?
-        <div>
+        <div className='package-index'>
           <div>
             <h1>Prime Plan</h1>
             <div className='package-img-container'>
