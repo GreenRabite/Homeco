@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/GreenRabite/Homeco#readme",
   "dependencies": {
+    "async": "^2.6.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
@@ -31,6 +32,7 @@
     "cookie-session": "^2.0.0-beta.3",
     "css-loader": "^0.28.9",
     "express": "^4.16.2",
+    "fast-xml-parser": "^3.2.1",
     "figaro": "^0.1.10",
     "jsonwebtoken": "^8.1.1",
     "lodash": "^4.17.5",
@@ -49,6 +51,7 @@
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
+    "request": "^2.83.0",
     "webpack": "^3.11.0"
   },
   "devDependencies": {

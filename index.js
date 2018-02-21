@@ -39,6 +39,11 @@ app.use(express.static(__dirname + '/views'));
 
 require('./routes/auth_routes')(app);
 require('./routes/index')(app);
+<<<<<<< HEAD
+=======
+require('./routes/api')(app);
+require('./routes/temp_route')(app);
+>>>>>>> a51e923660899ba76f497f28b813d4211b30eb44
 
 //need to pass localStrategry, not sure if it's correct
 // require('./routes/auth_routes')(app, passport);
