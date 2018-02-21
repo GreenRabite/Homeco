@@ -8,7 +8,7 @@ const serviceSchema = new Schema({
     required: true
   },
   serviceRenderCycle: {
-    type: Date
+    type: Number
   },
   created: {
     type: Date,

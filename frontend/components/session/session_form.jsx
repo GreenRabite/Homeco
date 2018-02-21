@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class SessionForm extends React.Component {
   constructor (){
@@ -47,7 +48,7 @@ class SessionForm extends React.Component {
   render(){
     const text = this.props.formType == 'signup' ? 'Sign Up' : 'Log In';
     return (
-      <div>
+      <div className='session-form'>
         {this.props.errors.length ? (
           <div className='session-error'>
             <p>{this.props.errors[0]}</p>
@@ -62,6 +63,11 @@ class SessionForm extends React.Component {
           <input id='passowrd' onChange={this.handleInput('password')} type='password' value={this.state.password} placeholder='Password'/>
           <input type='submit' onClick={(e)=>this.handleClick(e)}/>
         </form>
+        {this.props.formType == 'signup' ?
+        <Link to='/login'>Log In</Link>
+        :
+        <Link to='/signup'>Sign Up</Link>
+        }
       </div>
     );
   }
