@@ -1,4 +1,4 @@
-import * as APIUtilSchedule from '../util/schedule_util';
+import * as APIUtilSchedule from '../util/schedule_utils';
 import {receiveErrors} from './error_actions';
 
 
