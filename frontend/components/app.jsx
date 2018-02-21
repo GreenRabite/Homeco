@@ -8,6 +8,7 @@ const App = () => (
   <div className='main'>
     <Switch>
       <Route exact path='/' component={HomeContainer} />
+      <Route exact path='/packages' component={PackageContainer} />
       <AuthRoute path='/signup' component={SessionFormContainer} />
       <AuthRoute path='/login' component={SessionFormContainer} />
     </Switch>

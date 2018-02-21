@@ -3,7 +3,7 @@ import React from 'react';
 class Home extends React.Component {
   constructor(props){
     super(props);
-    this.state = {'address': ''};
+    this.state = {'address': '', 'zipcode': ''};
     this.handleInput = this.handleInput.bind(this);
   }
 
@@ -12,8 +12,10 @@ class Home extends React.Component {
     this.props.propertyRequire(this.state).then(()=>{console.log('*****send api call*****')});
   }
 
-  handleInput(e){
-    this.setState({'address': e.target.value});
+  handleInput(type){
+    return (e)=>{
+      this.setState({[type]: e.target.value});
+    }
   }
 
   render(){
@@ -24,7 +26,8 @@ class Home extends React.Component {
           <img src=''/>
         </div>
         <form onSubmit={(e)=>this.handleSubmit(e)}>
-          <input type='text' onChange={this.handleInput} value={this.state.address} placeholder='Please input your homeadress to get quote'/>
+          <input type='text' onChange={this.handleInput('address')} value={this.state.address} placeholder='Please input your homeadress to get quote'/>
+          <input type='text' onChange={this.handleInput('zipcode')} value={this.state.zipcode} placeholder='zipcode'/>
           <input type='submit' onClick={(e)=>this.handleSubmit(e)}/>
         </form>
       </div>
