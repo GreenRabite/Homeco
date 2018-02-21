@@ -1,8 +1,14 @@
 .contractor-nav-bar {
   display: flex;
   flex-direction: column;
+  width: 150px;
+  border: 1px solid black;
 }
 
-ul .nav-links{
+.nav-links{
   list-style-type: none;
+}
+
+.nav-links li{
+  padding: 20px;
 }
