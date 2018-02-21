@@ -59,6 +59,6 @@ module.exports = (app) => {
       yearBuilt: req.body['property[yearBuilt]'],
       useCode: req.body['property[useCode]'],
     };
-
+    PropertyController.createProperty({property, pac}, res);
   });
 }

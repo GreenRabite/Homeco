@@ -11,17 +11,20 @@ exports.register = function(req, res){
       throw err;
     }
     if (user) {
-      return res.send({message: 'Email already registered'});
+      return res.send({errors: 'Email already registered'});
     } else {
       const newUser = new User(req.body);
       newUser.password = bcrypt.hashSync(req.body.password, 10);
       newUser.save((err, user)=> {
         if (err) {
           return res.status(400).send({
-            message: err
+            errors: err
           });
         } else {
           user.password = undefined;
+          res.cookie('user.email', user.email);
+          res.cookie('user._id', user._id);
+          res.cookie('user.customerType', user.customerType)
           return res.json(user);
         }
       });
@@ -32,10 +35,10 @@ exports.register = function(req, res){
 exports.login = function(req, res){
   const user = User.findOne({email: req.body.email}, (err, user)=>{
     if (err) {
-      return res.send({message: err})
+      return res.send({errors: err})
     }
     if (!user || !user.comparePwd(req.body.password)) {
-      return res.status(401).json({message: 'Wrong Credentials'})
+      return res.status(401).json({errors: 'Wrong Credentials'})
     }
     if (user && user.comparePwd(req.body.password)) {
       const token = jwt.sign({

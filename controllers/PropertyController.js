@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Property = mongoose.model('properties');
 const Service = mongoose.model('services');
+const Package = mongoose.model('packages');
 
 exports.fetchPackage = function(p, res){
   let prime = [];
@@ -35,4 +36,33 @@ exports.fetchPackage = function(p, res){
       supreme
     }
   });
+};
+
+exports.createProperty = function(req, res){
+  console.log('=======creating property=======');
+  console.log(req);
+  // const newProperty = new Property(req.property);
+  // newProperty.save((err, property)=>{
+  //   if (err) {
+  //     return res.status(400).send({
+  //       errors: err
+  //     })
+  //   } else {
+      // console.log(prperty);
+      let serviceId = [];
+      req.pac.forEach(service => {
+        console.log(service);
+        Service.findOne({serviceType: service}, (servErr, serv)=>{
+          if (servErr) {
+            throw servErr
+          } else {
+            console.log(serv._id);
+            serviceId = serviceId.concat([serv._id]);
+          }
+        })
+      });
+      console.log('=====log serviceId=======');
+      console.log(serviceId);
+  //   }
+  // })
 };
