@@ -59,7 +59,6 @@ exports.login = function(req, res){
   });
 };
 
-
 //Temporary to check all User in database
 exports.findAll = function(req, res){
   User.find({}, (err, users) => {

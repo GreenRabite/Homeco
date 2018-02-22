@@ -3,6 +3,8 @@ const Property = mongoose.model('properties');
 const Service = mongoose.model('services');
 const Package = mongoose.model('packages');
 const async = require('async');
+const Schedule = mongoose.model('schedules');
+
 
 exports.fetchPackage = function(p, res){
   let prime = [];
@@ -79,3 +81,42 @@ exports.createProperty = function(req, res){
     }
   })
 };
+
+exports.bindUser = function(req, res){
+  Property.findOne({_id: req.propertyId}, (err, property)=>{
+    if (err) {
+      throw err;
+    }
+    if (property) {
+      property._user = req.userId;
+      property.save((errSaveProperty, property)=>{
+        if (errSaveProperty) {
+          return res.status(400).send({
+            errors: errSaveProperty
+          });
+        } else {
+          async.forEach(req.services, (service, callback)=>{
+            Service.findOne({_id: service}, (errFindService, oneService)=>{
+              if (errFindService) {
+                throw errFindService;
+              } else {
+                const newSchedule = new Schedule({
+                  _service: service,
+                  serviecType: oneService.serviceType,
+                  category: oneService.category,
+                  _package: req.pacId
+                  _user: req.userId,
+                  workDate:Date.now + 14
+                });
+              }
+            })
+
+          })
+          return res.json({
+            property: property
+          })
+        }
+      })
+    }
+  })
+}

@@ -61,4 +61,17 @@ module.exports = (app) => {
     };
     PropertyController.createProperty({property, pac}, res);
   });
+
+  app.post('/api/schedules', (req, res)=>{
+    const propertyId = req.body['pac[_property]'];
+    const userId = req.body['user[_id]'];
+    const services = req.body['pac[_service][]'];
+    const pacId = req.body['pac[_id]'];
+    PropertyController.bindUser({
+      propertyId: propertyId,
+      userId: userId,
+      services: services,
+      pacId: pacId
+    }, res)
+  })
 }
