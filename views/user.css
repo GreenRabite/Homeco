@@ -17,3 +17,15 @@
 .user-pannel li:hover{
   background-color: white;
 }
+
+.user-my-home{
+  margin-left: 250px;
+}
+
+.property-information{
+  margin-top: 100px;
+}
+
+.property-information td{
+  padding-left: 30px;
+}
