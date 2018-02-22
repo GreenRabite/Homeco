@@ -9,6 +9,14 @@ export const receiveService = (service) => ({
   service
 });
 
-// export const fetchService = (id) => dispatch => (
-//
-// )
+export const receiveServices = (service) => ({
+  type: RECEIVE_SERVICE,
+  service
+});
+
+export const fetchService = (id) => dispatch => (
+  APIUtilService.fetchService(id).then(
+    (service) => (dispatch(receiveService(service))),
+    (errors) => (dispatch(receiveErrors(errors.responseJSON)))
+  )
+);

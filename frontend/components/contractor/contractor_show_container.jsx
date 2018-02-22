@@ -6,7 +6,8 @@ import { fetchService } from './../../actions/service_actions';
 const mapStateToProps = (state,ownProps) => {
   return {
     currentUser: state.session.currentUser,
-    schedules: state.entities.schedules
+    schedules: state.entities.schedules,
+    services: state.entities.services
   };
 };
 

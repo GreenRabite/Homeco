@@ -5,7 +5,7 @@ const Schedule = mongoose.model('schedules');
 
 //need to get current user category
 exports.fetchUserSchedules = function(req,res){
-  Schedule.find({category: "home clean"}, (err, schedules)=>{
+  Schedule.find({category: req.params.category}, (err, schedules)=>{
     if (err) {
       return res.send({errors: err});
     } else {
