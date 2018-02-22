@@ -1,6 +1,7 @@
 import React from 'react';
 import HomeCenter from './home-center';
 import Footer from './footer';
+import { Link } from 'react-router-dom';
 
 
 class Home extends React.Component {
@@ -37,6 +38,7 @@ class Home extends React.Component {
             <input type='submit' onClick={(e)=>this.handleSubmit(e)}/>
           </form>
         </div>
+        <Link to='/login'>Log In</Link>
         <HomeCenter />
         <Footer />
       </div>
