@@ -8,7 +8,12 @@ class UserHome extends React.Component {
 
   componentDidMount(){
     const userIdArr = this.props.currentUser._id.split(':')
-    const userId = userIdArr[userIdArr.length - 1].slice(1, userIdArr[userIdArr.length - 1].length - 1)
+    let userId;
+    if (userIdArr.length > 1) {
+      userId = userIdArr[userIdArr.length - 1].slice(1, userIdArr[userIdArr.length - 1].length - 1);
+    } else {
+      userId = this.props.currentUser._id;
+    }
     console.log(userId);
     this.props.fetchProperty(userId)
   }

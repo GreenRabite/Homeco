@@ -95,29 +95,44 @@ exports.bindUser = function(req, res){
             errors: errSaveProperty
           });
         } else {
+          let i = 1;
           async.forEach(req.services, (service, callback)=>{
             Service.findOne({_id: service}, (errFindService, oneService)=>{
               if (errFindService) {
                 throw errFindService;
               } else {
-                console.log('========find service=======');
-                let workDate = new Date(Date.now());
-                workDate.setDate(workDate.getDate() + 14);
-                const newSchedule = new Schedule({
-                  _service: service,
-                  serviceType: oneService.serviceType,
-                  category: oneService.category,
-                  _package: req.pacId,
-                  _user: req.userId,
-                  workDate: workDate
-                });
-                newSchedule.save((errSaveSchedule, schedule)=>{
-                  if (errSaveSchedule) {
-                    throw errSaveSchedule
-                  }
-                  console.log('=====createSchedule========');
-                  callback();
-                })
+                // console.log('========find service=======');
+                // console.log('=======working date update========');
+                const workDate = new Date(Date.now());
+                workDate.setDate(workDate.getDate() + (14 * i));
+                const timesInOneYear = Math.floor(365 / oneService.serviceRenderCycle);
+                let scheduleInOneYear = [];
+                for(i=0; i<timesInOneYear; i++){
+                  const scheduleDate = new Date(workDate);
+                  scheduleInOneYear.push(scheduleDate)
+                  workDate.setDate(workDate.getDate() + oneService.serviceRenderCycle);
+                }
+                // console.log('~~~~~~~~~~~~~scheduleInOneYear~~~~~~~~~~~~~~');
+                // console.log(scheduleInOneYear);
+                async.forEach(scheduleInOneYear, (eachScheduleDate, cb)=>{
+                  const newSchedule = new Schedule({
+                    _service: service,
+                    serviceType: oneService.serviceType,
+                    category: oneService.category,
+                    _package: req.pacId,
+                    _user: req.userId,
+                    workDate: eachScheduleDate
+                  });
+                  newSchedule.save((errSaveSchedule, schedule)=>{
+                    if (errSaveSchedule) {
+                      throw errSaveSchedule;
+                    } else {
+                      // console.log('=====createSchedule========');
+                      // console.log(schedule.workDate);
+                    }
+                    cb(()=>{i++;});
+                  })
+                }, callback())
               }
             })
           }, (errLoop)=>{

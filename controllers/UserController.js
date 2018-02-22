@@ -44,19 +44,26 @@ exports.login = function(req, res){
       const token = jwt.sign({
         email: user.email,
         userId: user._id
-      }, 'secret_key', {
+      }, 'IWillPutSecretKeyHereLater', {
         expiresIn: "30d"
       });
       user.password = undefined;
       res.cookie('user.email', user.email);
       res.cookie('user.customerType', user.customerType)
       res.cookie('user._id', user._id);
-      return res.json({
-        user: user,
-        token: token
-      });
+      return res.json(
+        user
+        // token: token
+      );
     }
   });
+};
+
+exports.logOut = function(req, res){
+  res.clearCookie('user.email');
+  res.clearCookie('user.customerType');
+  res.clearCookie('user._id');
+  return res.json({confirmation: 'loggedOut'})
 };
 
 //Temporary to check all User in database

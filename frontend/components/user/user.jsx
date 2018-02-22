@@ -28,6 +28,10 @@ class User extends React.Component{
     this.setState({listName: listName});
   }
 
+  handleLogout(){
+    this.props.logout().then(this.props.history.push('/'));
+  }
+
   render(){
     return (
       <div>
@@ -37,6 +41,7 @@ class User extends React.Component{
             <li onClick={()=>this.handleClick('UserHomeContainer')}>My Home</li>
             <li onClick={()=>this.handleClick('ServiceHistory')}>Service History</li>
             <li onClick={()=>this.handleClick('Complain')}>Complain</li>
+            <li onClick={()=>this.handleLogout()}>Log Out</li>
           </ul>
         </div>
         { this.state.listName == 'UserHomeContainer' ? <UserHomeContainer /> : ""}
