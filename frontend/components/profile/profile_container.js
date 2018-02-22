@@ -1,17 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Profile from './profile';
-import { scheduleRequire } from '../../actions/schedule_actions'
+import { receiveSchedule, receiveSchedules } from '../../actions/schedule_actions'
 
 import Profile from './profile';
 
-const mapStateToPros = () => {
+const mapStateToPros = (state) => ({
+  schedule: state.entities.schedules
+});
 
-};
-
-const mapDispatchToProps = (dispatch) => {
-
-};
+const mapDispatchToProps = (dispatch) => ({
+  receiveSchedule: (schedule) => dispatch(receiveSchedule(schedule)),
+  receiveSchedules: (schedules) => dispatch(receiveSchedules(schedules))
+});
 
 export default connect(
   mapStateToPros,
