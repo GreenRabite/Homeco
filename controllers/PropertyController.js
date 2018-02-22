@@ -104,7 +104,7 @@ exports.bindUser = function(req, res){
                   _service: service,
                   serviecType: oneService.serviceType,
                   category: oneService.category,
-                  _package: req.pacId
+                  _package: req.pacId,
                   _user: req.userId,
                   workDate:Date.now + 14
                 });
