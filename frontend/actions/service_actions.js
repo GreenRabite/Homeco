@@ -9,9 +9,9 @@ export const receiveService = (service) => ({
   service
 });
 
-export const receiveServices = (service) => ({
+export const receiveServices = (services) => ({
   type: RECEIVE_SERVICE,
-  service
+  services
 });
 
 export const fetchService = (id) => dispatch => (

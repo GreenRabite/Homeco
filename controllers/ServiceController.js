@@ -7,7 +7,7 @@ exports.fetchService = function(req,res){
     if (err) {
       return res.send({errors: err});
     } else {
-      return res.json(services);
+      return res.json(services[0]);
     }
   });
 };

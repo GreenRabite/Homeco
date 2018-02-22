@@ -4,14 +4,14 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const keys = require('./config/keys');
+mongoose.connect(keys.mongoURI);
 require('./models/User');
+require('./models/Schedule');
 require('./models/Service');
 require('./models/Property');
 require('./models/Package');
-require('./models/Schedule');
 require("./services/passport");
 
-mongoose.connect(keys.mongoURI);
 
 const app = express();
 

@@ -7,7 +7,7 @@ const serviceReducer = (state={}, action) => {
 
     case RECEIVE_SERVICE:
       newState = merge({},state);
-      newState[action.service.id] = action.service;
+      newState[action.service._id] = action.service;
       return newState;
 
     case RECEIVE_SERVICES:
