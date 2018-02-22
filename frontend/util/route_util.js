@@ -4,9 +4,15 @@ import {withRouter, Route, Redirect} from 'react-router-dom';
 
 const Auth = ({component: Component, path, loggedIn, exact}) => (
   <Route path={path} exact={exact} render={(props) => (
-      loggedIn ? (
-        <Redirect to='/' />
-      ) : (
+      loggedIn ?
+        <div>
+          {currentUser.customerType == 'consumer' ? (
+            <Redirect to='/user' />
+          ):(
+            <Redirect to='/contractor/main' />
+          )}
+        </div>
+         : (
         <Component {...props} />
       )
     )}
@@ -26,6 +32,7 @@ const Protected = ({component: Component, path, loggedIn, exact}) => (
 
 
 const mapStateToProps = state => ({
+  currentUser: state.session.currentUser,
   loggedIn: Boolean(state.session.currentUser)
 });
 

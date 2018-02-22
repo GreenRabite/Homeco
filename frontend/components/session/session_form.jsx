@@ -31,16 +31,10 @@ class SessionForm extends React.Component {
     e.preventDefault();
     if (this.props.formType == 'signup') {
       this.props.createUser(this.state)
-        .then(()=>{
-          if (this.props.pac) {
-            console.log(this.props.pac);
-            console.log('send create schedule call');
-            debugger
-          }
-          console.log('Signed Up');
-        });
+        .then(this.props.history.push('/user'));
     } else {
-      this.props.createSession(this.state).then(()=>{console.log('Loged In');});
+      this.props.createSession(this.state)
+        .then(this.props.history.push('/user'));
     }
   }
 

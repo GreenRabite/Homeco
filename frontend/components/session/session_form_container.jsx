@@ -2,12 +2,12 @@ import {connect} from 'react-redux';
 import {googleUser, createUser, createSession, logout} from '../../actions/session_actions';
 import {clearErrors} from '../../actions/error_actions';
 import SessionForm from './session_form';
+import {createSchedule} from '../../actions/schedule_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let formType = ownProps.match.path === '/signup' ? 'signup' : 'login';
   return ({
     formType,
-    pac: state.entities.packages.pac,
     errors: state.errors,
     currentUser: state.session.currentUser
   });
