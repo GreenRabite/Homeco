@@ -135,3 +135,14 @@ exports.bindUser = function(req, res){
     }
   })
 }
+
+exports.fineOne = function(req, res){
+  Property.findOne({_user: req.params.userId}, (err, property)=>{
+    if (err) {
+      throw err
+    } else {
+      return res.json({property: property})
+    }
+  })
+
+}

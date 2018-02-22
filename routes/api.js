@@ -45,6 +45,10 @@ module.exports = (app) => {
     })
   });
 
+  app.get('/api/property/:userId', (req, res)=>{
+    PropertyController.fineOne(req, res);
+  })
+
   app.post('/api/package', (req, res)=>{
     const pac = req.body['pac[]'];
     const property = {
@@ -74,4 +78,5 @@ module.exports = (app) => {
       pacId: pacId
     }, res)
   })
+
 }

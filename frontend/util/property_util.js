@@ -5,3 +5,11 @@ export const propertyRequire = (address) => (
     data: address
   })
 );
+
+
+export const fetchProperty = (userId) => (
+  $.ajax({
+    url: `/api/property/${userId}`,
+    method: 'GET'
+  })
+);

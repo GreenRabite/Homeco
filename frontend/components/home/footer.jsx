@@ -22,7 +22,7 @@ const Footer = () => (
             <li><a href='https://greenrabite.github.io/'>Andy's Profile</a></li>
             <li><a href='https://captr.herokuapp.com/#/'>Andy's Project</a></li>
             <li><a href='https://celp.herokuapp.com/#/'>Lu's Project</a></li>
-            <li><a href='https://robinhold.herokuapp.com/'>Zhipent's Project</a></li>
+            <li><a href='https://robinhold.herokuapp.com/'>Zhipeng's Project</a></li>
           </ul>
         </li>
       </ul>
