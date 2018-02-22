@@ -78,11 +78,15 @@ ul{
 .package-index{
   display: flex;
   justify-content: space-around;
+  width: 50%;
+  min-width: 960px;
+  margin: auto;
 }
 
 .package-img-container{
   width: 200px;
   height: 200px;
+  border-radius: 5px;
   overflow: hidden;
 }
 
@@ -95,6 +99,19 @@ ul{
 
 .package-img-container>img:hover{
   opacity: 1;
+}
+
+.package-index button{
+  padding: 8px 15px;
+  background-color: #f5f5f5;
+  cursor: pointer;
+  border: 1px solid #e6e6e6;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.package-index button:hover{
+  background-color: lightgray;
 }
 
 .session-form{
@@ -128,9 +145,6 @@ ul{
   border-top: 1px solid #e6e6e6;
   margin-top: 150px;
   height: 300px;
-}
-
-.footer{
   text-align: center;
   display: flex;
   flex-direction: column;
