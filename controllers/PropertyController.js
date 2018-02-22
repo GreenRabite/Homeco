@@ -95,14 +95,16 @@ exports.bindUser = function(req, res){
             errors: errSaveProperty
           });
         } else {
+          let workDate = new Date(Date.now());
           async.forEach(req.services, (service, callback)=>{
+            console.log('=======working date update========');
+            console.log(workDate);
             Service.findOne({_id: service}, (errFindService, oneService)=>{
               if (errFindService) {
                 throw errFindService;
               } else {
-                console.log('========find service=======');
-                let workDate = new Date(Date.now());
                 workDate.setDate(workDate.getDate() + 14);
+                console.log('========find service=======');
                 const newSchedule = new Schedule({
                   _service: service,
                   serviceType: oneService.serviceType,
