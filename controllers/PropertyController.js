@@ -100,20 +100,35 @@ exports.bindUser = function(req, res){
               if (errFindService) {
                 throw errFindService;
               } else {
+                console.log('========find service=======');
+                let workDate = new Date(Date.now());
+                workDate.setDate(workDate.getDate() + 14);
                 const newSchedule = new Schedule({
                   _service: service,
-                  serviecType: oneService.serviceType,
+                  serviceType: oneService.serviceType,
                   category: oneService.category,
-                  _package: req.pacId
+                  _package: req.pacId,
                   _user: req.userId,
-                  workDate:Date.now + 14
+                  workDate: workDate
                 });
+                newSchedule.save((errSaveSchedule, schedule)=>{
+                  if (errSaveSchedule) {
+                    throw errSaveSchedule
+                  }
+                  console.log('=====createSchedule========');
+                  callback();
+                })
               }
             })
-
-          })
-          return res.json({
-            property: property
+          }, (errLoop)=>{
+            if (errLoop) { throw errLoop; }
+            Schedule.find({_user: req.userId}, (errFindSchedules, schedules)=>{
+              if(errFindSchedules){ throw errFindSchedules;}
+              console.log('=========return schedules========');
+              return res.json({
+                schedules: schedules
+              })
+            })
           })
         }
       })
