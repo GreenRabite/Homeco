@@ -114,6 +114,20 @@ ul{
   background-color: lightgray;
 }
 
+.package-item>h1{
+  text-align: center;
+}
+
+.package-item{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.package-item>ul{
+  margin-left: 15px;
+}
+
 .session-form{
   width: 50%;
   margin: 200px auto;
