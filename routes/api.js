@@ -79,4 +79,8 @@ module.exports = (app) => {
     }, res)
   })
 
+  app.get('api/schedules', (req, res) => {
+    const userId = req.body['userId'];
+    Schedule.fetchSchedules(_user: userId)
+  })
 }

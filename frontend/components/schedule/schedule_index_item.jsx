@@ -10,3 +10,5 @@ class ScheduleIndexItem extends Component {
     )
   }
 }
+
+export default ScheduleIndexItem;

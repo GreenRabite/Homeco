@@ -1,19 +1,19 @@
 import { connect } from 'react-redux';
-import { receiveSchedule } from '../../actions/schedule_actions'
 import ScheduleIndex from './schedule_index';
 import { receiveSchedule, receiveSchedules } from '../../actions/schedule_actions'
 
 const mapStateToPros = (state) => ({
-  schedule: state.entities.schedules
+  schedules: state.entities.schedules,
+  currentUser: state.session.currentUser
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  receiveSchedule: (schedule) => dispatch(receiveSchedule(schedule)),
-  receiveSchedules: (schedules) => dispatch(receiveSchedules(schedules))
+  // receiveSchedule: (schedule) => dispatch(receiveSchedule(schedule)),
+  fetchSchedules: (userId) => dispatch(fetchSchedules(userId))
 });
 
 
-export defult connect(
+export default connect(
   mapStateToPros,
   mapDispatchToProps
 )(ScheduleIndex);

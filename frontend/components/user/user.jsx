@@ -1,5 +1,6 @@
 import React from 'react';
 import UserHomeContainer from './user_home_container';
+import UpcomingService from '../schedule/schedule_container';
 
 class User extends React.Component{
   constructor(){
@@ -39,6 +40,7 @@ class User extends React.Component{
           </ul>
         </div>
         { this.state.listName == 'UserHomeContainer' ? <UserHomeContainer /> : ""}
+        { this.state.listName == 'UpcomingService' ? <UpcomingService /> : ""}
       </div>
     )
   }
