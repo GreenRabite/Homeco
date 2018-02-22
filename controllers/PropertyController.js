@@ -97,14 +97,14 @@ exports.bindUser = function(req, res){
         } else {
           let workDate = new Date(Date.now());
           async.forEach(req.services, (service, callback)=>{
-            console.log('=======working date update========');
-            console.log(workDate);
             Service.findOne({_id: service}, (errFindService, oneService)=>{
               if (errFindService) {
                 throw errFindService;
               } else {
-                workDate.setDate(workDate.getDate() + 14);
                 console.log('========find service=======');
+                console.log('=======working date update========');
+                workDate.setDate(workDate.getDate() + 14 );
+                console.log(workDate);
                 const newSchedule = new Schedule({
                   _service: service,
                   serviceType: oneService.serviceType,
@@ -116,9 +116,10 @@ exports.bindUser = function(req, res){
                 newSchedule.save((errSaveSchedule, schedule)=>{
                   if (errSaveSchedule) {
                     throw errSaveSchedule
+                  } else {
+                    console.log('=====createSchedule========');
+                    callback();
                   }
-                  console.log('=====createSchedule========');
-                  callback();
                 })
               }
             })
