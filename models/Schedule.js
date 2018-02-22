@@ -21,6 +21,10 @@ const scheduleSchema = new Schema({
      type: Schema.Types.ObjectId,
      ref: 'User'
    },
+   completed: {
+     type: Boolean,
+     default: false
+   },
   created: {
     type: Date,
     default: Date.now

@@ -13,7 +13,6 @@ const Service = mongoose.model('services');
 //     }
 //   });
 // };
-// {path:'service',select:'_service'}
 
 exports.fetchUserSchedules = function(req,res){
   Schedule.find({category: req.params.category}).populate("12345").
