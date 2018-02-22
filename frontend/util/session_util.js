@@ -23,7 +23,7 @@ export const createSession = (user) => (
 );
 export const deleteSession = () => (
   $.ajax({
-    url: '/api/logout',
-    method: 'GET'
+    url: '/api/session',
+    method: 'DELETE'
   })
 );
