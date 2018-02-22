@@ -6,9 +6,6 @@ import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/configureStore';
 
-// testing
-
-import {fetchUserSchedules, fetchContractorSchedule} from './util/schedule_utils';
 
 document.addEventListener('DOMContentLoaded', () => {
   let preloadedState = undefined;
@@ -21,7 +18,5 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   const store = configureStore(preloadedState);
   window.store = store;
-  window.fetchUserSchedules = fetchUserSchedules;
-  window.fetchContractorSchedule = fetchContractorSchedule;
   ReactDOM.render(<Root store={store}/>, document.getElementById('root'));
 });
