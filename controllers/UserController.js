@@ -59,6 +59,13 @@ exports.login = function(req, res){
   });
 };
 
+exports.logOut = function(req, res){
+  res.clearCookie('user.email');
+  res.clearCookie('user.customerType');
+  res.clearCookie('user._id');
+  return res.json({confirmation: 'loggedOut'})
+};
+
 //Temporary to check all User in database
 exports.findAll = function(req, res){
   User.find({}, (err, users) => {
