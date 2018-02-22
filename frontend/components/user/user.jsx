@@ -34,7 +34,6 @@ class User extends React.Component{
           <ul>
             <li onClick={()=>this.handleClick('UpcomingService')}>Upcoming Service</li>
             <li onClick={()=>this.handleClick('UserHomeContainer')}>My Home</li>
-            <li onClick={()=>this.handleClick('Profile')}>My Profile</li>
             <li onClick={()=>this.handleClick('ServiceHistory')}>Service History</li>
             <li onClick={()=>this.handleClick('Complain')}>Complain</li>
           </ul>
