@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Service = mongoose.model('services');
 const Property = mongoose.model('properties');
 const Package = mongoose.model('packages');
+const Schedule = mongoose.model('schedules');
 
 module.exports = (app) => {
 
@@ -66,7 +67,7 @@ module.exports = (app) => {
     });
   });
 
-  app.delete('/api/services/', (req, res)=> {
+  app.delete('/api/services', (req, res)=> {
     Service.findOneAndRemove({_id: req.body.id}, (err, service)=> {
       if (err) {
         return res.send({errors:err});
@@ -74,5 +75,15 @@ module.exports = (app) => {
         return res.send({confirmation: 'removed'});
       }
     });
+  });
+
+  app.get('/api/allschedules', (req, res)=>{
+    Schedule.find({}, (err, schedules)=>{
+      if (err) {
+        return res.send({errors: err});
+      } else {
+        return res.json(schedules)
+      }
+    })
   });
 };

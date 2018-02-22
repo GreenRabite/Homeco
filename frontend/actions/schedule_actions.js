@@ -17,6 +17,6 @@ export const receiveSchedules = (schedules) => ({
 
 export const createSchedule = (payload) => (dispatch) => (
   APIUtilSchedule.createSchedule(payload).then(
-    (newSchedule)=> (dispatch(receiveSchedule(newSchedule)))),
+    (schedules)=> (dispatch(receiveSchedules(schedules)))),
     (errors) => (dispatch(receiveErrors(errors.responseJSON)))
 );

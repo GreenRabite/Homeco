@@ -1,15 +1,72 @@
 body{
   font-family: 'Rubik', sans-serif;
   color: #666;
+  margin: 0;
+}
+
+.home-background{
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 600px;
+  overflow: cover;
+}
+
+.home-background>img{
+  object-fit: cover;
+  width: 100%;
+  opacity: 0.5;
 }
 
 .home{
-  width: 50%;
+  z-index: 5;
+  width: 60%;
+  margin: 150px auto;
+}
 
+.home>form{
+  width: 100%;
+}
+
+.home>h1{
+  color: black;
+  text-align: center;
+}
+
+.home-page-address{
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .home-page-address>input{
+  width: 13%;
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  background-color: white;
+}
 
+.home-page-address-input{
+  /* border: 1px solid lightgray; */
+  border-radius: 5px;
+  width: 85%;
+  display: flex;
+}
+
+.home-page-address-input>input{
+  border: none;
+  padding: 10px;
+}
+
+.home-page-address-input>input:first-of-type{
+  width: 80%;
+}
+
+.home-page-address-input>.zipcode{
+  border-left: 1px solid lightgray;
+  width:15%;
 }
 
 .package-index{

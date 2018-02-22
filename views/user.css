@@ -1,0 +1,23 @@
+.user-pannel{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  background-color: lightgray;
+  height: 100vh;
+}
+
+.user-pannel ul{
+  padding-left: 0;
+  list-style: none;
+}
+
+.user-pannel li{
+  text-transform: uppercase;
+  padding: 10px 10px 10px 20px;
+  cursor: pointer;
+}
+
+.user-pannel li:hover{
+  background-color: white;
+}

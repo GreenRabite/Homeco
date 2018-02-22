@@ -3,6 +3,8 @@ const Property = mongoose.model('properties');
 const Service = mongoose.model('services');
 const Package = mongoose.model('packages');
 const async = require('async');
+const Schedule = mongoose.model('schedules');
+
 
 exports.fetchPackage = function(p, res){
   let prime = [];
@@ -79,3 +81,57 @@ exports.createProperty = function(req, res){
     }
   })
 };
+
+exports.bindUser = function(req, res){
+  Property.findOne({_id: req.propertyId}, (err, property)=>{
+    if (err) {
+      throw err;
+    }
+    if (property) {
+      property._user = req.userId;
+      property.save((errSaveProperty, property)=>{
+        if (errSaveProperty) {
+          return res.status(400).send({
+            errors: errSaveProperty
+          });
+        } else {
+          async.forEach(req.services, (service, callback)=>{
+            Service.findOne({_id: service}, (errFindService, oneService)=>{
+              if (errFindService) {
+                throw errFindService;
+              } else {
+                console.log('========find service=======');
+                let workDate = new Date(Date.now());
+                workDate.setDate(workDate.getDate() + 14);
+                const newSchedule = new Schedule({
+                  _service: service,
+                  serviceType: oneService.serviceType,
+                  category: oneService.category,
+                  _package: req.pacId,
+                  _user: req.userId,
+                  workDate: workDate
+                });
+                newSchedule.save((errSaveSchedule, schedule)=>{
+                  if (errSaveSchedule) {
+                    throw errSaveSchedule
+                  }
+                  console.log('=====createSchedule========');
+                  callback();
+                })
+              }
+            })
+          }, (errLoop)=>{
+            if (errLoop) { throw errLoop; }
+            Schedule.find({_user: req.userId}, (errFindSchedules, schedules)=>{
+              if(errFindSchedules){ throw errFindSchedules;}
+              console.log('=========return schedules========');
+              return res.json({
+                schedules: schedules
+              })
+            })
+          })
+        }
+      })
+    }
+  })
+}
