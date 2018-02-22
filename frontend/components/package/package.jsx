@@ -1,5 +1,6 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
+import Footer from '../home/footer';
 
 
 class Package extends React.Component{
@@ -59,8 +60,8 @@ class Package extends React.Component{
         </div>
         :
         ""}
+        <Footer />
       </div>
-      // <Redirect to='/' />}
     )
   }
 }

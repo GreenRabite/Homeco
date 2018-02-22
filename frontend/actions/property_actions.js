@@ -14,3 +14,9 @@ export const propertyRequire = (address) => dispatch => APIUtilProperty.property
     payload => dispatch(receiveProperty(payload)),
     errors => dispatch(receiveErrors(errors.responseJSON))
   );
+
+export const fetchProperty = (userId) => dispatch => APIUtilProperty.fetchProperty(userId)
+  .then(
+    payload => dispatch(receiveProperty(payload)),
+    errors => dispatch(receiveErrors(errors.responseJSON))
+  );
