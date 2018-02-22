@@ -1,4 +1,6 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom';
+
 
 class Package extends React.Component{
   constructor(props){
@@ -21,10 +23,10 @@ class Package extends React.Component{
       'supreme': 'https://res.cloudinary.com/ddwejrtgh/image/upload/v1519196283/images_hoso6d.jpg'
     }
     return(
-      <div>
+      <div className='package-list'>
         {Object.values(packages).length === 3 ?
         <div className='package-index'>
-          <div>
+          <div className='package-item'>
             <h1>Prime Plan</h1>
             <div className='package-img-container'>
               <img src={imgs.prime} onClick={()=>this.handleClick('prime')}/>
@@ -34,7 +36,7 @@ class Package extends React.Component{
             </ul>
             <button onClick={()=>this.handleClick('prime')}>Choose this plan</button>
           </div>
-          <div>
+          <div className='package-item'>
             <h1>Plus Plan</h1>
             <div className='package-img-container'>
               <img src={imgs.plus} onClick={()=>this.handleClick('plus')} />
@@ -44,7 +46,7 @@ class Package extends React.Component{
             </ul>
             <button onClick={()=>this.handleClick('plus')}>Choose this plan</button>
           </div>
-          <div>
+          <div className='package-item'>
             <h1>Supreme Plan</h1>
             <div className='package-img-container'>
               <img src={imgs.supreme} onClick={()=>this.handleClick('supreme')} />
@@ -55,8 +57,10 @@ class Package extends React.Component{
             <button onClick={()=>this.handleClick('supreme')}>Choose this plan</button>
           </div>
         </div>
-        : ""}
+        :
+        ""}
       </div>
+      // <Redirect to='/' />}
     )
   }
 }
