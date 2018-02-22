@@ -13,7 +13,8 @@ const mapStateToProps = (state,ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchUserSchedules: (category) => dispatch(fetchUserSchedules(category))
+    fetchUserSchedules: (category) => dispatch(fetchUserSchedules(category)),
+    fetchService: (id) => dispatch(fetchService(id))
   };
 };
 

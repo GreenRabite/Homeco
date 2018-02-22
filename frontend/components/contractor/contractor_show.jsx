@@ -8,16 +8,22 @@ class ContractorShow extends React.Component {
 
   componentDidMount(){
     this.props.fetchUserSchedules(this.props.currentUser.category);
+    // .then(
+    //   ()=>this.props.schedules.map((schedule)=>{
+    //     console.log("I'm about to fetch the service");
+    //     return this.props.fetchService(schedule._id);
+    //   })
+    // );
   }
 
   render(){
     let ServiceListItems;
-    // if(this.props.schedules){
-    //   debugger;
-    //   ServiceListItems = this.props.schedules.map((schedule)=>{
-    //     return <li>{schedule._service}</li>;
-    //     });
-    // }
+    if(this.props.schedules.keys){
+      debugger;
+      ServiceListItems = this.props.schedules.map((schedule)=>{
+        return <li>{schedule._service}</li>;
+        });
+    }
     return(
       <div className="contractor-container">
         <ContractorNavBar/>
