@@ -1,6 +1,9 @@
+
 body{
   font-family: 'Rubik', sans-serif;
   color: #666;
+  margin: 0;
+  position: relative;
 }
 
 .home-background{
