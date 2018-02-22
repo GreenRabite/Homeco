@@ -1,4 +1,7 @@
 import React from 'react';
+import HomeCenter from './home-center';
+import Footer from './footer';
+
 
 class Home extends React.Component {
   constructor(props){
@@ -34,6 +37,8 @@ class Home extends React.Component {
             <input type='submit' onClick={(e)=>this.handleSubmit(e)}/>
           </form>
         </div>
+        <HomeCenter />
+        <Footer />
       </div>
     )
   }
