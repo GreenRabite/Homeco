@@ -15,6 +15,12 @@ export const receiveSchedules = (schedules) => ({
   schedules
 });
 
+export const fetchUserSchedules = (category) => (dispatch) => (
+  APIUtilSchedule.fetchUserSchedules(category).then(
+    (schedules)=> (dispatch(receiveSchedules(schedules)))),
+    (errors) => (dispatch(receiveErrors(errors.responseJSON)))
+);
+
 export const createSchedule = (payload) => (dispatch) => (
   APIUtilSchedule.createSchedule(payload).then(
     (schedules)=> (dispatch(receiveSchedules(schedules)))),
