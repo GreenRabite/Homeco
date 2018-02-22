@@ -1,9 +1,10 @@
 import React from 'react';
+import UserHomeContainer from './user_home_container';
 
 class User extends React.Component{
   constructor(){
     super();
-    this.state = {};
+    this.state = {listName:''};
   }
 
   componentDidMount(){
@@ -22,17 +23,22 @@ class User extends React.Component{
     }
   }
 
+  handleClick(listName){
+    this.setState({listName: listName});
+  }
+
   render(){
     return (
       <div>
         <div className='user-pannel'>
           <ul>
-            <li>Schedule</li>
-            <li>My Home</li>
-            <li>Service History</li>
-            <li>Complain</li>
+            <li onClick={()=>this.handleClick('UpcomingService')}>Upcoming Service</li>
+            <li onClick={()=>this.handleClick('UserHomeContainer')}>My Home</li>
+            <li onClick={()=>this.handleClick('ServiceHistory')}>Service History</li>
+            <li onClick={()=>this.handleClick('Complain')}>Complain</li>
           </ul>
         </div>
+        { this.state.listName == 'UserHomeContainer' ? <UserHomeContainer /> : ""}
       </div>
     )
   }
