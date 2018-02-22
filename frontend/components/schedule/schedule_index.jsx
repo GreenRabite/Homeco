@@ -7,9 +7,9 @@ class ScheduleIndex extends Component {
     const {schedules} = this.props;
     return(
       <div>
-        <h2> My Schedule </h2>
+        <h2> Upcoming Services </h2>
         <ul>
-          {schedules.map(schedule => <ScheduleIndexItem workDate={schedule.workDate} key={schedule.id}/> )}
+          {schedules.map(schedule => <ScheduleIndexItem schedule={schedule} key={schedule.id}/> )}
         </ul>
       </div>
     );

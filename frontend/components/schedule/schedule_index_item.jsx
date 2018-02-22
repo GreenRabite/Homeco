@@ -5,7 +5,7 @@ class ScheduleIndexItem extends Component {
   render () {
     return (
       <li>
-        workDate: {this.props.workDate} | Package
+        workDate: {this.props.workDate} | Service Type: {this.props.serviceType}
       </li>
     )
   }
