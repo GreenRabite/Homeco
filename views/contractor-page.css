@@ -1,8 +1,11 @@
 .contractor-nav-bar {
-  display: flex;
-  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
   width: 150px;
   border: 1px solid black;
+  background-color: #D1D1D1;
 }
 
 .nav-links{
@@ -11,4 +14,18 @@
 
 .nav-links li{
   padding: 20px;
+  text-transform: uppercase;
+}
+
+.nav-links li:hover{
+  background-color: white;
+}
+
+.contractor-container{
+  display: flex;
+}
+
+.service-history-container {
+  margin-left: 250px;
+  margin-top: 150px;
 }

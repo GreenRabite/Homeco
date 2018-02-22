@@ -7,11 +7,8 @@ const SchedulesController = require('../controllers/SchedulesController');
 // };
 
 module.exports = (app) => {
-
-  app.get(`/api/schedules`, (req, res)=>{
-    console.log("hello");
+  app.get(`/api/schedules/:category`, (req, res)=>{
     SchedulesController.fetchUserSchedules(req,res);
   });
-
 
 };

@@ -24,7 +24,8 @@ exports.register = function(req, res){
           user.password = undefined;
           res.cookie('user.email', user.email);
           res.cookie('user._id', user._id);
-          res.cookie('user.customerType', user.customerType)
+          res.cookie('user.customerType', user.customerType);
+          res.cookie('user.category', user.category);
           return res.json(user);
         }
       });
@@ -49,7 +50,8 @@ exports.login = function(req, res){
       });
       user.password = undefined;
       res.cookie('user.email', user.email);
-      res.cookie('user.customerType', user.customerType)
+      res.cookie('user.customerType', user.customerType);
+      res.cookie('user.category', user.category);
       res.cookie('user._id', user._id);
       return res.json({
         user: user,
