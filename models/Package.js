@@ -4,11 +4,11 @@ const { Schema } = mongoose;
 const packageSchema = new Schema({
   _property: {
     type: Schema.Types.ObjectId,
-    ref: 'Property'
+    ref: 'properties'
   },
   _service: [{
     type: Schema.Types.ObjectId,
-    ref: 'Service'
+    ref: 'services'
   }],
   created: {
     type: Date,

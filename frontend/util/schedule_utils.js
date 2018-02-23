@@ -1,6 +1,6 @@
-export const fetchContractorSchedule = (userId) => (
+export const fetchContractorSchedules = (category) => (
   $.ajax({
-    url: `/api/schedules/${userId}`,
+    url: `/api/schedules/cont/${category}`,
     method: 'GET'
   })
 );
