@@ -35,7 +35,7 @@ const propertySchema = new Schema({
   },
   _user: {
     type: Schema.Types.ObjectId,
-    ref: 'User'
+    ref: 'users'
   },
   created: {
     type: Date,

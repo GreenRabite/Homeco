@@ -27,6 +27,9 @@ const userSchema = new Schema({
     type: String,
     // required: true
   },
+  category: {
+    type: String
+  },
   created: {
     type: Date,
     default: Date.now
