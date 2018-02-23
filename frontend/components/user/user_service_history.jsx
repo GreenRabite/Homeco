@@ -11,7 +11,7 @@ class ServiceHistory extends React.Component {
     <div className='user-servicehistory'>
       <h1>ServiceHistory blablablabla~~~~</h1>
     </div>
-    )
+    );
   }
 
 }
