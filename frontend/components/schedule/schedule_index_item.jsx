@@ -11,9 +11,9 @@ class ScheduleIndexItem extends Component {
     return (
       <div>
         {schedule._id ?
-          <div>
+          <div className='user-schedule-item'>
             <div>{schedule.serviceType}</div>
-            <div>{schedule.workDate}</div>
+            <div>{new Date(schedule.workDate).toDateString()}</div>
           </div>
         : ""}
     </div>
