@@ -34,8 +34,6 @@ exports.fetchUserSchedules = function (req, res) {
         errors: err
       });
     } else {
-      console.log('========output result from controller=========');
-      console.log(schedules);
       result = {};
       schedules.forEach(schedule=>{
         result[schedule._id] = schedule;

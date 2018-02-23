@@ -3,6 +3,7 @@ import UserHomeContainer from './user_home_container';
 import UpcomingService from '../schedule/upcoming_services';
 import PaymentContainer from './user_payment_container';
 import UserServiceHistoryContainer from './user_service_history_container';
+import UserComplainContainer from './user_complain_container';
 
 class User extends React.Component{
   constructor(){
@@ -44,6 +45,7 @@ class User extends React.Component{
         { this.state.listName == 'UpcomingService' ? <UpcomingService /> : ""}
         { this.state.listName == 'Payment' ? <PaymentContainer /> : ""}
         { this.state.listName == 'ServiceHistory' ? <UserServiceHistoryContainer /> : ""}
+        { this.state.listName == 'Complain' ? <UserComplainContainer /> : ""}
       </div>
     )
   }
