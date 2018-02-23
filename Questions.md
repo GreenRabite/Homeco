@@ -11,3 +11,7 @@
     //   this.setState({services: newProps.services});
     // }
   // }
+
+  {//<img className="imgSource"src={this.state.img_url ? this.state.img_url : "" } />}
+
+  //{<button onClick={this.uploadImage}>Upload Photo</button>}

@@ -1,11 +1,16 @@
 import React from 'react';
 import ContractorNavBar from './contractor_nav';
+import ContractorModal from './contractor_modal';
 
 class ContractorShow extends React.Component {
   constructor(props) {
     super(props);
     this.formatDate = this.formatDate.bind(this);
     this.getDayOfWeek = this.getDayOfWeek.bind(this);
+    this.sendScheduleInfo = this.sendScheduleInfo.bind(this);
+    this.setState = {
+      clickSch: {}
+    };
   }
 
   componentDidMount(){
@@ -33,6 +38,12 @@ class ContractorShow extends React.Component {
     return isNaN(dayOfWeek) ? null : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][dayOfWeek];
   }
 
+  sendScheduleInfo(e,savedSch){
+    e.preventDefault();
+    this.setState({ clickSch: savedSch });
+    debugger;
+  }
+
   render(){
     let ServiceListItems;
     const schedules = Object.values(this.props.schedules);
@@ -43,6 +54,7 @@ class ContractorShow extends React.Component {
      });
     if(schedules.length > 0){
       ServiceListItems = sortSchedules.map((schedule)=>{
+        let savedSch = schedule;
         return(
           <div className="service-list-items" key={schedule._id}>
             <div>{this.getDayOfWeek(schedule.workDate)}</div>
@@ -50,7 +62,7 @@ class ContractorShow extends React.Component {
             <div>Due: {this.formatDate(schedule.workDate)}</div>
             <div>{schedule._package._property.street}</div>
             <div>{`${schedule._package._property.city}, ${schedule._package._property.state}`}</div>
-            <button className="button">Finished</button>
+            <button onClick={(e)=>this.sendScheduleInfo(e,savedSch)} className="button">Finished</button>
           </div>
         );
         });
@@ -61,7 +73,9 @@ class ContractorShow extends React.Component {
         <div className="service-history-container">
             {ServiceListItems}
         </div>
-        <div className="contractor-upload-panel">What</div>
+        <div className="contractor-upload-panel">
+          <ContractorModal />
+        </div>
       </div>
     );
   }
