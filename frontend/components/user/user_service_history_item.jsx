@@ -20,7 +20,6 @@ class ServiceHistoryItem extends Component {
     this.state = {
       modalIsOpen: false
     };
-    this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
 

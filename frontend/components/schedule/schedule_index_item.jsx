@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Modal from 'react-modal';
+import ReactModal from 'react-modal';
 
 const customStyles = {
   content : {
@@ -18,28 +18,28 @@ class ScheduleIndexItem extends Component {
   constructor(){
     super();
     this.state = {
-      modalIsOpen: false,
+      showModal: false,
       date: "",
       className: "hidden"
     };
-    this.afterOpenModal = this.afterOpenModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
+    // this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
     this.reschedule = this.reschedule.bind(this);
   }
 
-  openModal() {
-    this.setState({modalIsOpen: true});
+  handleOpenModal (e) {
+    if (e.target.className == "user-schedule-item") {
+      this.setState({ showModal: true });
+    }
   }
 
-  afterOpenModal() {
-    this.subtitle.style.color = '#f00';
-  }
-
-  closeModal() {
-    this.setState({modalIsOpen: false});
+  handleCloseModal () {
+    this.setState({ showModal: false });
   }
 
   componentDidMount(){
+    ReactModal.setAppElement('#root');
+    this.setState({ modalIsOpen: false });
     if (this.props.schedule) {
       this.setState({date: this.props.schedule.workDate.slice(0,10)})
     }
@@ -67,28 +67,28 @@ class ScheduleIndexItem extends Component {
   sendReschedule(e){
     e.preventDefault();
     this.props.reschedule(this.props.schedule._id, this.state.date);
-    this.setState({modalIsOpen: false});
+    // this.setState({modalIsOpen: false});
+    this.handleCloseModal();
   }
 
   render () {
     const {schedule} = this.props;
     return (
-      <div onClick={()=>this.openModal()} className='user-schedule-item'>
+      <div onClick={(e)=>this.handleOpenModal(e)} className='user-schedule-item'>
         {schedule._id ?
         <div>
           <div className='user-schedule-detail'>
             <div>{schedule.serviceType}</div>
             <div>{new Date(schedule.workDate).toDateString()}</div>
           </div>
-          <Modal
-            isOpen={this.state.modalIsOpen}
-            onRequestClose={this.closeModal}
+          <ReactModal
+            isOpen={this.state.showModal}
+            onRequestClose={this.handleCloseModal}
             style={customStyles}
-            ariaHideApp={false}
           >
             <div className='modal-title'>
-              <h2 ref={subtitle => this.subtitle = subtitle}>Reschedule Service</h2>
-              <div onClick={this.closeModal} className='modal-close'>
+              <h2>Reschedule Service</h2>
+              <div onClick={this.handleCloseModal} className='modal-close'>
                 <span>&times;</span>
               </div>
             </div>
@@ -97,7 +97,7 @@ class ScheduleIndexItem extends Component {
               <input value={this.state.date} onChange={(e)=>this.reschedule(e)} type='date' />
               <input onClick={(e)=>this.sendReschedule(e)} type='submit'/>
             </form>
-          </Modal>
+          </ReactModal>
         </div>
         : ""}
       </div>
