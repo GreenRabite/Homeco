@@ -2,37 +2,38 @@ import React, { Component } from 'react';
 import ScheduleIndexItem from './schedule_index_item';
 
 class ScheduleIndex extends Component {
+  constructor(){
+    super();
+    this.state = {};
+  }
 
   componentDidMount(){
     const userIdArr = this.props.currentUser._id.split(':');
     let userId;
-    console.log(userIdArr, userId);
     if (userIdArr.length > 1) {
       userId = userIdArr[userIdArr.length - 1].slice(1, userIdArr[userIdArr.length - 1].length - 1);
     } else {
       userId = this.props.currentUser._id;
     }
-    console.log(userId);
-    // this.props.fetchSchedules(userId)
+    this.props.fetchUserSchedules(userId);
   }
+
+
   render(){
-    console.log(this.props);
-    const {schedules} = this.props;
-    const schedule = (schedules) => {
-      if (schedules) {
-        return "{schedules.map(schedule => <ScheduleIndexItem schedule={schedule} key={schedule.id}/> )}"
-      } else {
-        return ''
-      }
-    }
-
-    console.log('schedule: ',schedule);
+    const schedules = Object.values(this.props.schedules);
+    const sortSchedules = schedules.sort(function(a, b) {
+      const c = new Date(a.workDate);
+      const d = new Date(b.workDate);
+      return c-d;
+    });
     return(
-      <div>
+      <div className='user-schedules'>
         <h2> Upcoming Services </h2>
-        <ul>
-
-        </ul>
+          {schedules.length > 1 ?
+            <div>
+              {schedules.map(schedule=><ScheduleIndexItem key={schedule._id} schedule={schedule} />)}
+            </div>
+           : ""}
       </div>
     );
   };

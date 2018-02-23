@@ -15,10 +15,11 @@ export const receiveSchedules = (schedules) => ({
   schedules
 });
 
-export const fetchSchedules = userId => dispatch => (
+export const fetchUserSchedules = userId => dispatch => (
   APIUtilSchedule.fetchUserSchedules(userId)
-    .then((schedules) => (dispatch(receiveSchedules(schedules)))),
-    (errors) => (dispatch(receiveErrors(errors.responseJSON)))
+    .then(
+      (schedules) => (dispatch(receiveSchedules(schedules)))),
+      (errors) => (dispatch(receiveErrors(errors.responseJSON)))
 );
 
 export const createSchedule = (payload) => (dispatch) => (

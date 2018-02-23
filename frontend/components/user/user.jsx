@@ -5,7 +5,7 @@ import UpcomingService from '../schedule/schedule_container';
 class User extends React.Component{
   constructor(){
     super();
-    this.state = {listName:''};
+    this.state = {listName: 'UpcomingService'};
   }
 
   componentDidMount(){
