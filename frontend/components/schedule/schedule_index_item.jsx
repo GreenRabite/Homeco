@@ -9,14 +9,14 @@ class ScheduleIndexItem extends Component {
   render () {
     const {schedule} = this.props;
     return (
-      <div>
+      <div className='user-schedule-item'>
         {schedule._id ?
-          <div className='user-schedule-item'>
+          <div className='user-schedule-detail'>
             <div>{schedule.serviceType}</div>
             <div>{new Date(schedule.workDate).toDateString()}</div>
           </div>
         : ""}
-    </div>
+      </div>
     )
   }
 }

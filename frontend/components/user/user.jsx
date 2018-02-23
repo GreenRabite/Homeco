@@ -13,9 +13,6 @@ class User extends React.Component{
   }
 
   componentWillReceiveProps(nextProps){
-    console.log('-========compoenntWillReceiveProps====');
-    console.log(nextProps.currentUser);
-    console.log(nextProps.pac);
     if (nextProps.pac && nextProps.currentUser) {
       this.props.createSchedule({
         pac: nextProps.pac,
@@ -37,10 +34,10 @@ class User extends React.Component{
       <div>
         <div className='user-pannel'>
           <ul>
-            <li onClick={()=>this.handleClick('UpcomingService')}>Upcoming Service</li>
-            <li onClick={()=>this.handleClick('UserHomeContainer')}>My Home</li>
-            <li onClick={()=>this.handleClick('ServiceHistory')}>Service History</li>
-            <li onClick={()=>this.handleClick('Complain')}>Complain</li>
+            <li className={this.state.listName == 'UpcomingService' ? 'clicked' : ''} onClick={()=>this.handleClick('UpcomingService')}>Upcoming Service</li>
+            <li className={this.state.listName == 'UserHomeContainer' ? 'clicked' : ''} onClick={()=>this.handleClick('UserHomeContainer')}>My Home</li>
+            <li className={this.state.listName == 'ServiceHistory' ? 'clicked' : ''} onClick={()=>this.handleClick('ServiceHistory')}>Service History</li>
+            <li className={this.state.listName == 'Complain' ? 'clicked' : ''} onClick={()=>this.handleClick('Complain')}>Complain</li>
             <li onClick={()=>this.handleLogout()}>Log Out</li>
           </ul>
         </div>
