@@ -158,6 +158,5 @@ exports.fineOne = function(req, res){
     } else {
       return res.json({property: property})
     }
-  })
-
-}
+  });
+};

@@ -1,15 +1,16 @@
-const Service = mongoose.model('services');
 const mongoose = require('mongoose');
 const Schedule = mongoose.model('schedules');
 
-export.fetchUserSchedules = function (req, res) {
-  Schedule.find({_user: req.params._user})
-    .exec(function(err, schedules){
-      console.log(schedule);
-      if (err) {
-        return res.send({errors: err});
-      } else {
-        return res.json(schedules);
-      }
-    });
+exports.fetchUserSchedules = function (req, res) {
+  console.log('=========schedule controller==========');
+  console.log(req.params.userId);
+  Schedule.find({_user: req.params.userId}, (err, schedules)=>{
+    if (err) {
+      return res.status(400).send({
+        errors: err
+      })
+    } else {
+      return res.json(schedules)
+    }
+  });
 };

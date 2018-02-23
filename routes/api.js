@@ -3,6 +3,7 @@ const request = require('request');
 const fastXmlParser = require('fast-xml-parser');
 const PropertyController = require('../controllers/PropertyController');
 const PackageController = require('../controllers/PackageController');
+const ScheduleController = require('../controllers/SchedulesController');
 const bodyParser = require('body-parser');
 
 module.exports = (app) => {
@@ -79,8 +80,8 @@ module.exports = (app) => {
     }, res)
   })
 
-  app.get('api/schedules', (req, res) => {
-    const userId = req.body['userId'];
-    Schedule.fetchSchedules(_user: userId)
+  app.get('/api/schedules/:userId', (req, res) => {
+    console.log('=======receive api call=============');
+    ScheduleController.fetchUserSchedules(req, res);
   })
 }
