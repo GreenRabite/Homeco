@@ -40,6 +40,7 @@ class ContractorModal extends React.Component {
             isOpen={this.state.showModal}
             contentLabel="onRequestClose Example"
             onRequestClose={this.handleCloseModal}
+            className="Modal-contractor-form"
             overlayClassName="Overlay-photo-form"
             shouldCloseOnOverlayClick={true}
             >

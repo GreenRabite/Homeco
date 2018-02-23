@@ -29,6 +29,10 @@ const scheduleSchema = new Schema({
     type: String,
     default: ""
   },
+  img_url: {
+    type: Array,
+    default: []
+  },
   created: {
     type: Date,
     default: Date.now

@@ -1,47 +1,14 @@
 import React from 'react';
 import ContractorNavBar from './contractor_nav';
-import ContractorModal from './contractor_modal';
+import ServiceListItem from './service_list_item';
 
 class ContractorShow extends React.Component {
   constructor(props) {
     super(props);
-    this.formatDate = this.formatDate.bind(this);
-    this.getDayOfWeek = this.getDayOfWeek.bind(this);
-    this.sendScheduleInfo = this.sendScheduleInfo.bind(this);
-    this.setState = {
-      clickSch: {}
-    };
   }
 
   componentDidMount(){
     this.props.fetchContractorSchedules(this.props.currentUser.category);
-  }
-
-  formatDate(oldDate) {
-    let monthNames = [
-      "January", "February", "March",
-      "April", "May", "June", "July",
-      "August", "September", "October",
-      "November", "December"
-    ];
-    // debugger;
-    let date = new Date(oldDate);
-    let day = date.getDate();
-    let monthIndex = date.getMonth();
-    let year = date.getFullYear();
-
-    return `${monthNames[monthIndex]} ${day}, ${year}`;
-  }
-
-  getDayOfWeek(oldDate) {
-    let dayOfWeek = new Date(oldDate).getDay();
-    return isNaN(dayOfWeek) ? null : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][dayOfWeek];
-  }
-
-  sendScheduleInfo(e,savedSch){
-    e.preventDefault();
-    this.setState({ clickSch: savedSch });
-    debugger;
   }
 
   render(){
@@ -54,18 +21,10 @@ class ContractorShow extends React.Component {
      });
     if(schedules.length > 0){
       ServiceListItems = sortSchedules.map((schedule)=>{
-        let savedSch = schedule;
         return(
-          <div className="service-list-items" key={schedule._id}>
-            <div>{this.getDayOfWeek(schedule.workDate)}</div>
-            <div>{schedule._service.serviceType}</div>
-            <div>Due: {this.formatDate(schedule.workDate)}</div>
-            <div>{schedule._package._property.street}</div>
-            <div>{`${schedule._package._property.city}, ${schedule._package._property.state}`}</div>
-            <button onClick={(e)=>this.sendScheduleInfo(e,savedSch)} className="button">Finished</button>
-          </div>
+          <ServiceListItem schedule={schedule} key={schedule._id} />
         );
-        });
+      });
     }
     return(
       <div className="contractor-container">
@@ -74,7 +33,6 @@ class ContractorShow extends React.Component {
             {ServiceListItems}
         </div>
         <div className="contractor-upload-panel">
-          <ContractorModal />
         </div>
       </div>
     );

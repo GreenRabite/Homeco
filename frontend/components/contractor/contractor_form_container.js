@@ -3,9 +3,10 @@ import ContractorForm from './contractor_form';
 import { updateSchedule } from './../../actions/schedule_actions';
 
 const mapStateToProps = (state,ownProps) => {
+  debugger;
   return {
     currentUser: state.session.currentUser,
-    schedule: state.session.schedule
+    schedule: ownProps.schedule
   };
 };
 
