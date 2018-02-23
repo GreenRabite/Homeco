@@ -1,6 +1,6 @@
 import React from 'react';
 import UserHomeContainer from './user_home_container';
-import UpcomingService from '../schedule/schedule_container';
+import UpcomingService from '../schedule/upcoming_services';
 import PaymentContainer from './user_payment_container';
 import UserServiceHistoryContainer from './user_service_history_container';
 
@@ -15,7 +15,7 @@ class User extends React.Component{
       this.props.createSchedule({
         pac: nextProps.pac,
         user: nextProps.currentUser
-      })
+      });
     }
   }
 

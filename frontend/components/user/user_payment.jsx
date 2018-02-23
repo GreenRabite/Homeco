@@ -9,7 +9,7 @@ class Payment extends React.Component {
   render(){
     return(
     <div className='user-payment'>
-      <h1>Payment blablablabla~~~~</h1>
+      <h1>Payment</h1>
     </div>
     )
   }
