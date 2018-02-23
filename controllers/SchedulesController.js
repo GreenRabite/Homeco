@@ -23,7 +23,7 @@ exports.fetchContractorSchedules = function(req,res){
   Schedule.find({
     category: req.params.category,
     workDate: {$gte: today, $lt: week}
-  }).populate("_service").
+  }).populate("_service").populate({path:'_package', populate:{path:'_property'}}).
   lean().then((schedule)=>{
     res.send(schedule);
   },(err)=>(res.send(err)));

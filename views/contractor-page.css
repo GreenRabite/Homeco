@@ -26,6 +26,45 @@
 }
 
 .service-history-container {
-  margin-left: 250px;
-  margin-top: 150px;
+  margin-left: 155px;
+  margin-top: 5px;
+}
+
+.service-list-items {
+  height: 200px;
+  width: 300px;
+  border: 1px solid black;
+}
+
+.button{
+  background-color: #269CE9;
+  /*background-color: #552583;*/
+  border-color: #269CE9;
+  /*border-color: #552583;*/
+  width: 150px;
+  height: 25px;
+  border-radius: 10px;
+}
+
+.button:hover{
+  /*background-color: #552583;*/
+  background-color: #269CE9;
+  opacity: .8;
+}
+
+.button:active{
+  /*background: #562790;*/
+  background-color: #395998;
+  border-color: #552583;
+}
+
+.contractor-upload-panel{
+  position: fixed;
+  margin-left: 660px;
+  margin-top: 5%;
+  height: 70%;
+  width: 55%;
+  border: 1px solid black;
+  background-color: pink;
+
 }
