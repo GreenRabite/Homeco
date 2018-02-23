@@ -19,7 +19,8 @@ class ScheduleIndexItem extends Component {
     super();
     this.state = {
       modalIsOpen: false,
-      date: ""
+      date: "",
+      className: "hidden"
     };
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
@@ -27,7 +28,6 @@ class ScheduleIndexItem extends Component {
   }
 
   openModal() {
-    // debugger
     this.setState({modalIsOpen: true});
   }
 
@@ -36,7 +36,6 @@ class ScheduleIndexItem extends Component {
   }
 
   closeModal() {
-    // debugger
     this.setState({modalIsOpen: false});
   }
 
@@ -53,7 +52,16 @@ class ScheduleIndexItem extends Component {
   }
 
   reschedule(e){
-    this.setState({date: e.target.value});
+    const today = new Date(Date.now());
+    const updateDate = new Date(e.target.value);
+    if (this.state.className === '') {
+      this.setState({className: 'hidden'});
+    }
+    if (updateDate < today) {
+      this.setState({className: ""});
+    } else {
+      this.setState({date: e.target.value});
+    }
   }
 
   sendReschedule(e){
@@ -85,6 +93,7 @@ class ScheduleIndexItem extends Component {
               </div>
             </div>
             <form className='reschedule'>
+              <div className={`hint ${this.state.className}`}>Please choose the day after today</div>
               <input value={this.state.date} onChange={(e)=>this.reschedule(e)} type='date' />
               <input onClick={(e)=>this.sendReschedule(e)} type='submit'/>
             </form>
