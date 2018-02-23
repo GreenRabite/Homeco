@@ -8,7 +8,7 @@ const mapStateToPros = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchUserSchedules: (userId) => dispatch(fetchUserSchedules(userId)),
+  fetchUserSchedules: (userId, completed) => dispatch(fetchUserSchedules(userId, completed)),
   reschedule: (id, workDate) => dispatch(reschedule(id, workDate))
 });
 

@@ -2,6 +2,7 @@ import React from 'react';
 import UserHomeContainer from './user_home_container';
 import UpcomingService from '../schedule/schedule_container';
 import PaymentContainer from './user_payment_container';
+import UserServiceHistoryContainer from './user_service_history_container';
 
 class User extends React.Component{
   constructor(){
@@ -42,6 +43,7 @@ class User extends React.Component{
         { this.state.listName == 'UserHomeContainer' ? <UserHomeContainer /> : ""}
         { this.state.listName == 'UpcomingService' ? <UpcomingService /> : ""}
         { this.state.listName == 'Payment' ? <PaymentContainer /> : ""}
+        { this.state.listName == 'ServiceHistory' ? <UserServiceHistoryContainer /> : ""}
       </div>
     )
   }

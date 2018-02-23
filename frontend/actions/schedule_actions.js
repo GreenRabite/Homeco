@@ -22,8 +22,8 @@ export const fetchContractorSchedules = (category) => (dispatch) => (
     (errors) => (dispatch(receiveErrors(errors.responseJSON)))
 );
 
-export const fetchUserSchedules = userId => dispatch => (
-  APIUtilSchedule.fetchUserSchedules(userId)
+export const fetchUserSchedules = (userId, completed) => dispatch => (
+  APIUtilSchedule.fetchUserSchedules(userId, completed)
     .then(
       (schedules) => (dispatch(receiveSchedules(schedules)))),
       (errors) => (dispatch(receiveErrors(errors.responseJSON)))
