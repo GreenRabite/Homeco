@@ -8,7 +8,12 @@ exports.fetchUserSchedules = function (req, res) {
         errors: err
       })
     } else {
-      return res.json(schedules)
+      console.log(schedules);
+      result = {};
+      schedules.forEach(schedule=>{
+        result[schedule._id] = schedule;
+      })
+      return res.json(result)
     }
   });
 };

@@ -27,6 +27,7 @@ class ScheduleIndexItem extends Component {
   }
 
   openModal() {
+    // debugger
     this.setState({modalIsOpen: true});
   }
 
@@ -35,6 +36,7 @@ class ScheduleIndexItem extends Component {
   }
 
   closeModal() {
+    // debugger
     this.setState({modalIsOpen: false});
   }
 
