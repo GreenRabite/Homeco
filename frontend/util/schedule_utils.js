@@ -19,3 +19,14 @@ export const fetchUserSchedules = (userId) => (
     method: 'GET'
   })
 );
+
+export const reschedule = (id, workDate) => (
+  $.ajax({
+    url: `/api/schedule`,
+    method: 'PATCH',
+    data: {
+      id: id,
+      workDate: workDate
+    }
+  })
+);

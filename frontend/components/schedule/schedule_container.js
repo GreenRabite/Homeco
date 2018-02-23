@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import ScheduleIndex from './schedule_index';
-import {fetchUserSchedules} from '../../actions/schedule_actions';
+import {fetchUserSchedules, reschedule} from '../../actions/schedule_actions';
 
 const mapStateToPros = (state) => ({
   schedules: state.entities.schedules,
@@ -8,7 +8,8 @@ const mapStateToPros = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchUserSchedules: (userId) => dispatch(fetchUserSchedules(userId))
+  fetchUserSchedules: (userId) => dispatch(fetchUserSchedules(userId)),
+  reschedule: (id, workDate) => dispatch(reschedule(id, workDate))
 });
 
 

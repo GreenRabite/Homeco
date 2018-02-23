@@ -8,10 +8,6 @@ class User extends React.Component{
     this.state = {listName: 'UpcomingService'};
   }
 
-  componentDidMount(){
-
-  }
-
   componentWillReceiveProps(nextProps){
     if (nextProps.pac && nextProps.currentUser) {
       this.props.createSchedule({

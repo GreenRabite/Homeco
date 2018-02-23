@@ -27,3 +27,9 @@ export const createSchedule = (payload) => (dispatch) => (
     (schedules)=> (dispatch(receiveSchedules(schedules)))),
     (errors) => (dispatch(receiveErrors(errors.responseJSON)))
 );
+
+export const reschedule = (id, workDate) => dispatch => APIUtilSchedule.reschedule(id, workDate)
+  .then(
+    schedule => dispatch(receiveSchedule(schedule)),
+    errors => dispatch(receiveErrors(errors))
+  );

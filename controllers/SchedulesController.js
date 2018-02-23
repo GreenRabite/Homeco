@@ -12,3 +12,17 @@ exports.fetchUserSchedules = function (req, res) {
     }
   });
 };
+
+exports.updateSchedule = function(req, res){
+  Schedule.findByIdAndUpdate(
+    req.body.id,
+    {workDate: new Date(req.body.workDate)},
+    {new: true},
+    (err, schedule)=>{
+      if (err) {
+        return res.status(400).send(err);
+      } else {
+        return res.json(schedule);
+      }
+  });
+};

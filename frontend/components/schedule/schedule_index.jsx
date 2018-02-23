@@ -57,9 +57,13 @@ class ScheduleIndex extends Component {
         <h2> Upcoming Services </h2>
           {schedules.length > 1 ?
             <div className='user-schedules-index'>
-              <button onClick={()=>this.handleLess()} className='more-button'><i className="fas fa-chevron-up"></i></button>
-              {schedules.slice(this.state.start, this.state.end).map(schedule=><ScheduleIndexItem key={schedule._id} schedule={schedule} />)}
-              <button onClick={()=>this.handleMore()} className='more-button'><i className="fas fa-chevron-down"></i></button>
+              <button onClick={()=>this.handleLess()} className={this.state.start === 0 ? "button-disable more-button" : "more-button"}>
+                <i className="fas fa-chevron-up"></i>
+              </button>
+              {schedules.slice(this.state.start, this.state.end).map(schedule=><ScheduleIndexItem key={schedule._id} schedule={schedule} reschedule={this.props.reschedule}/>)}
+              <button onClick={()=>this.handleMore()} className={this.state.end >= schedules.length ? "button-disable more-button" : "more-button"}>
+                <i className="fas fa-chevron-down"></i>
+              </button>
             </div>
            : ""}
       </div>
