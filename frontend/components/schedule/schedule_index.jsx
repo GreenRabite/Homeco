@@ -29,7 +29,7 @@ class ScheduleIndex extends Component {
       } else {
         userId = nextProps.currentUser._id;
       }
-      this.props.fetchUserSchedules(userId);
+      this.props.fetchUserSchedules(userId, false);
     }
   }
 
