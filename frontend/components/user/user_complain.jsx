@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Payment extends React.Component {
+class UserComplain extends React.Component {
   constructor(){
     super();
     this.state = {};
@@ -9,11 +9,11 @@ class Payment extends React.Component {
   render(){
     return(
     <div className='user-payment'>
-      <h1>Payment</h1>
+      <h1>Complain</h1>
     </div>
     )
   }
 
 }
 
-export default Payment;
+export default UserComplain;

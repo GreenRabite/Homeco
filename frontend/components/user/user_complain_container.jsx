@@ -1,12 +1,13 @@
 import {connect} from 'react-redux';
-import Payment from './user_payment';
+import UserComplain from './user_complain';
+
 
 const mapStateToProps = (state) => ({
+  schedules: state.entities.schedules,
   currentUser: state.session.currentUser
 });
 
 const mapDispatchToProps = (dispatch) => ({
-
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Payment);
+export default connect(mapStateToProps, mapDispatchToProps)(UserComplain);

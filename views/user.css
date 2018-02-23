@@ -63,6 +63,7 @@
   padding: 15px;
   border: 1px solid lightgray;
   border-radius: 5px;
+  cursor: pointer;
   margin-bottom: 10px;
 }
 

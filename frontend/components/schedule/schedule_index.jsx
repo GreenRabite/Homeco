@@ -29,7 +29,7 @@ class ScheduleIndex extends Component {
       } else {
         userId = nextProps.currentUser._id;
       }
-      this.props.fetchUserSchedules(userId);
+      this.props.fetchUserSchedules(userId, false);
     }
   }
 
@@ -47,7 +47,7 @@ class ScheduleIndex extends Component {
 
   render(){
     const schedules = Object.values(this.props.schedules);
-    const sortSchedules = schedules.sort(function(a, b) {
+    schedules.sort(function(a, b) {
       const c = new Date(a.workDate);
       const d = new Date(b.workDate);
       return c-d;

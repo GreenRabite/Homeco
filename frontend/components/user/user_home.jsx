@@ -21,6 +21,7 @@ class UserHome extends React.Component {
     const {property} = this.props;
     return(
     <div className='user-my-home'>
+      <h1>My Home</h1>
       {property.zipcode ?
         <div className='property-information'>
           <table>

@@ -11,7 +11,7 @@ const scheduleReducer = (state={}, action) => {
       return newState;
 
     case RECEIVE_SCHEDULES:
-      return merge({}, state, action.schedules);
+      return merge({}, action.schedules);
 
     default:
       return state;

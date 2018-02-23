@@ -28,7 +28,7 @@ exports.fetchContractorSchedules = function(req,res){
 };
 
 exports.fetchUserSchedules = function (req, res) {
-  Schedule.find({_user: req.params.userId, completed: req.body.completed}, (err, schedules)=>{
+  Schedule.find({_user: req.params.userId, completed: req.params.completed}, (err, schedules)=>{
     if (err) {
       return res.status(400).send({
         errors: err
