@@ -14,8 +14,6 @@ const Service = mongoose.model('services');
 //   });
 // };
 
-
-
 exports.fetchContractorSchedules = function(req,res){
   let today= new Date();
   let week = new Date(Date.now() + 14 * 24 * 3600 * 1000);
@@ -30,15 +28,31 @@ exports.fetchContractorSchedules = function(req,res){
 };
 
 exports.fetchUserSchedules = function (req, res) {
-  console.log('=========schedule controller==========');
-  console.log(req.params.userId);
-  Schedule.find({_user: req.params.userId}, (err, schedules)=>{
+  Schedule.find({_user: req.params.userId, completed: req.body.completed}, (err, schedules)=>{
     if (err) {
       return res.status(400).send({
         errors: err
       });
     } else {
-      return res.json(schedules);
+      result = {};
+      schedules.forEach(schedule=>{
+        result[schedule._id] = schedule;
+      })
+      return res.json(result)
     }
+  });
+};
+
+exports.updateSchedule = function(req, res){
+  Schedule.findByIdAndUpdate(
+    req.body.id,
+    {workDate: new Date(req.body.workDate)},
+    {new: true},
+    (err, schedule)=>{
+      if (err) {
+        return res.status(400).send(err);
+      } else {
+        return res.json(schedule);
+      }
   });
 };

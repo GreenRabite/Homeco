@@ -51,6 +51,7 @@ class SessionForm extends React.Component {
     const text = this.props.formType == 'signup' ? 'Sign Up' : 'Log In';
     return (
       <div className='session-form'>
+        <h1>Homeco</h1>
         {this.props.errors.length ? (
           <div className='session-error'>
             <p>{this.props.errors[0]}</p>
@@ -60,19 +61,20 @@ class SessionForm extends React.Component {
           ""
         )}
         <form>
-          <button onClick={(e)=>this.handleGoogleUser(e)}>{text} With Google Account</button>
           <input id='email' onChange={this.handleInput('email')} type='text' value={this.state.email} placeholder='Email Address'/>
           <input id='passowrd' onChange={this.handleInput('password')} type='password' value={this.state.password} placeholder='Password'/>
           <input type='submit' onClick={(e)=>this.handleClick(e)}/>
         </form>
-        {this.props.formType == 'signup' ?
-        <Link to='/login'>Log In</Link>
-        :
-        <Link to='/signup'>Sign Up</Link>
-        }
       </div>
     );
   }
 }
 
 export default SessionForm;
+
+// <button onClick={(e)=>this.handleGoogleUser(e)}>{text} With Google Account</button>
+// {this.props.formType == 'signup' ?
+// <Link to='/login'>Log In</Link>
+// :
+// <Link to='/signup'>Sign Up</Link>
+// }

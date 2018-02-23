@@ -14,6 +14,10 @@
   cursor: pointer;
 }
 
+.clicked{
+  background-color: white;
+}
+
 .user-pannel li:hover{
   background-color: white;
 }
@@ -24,12 +28,109 @@
 
 .property-information{
   margin-top: 100px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 15px;
+  width: 350px;
+}
+
+.property-information:hover{
+  box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
 }
 
 .property-information td{
   padding-left: 30px;
 }
 
-.user-schedules{
+.user-schedules, .user-payment, .user-servicehistory{
   margin-left: 250px;
+}
+
+.user-schedules-index{
+  display: flex;
+  flex-direction: column;
+  width: 382px;
+}
+
+.user-schedule-detail{
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-schedule-item{
+  height: 50px;
+  width: 350px;
+  padding: 15px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.user-schedule-item:hover{
+  box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
+}
+
+.more-button{
+  padding: 15px;
+  margin-bottom: 10px;
+  width: 100%;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+}
+
+.more-button:hover{
+  background-color: lightgray;
+}
+
+.button-disable:hover{
+  background-color: white;
+}
+
+.button-disable{
+  color: lightgray;
+}
+
+.modal-title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-title h2{
+  margin: 0;
+}
+
+.modal-close{
+  padding: 5px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.modal-close:hover{
+  color: black;
+}
+
+.reschedule{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.reschedule>input:first-of-type{
+  width: 60%;
+}
+
+.reschedule>input:last-of-type:hover{
+  background-color: gray;
+  color: white;
+  font-weight: bold;
+}
+
+.reschedule>input{
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  padding: 4px 10px;
 }

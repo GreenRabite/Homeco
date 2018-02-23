@@ -7,7 +7,7 @@ const scheduleReducer = (state={}, action) => {
 
     case RECEIVE_SCHEDULE:
       newState = merge({},state);
-      newState[action.schedule.id] = action.schedule;
+      newState[action.schedule._id] = action.schedule;
       return newState;
 
     case RECEIVE_SCHEDULES:

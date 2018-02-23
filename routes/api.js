@@ -81,7 +81,10 @@ module.exports = (app) => {
   })
 
   app.get('/api/schedules/:userId', (req, res) => {
-    console.log('=======receive api call=============');
     ScheduleController.fetchUserSchedules(req, res);
+  })
+
+  app.patch('/api/schedule', (req, res)=>{
+    ScheduleController.updateSchedule(req, res);
   })
 }

@@ -13,9 +13,21 @@ export const createSchedule = (payload) => (
  })
 );
 
-export const fetchUserSchedules = (userId) => (
+export const fetchUserSchedules = (userId, completed) => (
   $.ajax({
     url: `/api/schedules/${userId}`,
-    method: 'GET'
+    method: 'GET',
+    data: {completed: completed}
+  })
+);
+
+export const reschedule = (id, workDate) => (
+  $.ajax({
+    url: `/api/schedule`,
+    method: 'PATCH',
+    data: {
+      id: id,
+      workDate: workDate
+    }
   })
 );
