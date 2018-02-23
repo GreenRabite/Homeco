@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import ScheduleIndexItem from './schedule_index_item';
+import React from 'react';
+import ServiceHistoryItem from './user_service_history_item';
 
-class ScheduleIndex extends Component {
+class ServiceHistory extends React.Component {
   constructor(){
     super();
     this.state = {start: 0, end: 7, page: 1};
@@ -16,7 +16,7 @@ class ScheduleIndex extends Component {
       } else {
         userId = this.props.currentUser._id;
       }
-      this.props.fetchUserSchedules(userId, false);
+      this.props.fetchUserSchedules(userId, true);
     }
   }
 
@@ -29,7 +29,7 @@ class ScheduleIndex extends Component {
       } else {
         userId = nextProps.currentUser._id;
       }
-      this.props.fetchUserSchedules(userId, false);
+      this.props.fetchUserSchedules(userId, true);
     }
   }
 
@@ -50,25 +50,28 @@ class ScheduleIndex extends Component {
     schedules.sort(function(a, b) {
       const c = new Date(a.workDate);
       const d = new Date(b.workDate);
-      return c-d;
+      return d-c;
     });
     return(
-      <div className='user-schedules'>
-        <h2> Upcoming Services </h2>
-          {schedules.length > 1 ?
-            <div className='user-schedules-index'>
-              <button onClick={()=>this.handleLess()} className={this.state.start === 0 ? "button-disable more-button" : "more-button"}>
-                <i className="fas fa-chevron-up"></i>
-              </button>
-              {schedules.slice(this.state.start, this.state.end).map(schedule=><ScheduleIndexItem key={schedule._id} schedule={schedule} reschedule={this.props.reschedule}/>)}
-              <button onClick={()=>this.handleMore()} className={this.state.end >= schedules.length ? "button-disable more-button" : "more-button"}>
-                <i className="fas fa-chevron-down"></i>
-              </button>
-            </div>
-           : ""}
-      </div>
+    <div className='user-servicehistory'>
+      <h1>Service History</h1>
+      { schedules.length < 1 ?
+        <div>No Service History Yet</div>
+         :
+        <div>
+          <button onClick={()=>this.handleLess()} className={this.state.start === 0 ? "button-disable more-button" : "more-button"}>
+            <i className="fas fa-chevron-up"></i>
+          </button>
+          {schedules.slice(this.state.start, this.state.end).map(schedule=><ServiceHistoryItem key={schedule._id} schedule={schedule} reschedule={this.props.reschedule}/>)}
+          <button onClick={()=>this.handleMore()} className={this.state.end >= schedules.length ? "button-disable more-button" : "more-button"}>
+            <i className="fas fa-chevron-down"></i>
+          </button>
+        </div>
+      }
+    </div>
     );
-  };
+  }
+
 }
 
-export default ScheduleIndex;
+export default ServiceHistory;

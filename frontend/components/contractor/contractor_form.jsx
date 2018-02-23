@@ -20,7 +20,6 @@ class ContractorForm extends React.Component {
     e.preventDefault();
     let schedule = this.state;
     this.setState({completed: true});
-    debugger;
     this.props.updateSchedule(schedule).then(()=>(this.props.fetchContractorSchedules(`${this.props.currentUser.category}`)));
   }
 

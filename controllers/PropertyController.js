@@ -42,8 +42,6 @@ exports.fetchPackage = function(p, res){
 };
 
 exports.createProperty = function(req, res){
-  console.log('=======creating property=======');
-  console.log(req);
   const newProperty = new Property(req.property);
   newProperty.save((err, property)=>{
     if (err) {
@@ -51,22 +49,18 @@ exports.createProperty = function(req, res){
         errors: err
       })
     } else {
-      console.log(property);
       const serviceId = [];
       async.forEach(req.pac, (service, callback)=>{
         Service.findOne({serviceType: service}, (servErr, serv)=>{
           if (servErr) {
             throw servErr
           } else {
-            console.log(serv._id);
             serviceId.push(serv._id);
           }
           callback();
         })
       }, (err)=>{
         if (err) { throw err;}
-        console.log('=====log serviceId=======');
-        console.log(serviceId);
         const newPackage = new Package({_property: property._id, _service: serviceId});
         newPackage.save((errSavePac, pac)=> {
           if (errSavePac) {

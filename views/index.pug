@@ -9,7 +9,11 @@ html
     script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js")
     script(type="text/javascript" src="bundle.js")
     link(href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet")
+
     script(src="https://widget.cloudinary.com/global/all.js" type="text/javascript")
+
+
+    link(href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet")
 
     script.
       if ($.cookie('user.email') && $.cookie('user._id')) {
@@ -20,13 +24,6 @@ html
           category: $.cookie('user.category')
         };
       }
-
-
-
-
-
-
-    link(href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet")
     style
       include application.css
       include contractor-page.css
