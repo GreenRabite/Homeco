@@ -14,8 +14,6 @@ const Service = mongoose.model('services');
 //   });
 // };
 
-
-
 exports.fetchContractorSchedules = function(req,res){
   let today= new Date();
   let week = new Date(Date.now() + 14 * 24 * 3600 * 1000);

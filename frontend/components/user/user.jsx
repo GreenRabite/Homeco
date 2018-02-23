@@ -1,6 +1,7 @@
 import React from 'react';
 import UserHomeContainer from './user_home_container';
 import UpcomingService from '../schedule/schedule_container';
+import PaymentContainer from './user_payment_container';
 
 class User extends React.Component{
   constructor(){
@@ -32,6 +33,7 @@ class User extends React.Component{
           <ul>
             <li className={this.state.listName == 'UpcomingService' ? 'clicked' : ''} onClick={()=>this.handleClick('UpcomingService')}>Upcoming Service</li>
             <li className={this.state.listName == 'UserHomeContainer' ? 'clicked' : ''} onClick={()=>this.handleClick('UserHomeContainer')}>My Home</li>
+            <li className={this.state.listName == 'Payment' ? 'clicked' : ''} onClick={()=>this.handleClick('Payment')}>Payment</li>
             <li className={this.state.listName == 'ServiceHistory' ? 'clicked' : ''} onClick={()=>this.handleClick('ServiceHistory')}>Service History</li>
             <li className={this.state.listName == 'Complain' ? 'clicked' : ''} onClick={()=>this.handleClick('Complain')}>Complain</li>
             <li onClick={()=>this.handleLogout()}>Log Out</li>
@@ -39,6 +41,7 @@ class User extends React.Component{
         </div>
         { this.state.listName == 'UserHomeContainer' ? <UserHomeContainer /> : ""}
         { this.state.listName == 'UpcomingService' ? <UpcomingService /> : ""}
+        { this.state.listName == 'Payment' ? <PaymentContainer /> : ""}
       </div>
     )
   }

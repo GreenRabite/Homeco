@@ -75,6 +75,18 @@ ul{
   width:15%;
 }
 
+.home-nav{
+  margin-left: 70%;
+}
+
+a{
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
 .package-index{
   display: flex;
   justify-content: space-around;
@@ -129,9 +141,10 @@ ul{
 }
 
 .session-form{
-  width: 50%;
-  margin: 200px auto;
-  height: 500px;
+  width: 20%;
+  margin-top: 200px;
+  margin-left: 30%;
+  height: 300px;
   display: flex;
   flex-direction: column;
 }

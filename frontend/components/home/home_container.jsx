@@ -4,7 +4,8 @@ import Home from './home';
 import {propertyRequire} from '../../actions/property_actions';
 
 const mapStateToProps = (state) => ({
-  property: state.entities.property
+  property: state.entities.property,
+  currentUser: state.session.currentUser
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

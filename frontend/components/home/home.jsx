@@ -25,6 +25,13 @@ class Home extends React.Component {
   render(){
     return (
       <div>
+        <div className='home-nav'>
+        {this.props.currentUser ?
+          <Link to='/user'><h2>My Home</h2></Link>
+           :
+          <Link to='/login'><h2>Log In</h2></Link>
+        }
+        </div>
         <div className='home-background'>
           <img src='https://res.cloudinary.com/ddwejrtgh/image/upload/v1519239149/hero_qxaymn.jpg' />
         </div>
@@ -38,7 +45,6 @@ class Home extends React.Component {
             <input type='submit' onClick={(e)=>this.handleSubmit(e)}/>
           </form>
         </div>
-        <Link to='/login'>Log In</Link>
         <HomeCenter />
         <Footer />
       </div>
