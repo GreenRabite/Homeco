@@ -84,6 +84,6 @@ module.exports = (app) => {
       } else {
         return res.json(schedules)
       }
-    })
+    });
   });
 };

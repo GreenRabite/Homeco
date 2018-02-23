@@ -1,6 +1,6 @@
-export const fetchContractorSchedule = (userId) => (
+export const fetchContractorSchedules = (category) => (
   $.ajax({
-    url: `/api/schedules/${userId}`,
+    url: `/api/schedules/cont/${category}`,
     method: 'GET'
   })
 );
@@ -13,9 +13,21 @@ export const createSchedule = (payload) => (
  })
 );
 
-export const fetchUserSchedules = () => (
+export const fetchUserSchedules = (userId, completed) => (
   $.ajax({
-    url: `/api/allSchedules`,
-    method: 'GET'
+    url: `/api/schedules/${userId}`,
+    method: 'GET',
+    data: {completed: completed}
+  })
+);
+
+export const reschedule = (id, workDate) => (
+  $.ajax({
+    url: `/api/schedule`,
+    method: 'PATCH',
+    data: {
+      id: id,
+      workDate: workDate
+    }
   })
 );

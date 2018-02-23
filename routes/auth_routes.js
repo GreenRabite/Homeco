@@ -41,6 +41,7 @@ module.exports = (app) => {
   // );
 
   app.get('/api/logout', (req,res) => {
+    console.log(req);
     req.logout(); //attached from passport. Kills the cookie (nil)
     res.send(req.user);
   });

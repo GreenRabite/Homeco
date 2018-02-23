@@ -1,16 +1,14 @@
 // const mongoose = require('mongoose');
 // const Schedule = mongoose.model('schedules');
-//
-// module.export = app => {
-//   app.post('/api/schedules', (req, res) => {
-//     const { service, workDate, } = req.body;
-//
-//     const schedule = new Schedule({
-//       service,
-//       workDate,
-//       _user: req.user.id
-//     });
-//
-//     schedule.save();
-//   })
+const SchedulesController = require('../controllers/SchedulesController');
+
+// exports.fetchUserSchedules = function(req,res){
+//   Schedule.find();
 // };
+
+module.exports = (app) => {
+  app.get(`/api/schedules/cont/:category`, (req, res)=>{
+    SchedulesController.fetchContractorSchedules(req,res);
+  });
+
+};
