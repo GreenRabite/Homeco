@@ -1,10 +1,11 @@
 import React from 'react';
 import UserHomeContainer from './user_home_container';
+import UpcomingService from '../schedule/schedule_container';
 
 class User extends React.Component{
   constructor(){
     super();
-    this.state = {listName:''};
+    this.state = {listName: 'UpcomingService'};
   }
 
   componentDidMount(){
@@ -27,6 +28,10 @@ class User extends React.Component{
     this.setState({listName: listName});
   }
 
+  handleLogout(){
+    this.props.logout().then(this.props.history.push('/'));
+  }
+
   render(){
     return (
       <div>
@@ -36,9 +41,11 @@ class User extends React.Component{
             <li onClick={()=>this.handleClick('UserHomeContainer')}>My Home</li>
             <li onClick={()=>this.handleClick('ServiceHistory')}>Service History</li>
             <li onClick={()=>this.handleClick('Complain')}>Complain</li>
+            <li onClick={()=>this.handleLogout()}>Log Out</li>
           </ul>
         </div>
         { this.state.listName == 'UserHomeContainer' ? <UserHomeContainer /> : ""}
+        { this.state.listName == 'UpcomingService' ? <UpcomingService /> : ""}
       </div>
     )
   }

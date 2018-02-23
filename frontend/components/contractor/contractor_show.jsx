@@ -8,7 +8,7 @@ class ContractorShow extends React.Component {
   }
 
   componentDidMount(){
-    this.props.fetchUserSchedules(this.props.currentUser.category);
+    this.props.fetchContractorSchedules(this.props.currentUser.category);
   }
 
   // componentWillReceiveProps(newProps){
@@ -26,8 +26,10 @@ class ContractorShow extends React.Component {
 
   render(){
     let ServiceListItems;
-    if(this.props.schedules.keys){
-      ServiceListItems = this.props.schedules.map((schedule)=>{
+    const schedules = Object.values(this.props.schedules);
+    debugger;
+    if(schedules.length > 0){
+      ServiceListItems = schedules.map((schedule)=>{
         return <li key={schedule._id}>{schedule._service.serviceType}</li>;
         });
     }

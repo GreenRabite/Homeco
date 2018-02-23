@@ -22,6 +22,10 @@ module.exports = (app) => {
     UserController.login(req, res);
   });
 
+  app.delete('/api/session', (req, res)=>{
+    UserController.logOut(req, res);
+  });
+
   // temporary to check all user from database since I don't have user/pwd for database
   app.get('/api/users', (req, res)=>{
     UserController.findAll(req, res);
