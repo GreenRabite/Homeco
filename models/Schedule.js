@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const scheduleSchema = new Schema({
   _service: {
     type: Schema.Types.ObjectId,
-    ref: 'Service'
+    ref: 'services'
   },
   serviceType: {
     type: String
@@ -14,12 +14,12 @@ const scheduleSchema = new Schema({
   },
   _package: {
     type: Schema.Types.ObjectId,
-    ref: 'Package'
+    ref: 'packages'
   },
   workDate: Date,
   _user: {
      type: Schema.Types.ObjectId,
-     ref: 'User'
+     ref: 'users'
    },
    completed: {
      type: Boolean,
