@@ -11,11 +11,15 @@ class Home extends React.Component {
     this.handleInput = this.handleInput.bind(this);
   }
 
+  componentDidMount(){
+    this.props.clearPackage()
+  }
+
   handleSubmit(e){
     e.preventDefault();
     if (!this.state.address) {
       this.setState({'addressclassName': ''})
-    } else if (this.zipcode !== 5) {
+    } else if (this.state.zipcode.length !== 5) {
       this.setState({'zipcodeclassName': ''})
     } else {
       this.props.propertyRequire(this.state).then(this.props.history.push('/packages'));

@@ -87,6 +87,24 @@ a:hover{
   text-decoration: underline;
 }
 
+.package-error{
+  width: 50%;
+  margin: 200px auto;
+  text-align: center;
+  font-size: 20px;
+}
+
+.package-error-img-container{
+  width: 100%;
+  margin: auto;
+  overflow: hidden;
+}
+
+.package-error-img-container>img{
+  width: 100%;
+  object-fit: cover;
+}
+
 .package-index{
   display: flex;
   justify-content: space-around;
