@@ -24,6 +24,9 @@ class SessionForm extends React.Component {
   handleInput(type){
     return (e) => {
       this.setState({[type]: e.target.value});
+      if (this.props.errors.length) {
+        this.props.clearErrors();
+      }
     };
   }
 
@@ -31,10 +34,18 @@ class SessionForm extends React.Component {
     e.preventDefault();
     if (this.props.formType == 'signup') {
       this.props.createUser(this.state)
-        .then((user)=>this.props.history.push('/user'));
+        .then((errors, user)=>{
+          if (user) {
+            this.props.history.push('/user')
+          }
+        });
     } else {
       this.props.createSession(this.state)
-        .then((user)=>this.props.history.push('/user'));
+        .then((errors, user)=>{
+          if (user) {
+            this.props.history.push('/user')
+          }
+        });
     }
   }
 
