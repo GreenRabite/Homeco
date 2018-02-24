@@ -126,7 +126,7 @@ a:hover{
   background-color: lightgray;
 }
 
-.package-item>h1{
+.package-item h1{
   text-align: center;
 }
 
@@ -136,8 +136,28 @@ a:hover{
   justify-content: space-between;
 }
 
-.package-item>ul{
+.package-item>div{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.package-item ul{
   margin-left: 15px;
+}
+
+.package-price{
+  font-size: 36px;
+  width: 100%;
+  padding: 10px;
+  padding-left: 30px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.package-price>p{
+  font-size: 14px;
 }
 
 .session-form{
@@ -282,18 +302,4 @@ a:hover{
   z-index: 1;
   opacity: 0.9;
   transition: opacity .6s;
-}
-
-.package-price{
-  font-size: 36px;
-  width: 100%;
-  padding: 10px;
-  padding-left: 30px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-}
-
-.package-price>p{
-  font-size: 14px;
 }

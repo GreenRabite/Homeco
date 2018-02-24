@@ -27,26 +27,23 @@ exports.fetchPackage = function(p, res){
   if (p.useCode != 'SingleFamily') {
 
   }
-  if (p.useCode == 'SingleFamily' && (p.lotSizeSqFt - p.finishedSqFt) > 1000) {
-    prime = prime.concat(["Garden maintenance", "Carpet cleaning", "Window cleaning"]);
-    plus = plus.concat(["Garden maintenance", "Carpet cleaning", "Window cleaning"]);
-    supreme = supreme.concat(["Garden maintenance", "Carpet cleaning", "Window cleaning"]);
+  if (p.useCode == 'SingleFamily') {
+    prime.push("Carpet cleaning", "Window cleaning", "Gutter cleaning");
+    plus.push("Garden maintenance", "Carpet cleaning", "Window cleaning", "Gutter cleaning");
+    supreme.push("Garden maintenance", "Carpet cleaning", "Window cleaning", "Gutter cleaning");
   }
   if (p.lotSizeSqFt > 5000){
-    prime = prime.concat(['Lawn care']);
-    plus = plus.concat(['Lawn care']);
-    supreme = supreme.concat(['Lawn care']);
-    plus = plus.concat(["Fertilizing"]);
-    supreme = supreme.concat(["Fertilizing"]);
+    prime.push('Lawn care');
+    plus.push('Lawn care', 'Fertilizing');
+    supreme.push('Lawn care', 'Fertilizing');
   }
   if (p.yearBuilt < 1980){
-    prime = prime.concat(["Electronic Inspection", "Plumbing Inspection"]);
-    plus = plus.concat(["Electronic Inspection", "Plumbing Inspection"]);
-    supreme = supreme.concat(["Electronic Inspection", "Plumbing Inspection"]);
-    plus = plus.concat(["Fertilizing", "Roof Insepection"]);
-    supreme = supreme.concat(["Fertilizing", "Roof Insepection", "Foundation Inspection"]);
+    prime.push("Electronic Inspection", "Plumbing Inspection");
+    plus.push("Electronic Inspection", "Plumbing Inspection", "Roof Insepection");
+    supreme.push("Electronic Inspection", "Plumbing Inspection", "Roof Insepection", "Foundation Inspection");
   }
-  supreme = supreme.concat(["Pest control","House keeping"]);
+  plus.push("Pest control");
+  supreme.push("Pest control","House keeping");
 
   async.forEach([prime, plus, supreme], (package, callback)=>{
     let sum = 0;
@@ -58,7 +55,6 @@ exports.fetchPackage = function(p, res){
         throw errLoopPackage;
       }
       package.unshift(Math.floor(sum/120) * 10 + 9);
-      console.log(package);
       callback();
     }, (err)=>{
       if (err) {
