@@ -3,10 +3,16 @@ import {receiveErrors} from './error_actions';
 
 
 export const RECEIVE_SCHEDULE = 'RECEIVE_SCHEDULE';
+export const RECEIVE_ONE_SCHEDULE = 'RECEIVE_ONE_SCHEDULE';
 export const RECEIVE_SCHEDULES = 'RECEIVE_SCHEDULES';
 
 export const receiveSchedule = (schedule) => ({
   type: RECEIVE_SCHEDULE,
+  schedule
+});
+
+export const receiveOneSchedule = (schedule) => ({
+  type: RECEIVE_ONE_SCHEDULE,
   schedule
 });
 
@@ -24,7 +30,9 @@ export const fetchContractorSchedules = (category) => (dispatch) => {
 
 export const updateWorkSchedule = (schedule) => (dispatch) => {
   return APIUtilSchedule.updateWorkSchedule(schedule).then(
-    (updatedSchedule)=> (dispatch(receiveSchedule(updatedSchedule)))),
+    (updatedSchedule)=> {
+      console.log(updatedSchedule);
+      return dispatch(receiveOneSchedule(updatedSchedule));}),
     (errors) => (dispatch(receiveErrors(errors.responseJSON)));
 };
 

@@ -58,10 +58,10 @@ exports.updateSchedule = function(req, res){
 };
 
 exports.updateWorkSchedule = function(req, res){
-  console.log("============");
-  console.log("Request");
-  console.log("============");
-  console.log(req.body);
+  // console.log("============");
+  // console.log("Request");
+  // console.log("============");
+  // console.log(req.body);
   Schedule.findByIdAndUpdate(
     req.body._id,
     {completed: true,
@@ -71,6 +71,7 @@ exports.updateWorkSchedule = function(req, res){
       if (err) {
         return res.status(400).send(err);
       } else {
+        console.log(schedule);
         return res.json(schedule);
       }
   });

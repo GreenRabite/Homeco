@@ -9,12 +9,6 @@ class ContractorForm extends React.Component {
     this.uploadImage = this.uploadImage.bind(this);
   }
 
-  componentDidMount(){
-    this.setState({
-      description : ""
-    });
-  }
-
   componentWillReceiveProps(newProps){
     this.setState(newProps);
   }
@@ -67,7 +61,7 @@ class ContractorForm extends React.Component {
             <button className="button" onClick={this.uploadImage}>Upload Photo</button> <br/>
             <button className="button" onClick={this.handleSubmit}>Submit</button> <br/>
             <div className="img-container">
-              <img className="imgSource"src={this.state.img_url ? this.state.img_url : "" } />
+              <img className="imgSource"src={this.state.img_url ? this.state.img_url[0] : "" } />
             </div>
           </form>
         </div>
