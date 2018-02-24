@@ -31,10 +31,10 @@ class SessionForm extends React.Component {
     e.preventDefault();
     if (this.props.formType == 'signup') {
       this.props.createUser(this.state)
-        .then(()=>this.props.history.push('/user'));
+        .then((user)=>this.props.history.push('/user'));
     } else {
       this.props.createSession(this.state)
-        .then(()=>this.props.history.push('/user'));
+        .then((user)=>this.props.history.push('/user'));
     }
   }
 

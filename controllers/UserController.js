@@ -39,7 +39,7 @@ exports.login = function(req, res){
       return res.status(400).send({errors: err})
     }
     if (!user || !user.comparePwd(req.body.password)) {
-      return res.status(401).json({0: 'Wrong Credentials'})
+      return res.status(401).json(['Wrong Credentials'])
     }
     if (user && user.comparePwd(req.body.password)) {
       const token = jwt.sign({
