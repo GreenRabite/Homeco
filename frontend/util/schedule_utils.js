@@ -11,7 +11,12 @@ export const updateWorkSchedule = (schedule) => {
   return $.ajax({
     url: `/api/contschedules`,
     method: 'PATCH',
-    data: {schedule}
+    data: {
+      _id: schedule._id,
+      completed: schedule.completed,
+      img_url: schedule.img_url,
+      description: schedule.description
+    }
   });
 };
 

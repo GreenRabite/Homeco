@@ -21,11 +21,10 @@ class ContractorForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.setState({completed: true});
+    // this.setState({completed: true});
     let schedule = this.state;
     console.log(schedule);
     this.props.updateWorkSchedule(schedule);
-    console.log("I sent the schedule");
   }
 
   updateInput(field) {

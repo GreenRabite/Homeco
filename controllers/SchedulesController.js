@@ -64,9 +64,9 @@ exports.updateWorkSchedule = function(req, res){
   console.log(req.body);
   Schedule.findByIdAndUpdate(
     req.body._id,
-    {completed: req.body.completed,
-    img_url: req.body.img_url,
-    description: req.body.description},
+    {completed: true,
+    description: req.body.description,
+    $push: {img_url: req.body.img_url}},
     (err, schedule)=>{
       if (err) {
         return res.status(400).send(err);
