@@ -1,9 +1,10 @@
-export const fetchContractorSchedules = (category) => (
-  $.ajax({
+export const fetchContractorSchedules = (category) => {
+  console.log(category);
+  return $.ajax({
     url: `/api/fetchcontschedules/${category}`,
     method: 'GET'
-  })
-);
+  });
+};
 
 export const updateWorkSchedule = (schedule) => {
   console.log(schedule);

@@ -25,6 +25,7 @@ class ContractorForm extends React.Component {
     let schedule = this.state;
     console.log(schedule);
     this.props.updateWorkSchedule(schedule);
+    console.log("I sent the schedule");
   }
 
   updateInput(field) {
