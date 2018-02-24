@@ -97,3 +97,9 @@ button.react-calendar__tile--active:enabled:focus {
 .react-calendar--selectRange .react-calendar__tile--hover {
   background-color: #e6e6e6;
 }
+
+.upcoming-services {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 45px;
+}
