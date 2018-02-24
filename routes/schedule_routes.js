@@ -7,8 +7,12 @@ const SchedulesController = require('../controllers/SchedulesController');
 // };
 
 module.exports = (app) => {
-  app.get(`/api/schedules/cont/:category`, (req, res)=>{
+  app.get(`/api/fetchcontschedules/:category`, (req, res)=>{
     SchedulesController.fetchContractorSchedules(req,res);
+  });
+
+  app.patch(`/api/contschedules`, (req,res)=>{
+    SchedulesController.updateWorkSchedule(req,res);
   });
 
 };

@@ -86,4 +86,14 @@ module.exports = (app) => {
       }
     });
   });
+
+  app.get('/api/oneschedule', (req, res)=>{
+    Schedule.find({id: res.body.id}, (err, schedules)=>{
+      if (err) {
+        return res.send({errors: err});
+      } else {
+        return res.json(schedules)
+      }
+    });
+  });
 };

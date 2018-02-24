@@ -6,6 +6,7 @@ const scheduleReducer = (state={}, action) => {
   switch (action.type) {
 
     case RECEIVE_SCHEDULE:
+      debugger;
       newState = merge({},state);
       newState[action.schedule._id] = action.schedule;
       return newState;

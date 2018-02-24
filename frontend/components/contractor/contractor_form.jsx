@@ -6,10 +6,13 @@ class ContractorForm extends React.Component {
     super(props);
     this.state = this.props.schedule;
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = {
-      description : ""
-    };
     this.uploadImage = this.uploadImage.bind(this);
+  }
+
+  componentDidMount(){
+    this.setState({
+      description : ""
+    });
   }
 
   componentWillReceiveProps(newProps){
@@ -18,9 +21,10 @@ class ContractorForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    let schedule = this.state;
     this.setState({completed: true});
-    this.props.updateSchedule(schedule).then(()=>(this.props.fetchContractorSchedules(`${this.props.currentUser.category}`)));
+    let schedule = this.state;
+    console.log(schedule);
+    this.props.updateWorkSchedule(schedule);
   }
 
   updateInput(field) {
@@ -60,11 +64,10 @@ class ContractorForm extends React.Component {
           <div>{`${city}, ${state}`}</div>
           <form>
             <textarea onChange={this.updateInput("description")} placeholder="Description of Task" value={this.state.description}></textarea><br/>
-            <button className="main-bttn-form" onClick={this.uploadImage}>Upload Photo</button>
-            <div onClick={this.handleSubmit}>
-              <button>Submit</button> <br/>
-            </div>
+            <button className="button" onClick={this.uploadImage}>Upload Photo</button> <br/>
+            <button className="button" onClick={this.handleSubmit}>Submit</button> <br/>
             <div className="img-container">
+              <img className="imgSource"src={this.state.img_url ? this.state.img_url : "" } />
             </div>
           </form>
         </div>

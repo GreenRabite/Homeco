@@ -72,7 +72,7 @@ class ServiceListItem extends React.Component {
               overlayClassName="Overlay-photo-form"
               shouldCloseOnOverlayClick={true}
               >
-              <ContractorFormContainer schedule={this.props.schedule}/>
+              <ContractorFormContainer schedule={this.props.schedule} handleCloseModal={this.handleCloseModal}/>
               <button onClick={this.handleCloseModal}>Close Modal</button>
             </ReactModal>
           </div>

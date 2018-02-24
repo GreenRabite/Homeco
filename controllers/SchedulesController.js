@@ -56,3 +56,22 @@ exports.updateSchedule = function(req, res){
       }
   });
 };
+
+exports.updateWorkSchedule = function(req, res){
+  console.log("============");
+  console.log("Request");
+  console.log("============");
+  console.log(req.body);
+  Schedule.findByIdAndUpdate(
+    req.body._id,
+    {completed: req.body.completed,
+    img_url: req.body.img_url,
+    description: req.body.description},
+    (err, schedule)=>{
+      if (err) {
+        return res.status(400).send(err);
+      } else {
+        return res.json(schedule);
+      }
+  });
+};

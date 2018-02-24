@@ -96,3 +96,17 @@
   border-radius: 5px;
   padding: 20px;
 }
+
+.img-container{
+  /*width: 100%;*/
+  width: 400px;
+  height: 150px;
+
+  /*border: 1px solid;*/
+  /*margin-top: 150px;*/
+}
+
+.img-container img{
+  max-width: 100%;
+  max-height: 100%;
+}
