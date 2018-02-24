@@ -11,8 +11,7 @@ const mapStateToProps = (state,ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => (
   {
-    updateWorkSchedule: (schedule)=> dispatch(updateWorkSchedule(schedule)),
-    fetchContractorSchedules: (category)=>dispatch(fetchContractorSchedules(category))
+    updateWorkSchedule: (schedule)=> dispatch(updateWorkSchedule(schedule))
   }
 );
 

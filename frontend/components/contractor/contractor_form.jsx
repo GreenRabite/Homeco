@@ -7,6 +7,7 @@ class ContractorForm extends React.Component {
     this.state = this.props.schedule;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.uploadImage = this.uploadImage.bind(this);
+    debugger;
   }
 
   componentWillReceiveProps(newProps){
@@ -19,6 +20,7 @@ class ContractorForm extends React.Component {
     let schedule = this.state;
     console.log(schedule);
     this.props.updateWorkSchedule(schedule);
+    this.props.handleCloseModal();
   }
 
   updateInput(field) {
