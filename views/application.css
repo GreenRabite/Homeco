@@ -92,7 +92,7 @@ a:hover{
   justify-content: space-around;
   width: 50%;
   min-width: 960px;
-  margin: auto;
+  margin: 100px auto;
 }
 
 .package-img-container{
@@ -229,7 +229,7 @@ a:hover{
   height: 15px;
   background-color: #555;
   opacity: 0.9;
-  transition: opacity .6s;
+  transition: opacity 1s;
   z-index: 1;
   border-radius: 6px;
   padding: 5px 0;
@@ -282,4 +282,18 @@ a:hover{
   z-index: 1;
   opacity: 0.9;
   transition: opacity .6s;
+}
+
+.package-price{
+  font-size: 36px;
+  width: 100%;
+  padding: 10px;
+  padding-left: 30px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.package-price>p{
+  font-size: 14px;
 }

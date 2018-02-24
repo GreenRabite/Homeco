@@ -5,11 +5,28 @@ const Package = mongoose.model('packages');
 const async = require('async');
 const Schedule = mongoose.model('schedules');
 
+const price = {
+  "Lawn care": 1300,
+  "Garden maintenance": 1200,
+  "Fertilizing": 240,
+  "Gutter cleaning": 400,
+  "Electronic Inspection": 200,
+  "Plumbing Inspection": 200,
+  "Window cleaning": 200,
+  "Carpet cleaning": 200,
+  "Pest control": 400,
+  "House keeping": 2600,
+  "Foundation Inspection": 300,
+  "Roof Insepection": 100
+};
 
 exports.fetchPackage = function(p, res){
   let prime = [];
   let plus = [];
   let supreme = [];
+  if (p.useCode != 'SingleFamily') {
+
+  }
   if (p.useCode == 'SingleFamily' && (p.lotSizeSqFt - p.finishedSqFt) > 1000) {
     prime = prime.concat(["Garden maintenance", "Carpet cleaning", "Window cleaning"]);
     plus = plus.concat(["Garden maintenance", "Carpet cleaning", "Window cleaning"]);
@@ -31,6 +48,24 @@ exports.fetchPackage = function(p, res){
   }
   supreme = supreme.concat(["Pest control","House keeping"]);
 
+  async.forEach([prime, plus, supreme], (package, callback)=>{
+    let sum = 0;
+    async.forEach(package, (service, cb)=>{
+      sum += price[service];
+      cb();
+    }, (errLoopPackage)=>{
+      if (errLoopPackage) {
+        throw errLoopPackage;
+      }
+      package.unshift(Math.floor(sum/120) * 10 + 9);
+      console.log(package);
+      callback();
+    }, (err)=>{
+      if (err) {
+        throw err;
+      }
+    })
+  });
   return res.json({
     property: p,
     packages: {
@@ -38,7 +73,7 @@ exports.fetchPackage = function(p, res){
       plus,
       supreme
     }
-  });
+  })
 };
 
 exports.createProperty = function(req, res){

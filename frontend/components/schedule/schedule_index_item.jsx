@@ -80,6 +80,7 @@ class ScheduleIndexItem extends Component {
           <div className='user-schedule-detail'>
             <div>{schedule.serviceType}</div>
             <div>{new Date(schedule.workDate).toDateString()}</div>
+
           </div>
           <ReactModal
             isOpen={this.state.showModal}

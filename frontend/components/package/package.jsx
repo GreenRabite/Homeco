@@ -33,8 +33,9 @@ class Package extends React.Component{
               <img src={imgs.prime} onClick={()=>this.handleClick('prime')}/>
             </div>
             <ul>
-              {packages.prime.map((service, idx)=><li key={idx}>{service}</li>)}
+              {packages.prime.slice(1).map((service, idx)=><li key={idx}>{service}</li>)}
             </ul>
+            <div className='package-price'>{packages.prime[0]}<p> / month</p></div>
             <button onClick={()=>this.handleClick('prime')}>Choose this plan</button>
           </div>
           <div className='package-item'>
@@ -43,8 +44,9 @@ class Package extends React.Component{
               <img src={imgs.plus} onClick={()=>this.handleClick('plus')} />
             </div>
             <ul>
-              {packages.plus.map((service, idx)=><li key={idx}>{service}</li>)}
+              {packages.plus.slice(1).map((service, idx)=><li key={idx}>{service}</li>)}
             </ul>
+            <div className='package-price'>{packages.plus[0]}<p> / month</p></div>
             <button onClick={()=>this.handleClick('plus')}>Choose this plan</button>
           </div>
           <div className='package-item'>
@@ -53,8 +55,9 @@ class Package extends React.Component{
               <img src={imgs.supreme} onClick={()=>this.handleClick('supreme')} />
             </div>
             <ul>
-              {packages.supreme.map((service, idx)=><li key={idx}>{service}</li>)}
+              {packages.supreme.slice(1).map((service, idx)=><li key={idx}>{service}</li>)}
             </ul>
+            <div className='package-price'>{packages.supreme[0]}<p> / month</p></div>
             <button onClick={()=>this.handleClick('supreme')}>Choose this plan</button>
           </div>
         </div>

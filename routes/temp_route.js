@@ -86,4 +86,21 @@ module.exports = (app) => {
       }
     });
   });
+
+  app.patch('/api/service', (req, res)=>{
+    console.log(req.body);
+    Service.findByIdAndUpdate(
+      req.body.id,
+      {price: req.body.price},
+      {new: true},
+      (err, service)=>{
+        if (err) {
+          return res.status(400).send(err);
+        } else {
+          return res.json(service);
+        }
+      });
+  });
+
+
 };

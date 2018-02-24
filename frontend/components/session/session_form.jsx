@@ -51,7 +51,7 @@ class SessionForm extends React.Component {
     const text = this.props.formType == 'signup' ? 'Sign Up' : 'Log In';
     return (
       <div className='session-form'>
-        <h1>Homeco</h1>
+        <h1>{text} Homeco</h1>
         {this.props.errors.length ? (
           <div className='session-error'>
             <p>{this.props.errors[0]}</p>
