@@ -25,7 +25,7 @@ exports.fetchPackage = function(p, res){
   let plus = [];
   let supreme = [];
   if (p.useCode != 'SingleFamily') {
-
+    return res.json({errors: "Sorry, we don't have package provide for yet"});
   }
   if (p.useCode == 'SingleFamily') {
     prime.push("Carpet cleaning", "Window cleaning", "Gutter cleaning");

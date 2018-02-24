@@ -7,18 +7,25 @@ import { Link } from 'react-router-dom';
 class Home extends React.Component {
   constructor(props){
     super(props);
-    this.state = {'address': '', 'zipcode': ''};
+    this.state = {'address': '', 'zipcode': '', 'addressclassName': 'hidden', 'zipcodeclassName': 'hidden'};
     this.handleInput = this.handleInput.bind(this);
   }
 
   handleSubmit(e){
     e.preventDefault();
-    this.props.propertyRequire(this.state).then(this.props.history.push('/packages'));
+    if (!this.state.address) {
+      this.setState({'addressclassName': ''})
+    } else if (this.zipcode !== 5) {
+      this.setState({'zipcodeclassName': ''})
+    } else {
+      this.props.propertyRequire(this.state).then(this.props.history.push('/packages'));
+    }
   }
 
   handleInput(type){
     return (e)=>{
       this.setState({[type]: e.target.value});
+      this.setState({'zipcodeclassName': 'hidden', 'addressclassName': 'hidden'})
     }
   }
 
@@ -39,7 +46,9 @@ class Home extends React.Component {
           <h1>Homeco</h1>
           <form className='home-page-address' onSubmit={(e)=>this.handleSubmit(e)}>
             <div className='home-page-address-input'>
+              <div className={`hint ${this.state.addressclassName}`}>Please input address</div>
               <input type='text' onChange={this.handleInput('address')} value={this.state.address} placeholder='Please input your homeadress to get quote'/>
+              <div className={`hint ${this.state.zipcodeclassName}`}>Please input valid zipcode</div>
               <input className='zipcode' type='text' onChange={this.handleInput('zipcode')} value={this.state.zipcode} placeholder='zipcode'/>
             </div>
             <input type='submit' onClick={(e)=>this.handleSubmit(e)}/>

@@ -27,21 +27,25 @@ module.exports = (app) => {
         res.json(err);
       }
       if (!err && response.statusCode == 200) {
-        const result = fastXmlParser.parse(body)['SearchResults:searchresults'].response.results.result;
-        const propertyInformation = {
-          zpid: result.zpid,
-          street: result.address.street,
-          city: result.address.city,
-          state: result.address.state,
-          zipcode: result.address.zipcode,
-          lat: result.address.latitude,
-          lng: result.address.longitude,
-          lotSizeSqFt: result.lotSizeSqFt,
-          finishedSqFt: result.finishedSqFt,
-          yearBuilt: result.yearBuilt,
-          useCode: result.useCode
-        };
-        PropertyController.fetchPackage(propertyInformation, res);
+        if (fastXmlParser.parse(body)['SearchResults:searchresults'].message.code !== 0) {
+          res.status(400).json('Sorry, we cannot find your property, please try again.')
+        } else {
+          const result = fastXmlParser.parse(body)['SearchResults:searchresults'].response.results.result;
+          const propertyInformation = {
+            zpid: result.zpid,
+            street: result.address.street,
+            city: result.address.city,
+            state: result.address.state,
+            zipcode: result.address.zipcode,
+            lat: result.address.latitude,
+            lng: result.address.longitude,
+            lotSizeSqFt: result.lotSizeSqFt,
+            finishedSqFt: result.finishedSqFt,
+            yearBuilt: result.yearBuilt,
+            useCode: result.useCode
+          };
+          PropertyController.fetchPackage(propertyInformation, res);
+        }
       }
     })
   });
