@@ -11,7 +11,7 @@ exports.register = function(req, res){
       throw err;
     }
     if (user) {
-      return res.send({errors: 'Email already registered'});
+      return res.status(400).send({errors: 'Email already registered'});
     } else {
       const newUser = new User(req.body);
       newUser.password = bcrypt.hashSync(req.body.password, 10);
@@ -36,10 +36,10 @@ exports.register = function(req, res){
 exports.login = function(req, res){
   const user = User.findOne({email: req.body.email}, (err, user)=>{
     if (err) {
-      return res.send({errors: err})
+      return res.status(400).send({errors: err})
     }
     if (!user || !user.comparePwd(req.body.password)) {
-      return res.status(401).json({errors: 'Wrong Credentials'})
+      return res.status(401).json({0: 'Wrong Credentials'})
     }
     if (user && user.comparePwd(req.body.password)) {
       const token = jwt.sign({
@@ -65,6 +65,7 @@ exports.logOut = function(req, res){
   res.clearCookie('user.email');
   res.clearCookie('user.customerType');
   res.clearCookie('user._id');
+  res.clearCookie('user.category');
   return res.json({confirmation: 'loggedOut'})
 };
 
