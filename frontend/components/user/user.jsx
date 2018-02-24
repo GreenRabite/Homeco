@@ -11,13 +11,16 @@ class User extends React.Component{
     this.state = {listName: 'UpcomingService'};
   }
 
-  componentWillReceiveProps(nextProps){
-    if (nextProps.pac && nextProps.currentUser) {
+  componentDidMount(){
+    if (this.props.pac && this.props.currentUser) {
       this.props.createSchedule({
-        pac: nextProps.pac,
-        user: nextProps.currentUser
+        pac: this.props.pac,
+        user: this.props.currentUser
       });
     }
+  }
+
+  componentWillUpdate(nextProps, nextState){
   }
 
   handleClick(listName){

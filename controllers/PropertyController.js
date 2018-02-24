@@ -81,10 +81,10 @@ exports.createProperty = function(req, res){
       })
     } else {
       const serviceId = [];
-      async.forEach(req.pac, (service, callback)=>{
+      async.forEach(req.pac.slice(1), (service, callback)=>{
         Service.findOne({serviceType: service}, (servErr, serv)=>{
           if (servErr) {
-            throw servErr
+            return res.status(400).json(servErr)
           } else {
             serviceId.push(serv._id);
           }
@@ -95,7 +95,7 @@ exports.createProperty = function(req, res){
         const newPackage = new Package({_property: property._id, _service: serviceId});
         newPackage.save((errSavePac, pac)=> {
           if (errSavePac) {
-            throw errSavePac
+            return res.status(400).json(errSavePac)
           } else {
             return res.json({
               pac: pac
@@ -110,7 +110,7 @@ exports.createProperty = function(req, res){
 exports.bindUser = function(req, res){
   Property.findOne({_id: req.propertyId}, (err, property)=>{
     if (err) {
-      throw err;
+      return res.status(400).json(err);
     }
     if (property) {
       property._user = req.userId;
@@ -124,10 +124,8 @@ exports.bindUser = function(req, res){
           async.forEach(req.services, (service, callback)=>{
             Service.findOne({_id: service}, (errFindService, oneService)=>{
               if (errFindService) {
-                throw errFindService;
+                return res.status(400).json(errFindService);
               } else {
-                // console.log('========find service=======');
-                // console.log('=======working date update========');
                 const workDate = new Date(Date.now());
                 workDate.setDate(workDate.getDate() + (14 * i));
                 const timesInOneYear = Math.floor(365 / oneService.serviceRenderCycle);
@@ -137,8 +135,6 @@ exports.bindUser = function(req, res){
                   scheduleInOneYear.push(scheduleDate)
                   workDate.setDate(workDate.getDate() + oneService.serviceRenderCycle);
                 }
-                // console.log('~~~~~~~~~~~~~scheduleInOneYear~~~~~~~~~~~~~~');
-                // console.log(scheduleInOneYear);
                 async.forEach(scheduleInOneYear, (eachScheduleDate, cb)=>{
                   const newSchedule = new Schedule({
                     _service: service,
@@ -152,8 +148,6 @@ exports.bindUser = function(req, res){
                     if (errSaveSchedule) {
                       throw errSaveSchedule;
                     } else {
-                      // console.log('=====createSchedule========');
-                      // console.log(schedule.workDate);
                     }
                     cb(()=>{i++;});
                   })
@@ -164,7 +158,6 @@ exports.bindUser = function(req, res){
             if (errLoop) { throw errLoop; }
             Schedule.find({_user: req.userId}, (errFindSchedules, schedules)=>{
               if(errFindSchedules){ throw errFindSchedules;}
-              console.log('=========return schedules========');
               return res.json({
                 schedules: schedules
               })
