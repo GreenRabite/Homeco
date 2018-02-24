@@ -15,9 +15,9 @@ const scheduleReducer = (state={}, action) => {
       for(let id in newState ){
         if (newState[id]._id === action.schedule._id) {
            newState[id] = action.schedule;
-          return newState;
         }
       }
+      return newState;
 
     case RECEIVE_SCHEDULES:
       return merge({}, action.schedules);

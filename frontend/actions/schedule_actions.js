@@ -29,6 +29,7 @@ export const fetchContractorSchedules = (category) => (dispatch) => {
 };
 
 export const updateWorkSchedule = (schedule) => (dispatch) => {
+  console.log(schedule);
   return APIUtilSchedule.updateWorkSchedule(schedule).then(
     (updatedSchedule)=> {
       console.log(updatedSchedule);

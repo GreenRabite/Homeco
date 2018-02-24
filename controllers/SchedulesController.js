@@ -57,22 +57,33 @@ exports.updateSchedule = function(req, res){
   });
 };
 
+// exports.updateWorkSchedule = function(req, res){
+//   Schedule.findByIdAndUpdate(
+//     req.body._id,
+//     {completed: true,
+//     description: req.body.description,
+//     $push: {img_url: req.body.img_url}},
+//     (err, schedule)=>{
+//       if (err) {
+//         return res.status(400).send(err);
+//       } else {
+//         console.log(schedule);
+//         return res.json(schedule);
+//       }
+//   });
+// };
+
+// issue with promise sending updateWorkSchedule one state later
 exports.updateWorkSchedule = function(req, res){
-  // console.log("============");
-  // console.log("Request");
-  // console.log("============");
-  // console.log(req.body);
+  console.log(req.body);
   Schedule.findByIdAndUpdate(
     req.body._id,
     {completed: true,
     description: req.body.description,
-    $push: {img_url: req.body.img_url}},
-    (err, schedule)=>{
-      if (err) {
-        return res.status(400).send(err);
-      } else {
-        console.log(schedule);
-        return res.json(schedule);
-      }
-  });
+    $push: {img_url: req.body.img_url}}).
+    populate("_service").populate({path:'_package', populate:{path:'_property'}}).lean()
+    .then((schedule)=>{
+      console.log(schedule);
+      res.send(schedule);
+    },(err)=>(res.send(err)));
 };

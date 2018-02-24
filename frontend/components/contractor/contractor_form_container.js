@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import ContractorForm from './contractor_form';
-import { updateWorkSchedule } from './../../actions/schedule_actions';
+import { updateWorkSchedule, fetchContractorSchedules } from './../../actions/schedule_actions';
 
 const mapStateToProps = (state,ownProps) => {
   return {
@@ -11,7 +11,8 @@ const mapStateToProps = (state,ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => (
   {
-    updateWorkSchedule: (schedule)=> dispatch(updateWorkSchedule(schedule))
+    updateWorkSchedule: (schedule)=> dispatch(updateWorkSchedule(schedule)),
+    fetchContractorSchedules: (category)=>dispatch(fetchContractorSchedules(category))
   }
 );
 
