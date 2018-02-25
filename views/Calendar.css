@@ -100,6 +100,13 @@ button.react-calendar__tile--active:enabled:focus {
 
 .upcoming-services {
   display: flex;
-  justify-content: space-between;
-  margin-right: 45px;
+  justify-content: flex-start;
+}
+
+.cal{
+  margin-left: 50px;
+}
+
+.service-day{
+  background-color: lightgreen;
 }
