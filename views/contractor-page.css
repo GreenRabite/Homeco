@@ -147,10 +147,21 @@
   cursor: pointer;
 }
 
+.contractor-panel li:first-child{
+  margin-top: 20px;
+}
+
 .clicked{
   background-color: white;
 }
 
 .contractor-panel li:hover{
   background-color: white;
+}
+
+.contractor-task-container h1{
+  color: #666;
+  font-size: 2em;
+  margin-left: 225px;
+  display: block;
 }

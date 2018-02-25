@@ -29,7 +29,8 @@ class ContractorShow extends React.Component {
     return(
       <div className="contractor-container">
         <ContractorNavBar/>
-        <div className="">
+        <div className="contractor-task-container">
+            <h1>My Tasks</h1>
             {ServiceListItems}
         </div>
       </div>
