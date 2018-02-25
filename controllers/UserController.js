@@ -7,19 +7,14 @@ const bcrypt = require('bcrypt');
 
 exports.register = function(req, res){
   User.findOne({email: req.body.email}, (err, user)=> {
-    if (err) {
-      return res.status(400).json(err);
-    }
     if (user) {
-      return res.status(400).send({errors: 'Email already registered'});
+      return res.status(400).json(['Email already registered']);
     } else {
       const newUser = new User(req.body);
       newUser.password = bcrypt.hashSync(req.body.password, 10);
-      newUser.save((err, user)=> {
+      newUser.save((errSaveNewUser, user)=> {
         if (err) {
-          return res.status(400).send({
-            errors: err
-          });
+          return res.status(400).json([errSaveNewUser]);
         } else {
           console.log('=======signed Up=======');
           user.password = undefined;

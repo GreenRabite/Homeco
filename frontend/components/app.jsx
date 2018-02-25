@@ -15,7 +15,7 @@ const App = () => (
       <Route exact path='/packages' component={PackageContainer} />
       <AuthRoute exact path='/signup' component={SessionFormContainer} />
       <AuthRoute exact path='/login' component={SessionFormContainer} />
-      <ProtectedRoute exact path='/user' component={UserContainer} />
+      <Route exact path='/user' component={UserContainer} />
       <Route path='/contractor/main' component={ContractorShowContainer}></Route>
       <RefreshRoute path="/refresh"/>
     </Switch>

@@ -9,7 +9,6 @@ class ScheduleIndex extends Component {
 
   componentDidMount(){
     if (this.props.currentUser && !Object.values(this.props.schedules).length) {
-      debugger
       const userIdArr = this.props.currentUser._id.split(':');
       let userId;
       if (userIdArr.length > 1) {
@@ -23,7 +22,6 @@ class ScheduleIndex extends Component {
 
   componentWillReceiveProps(nextProps){
     if (!this.props.currentUser && nextProps.currentUser && !Object.values(this.props.schedules).length) {
-      debugger
       const userIdArr = nextProps.currentUser._id.split(':');
       let userId;
       if (userIdArr.length > 1) {
