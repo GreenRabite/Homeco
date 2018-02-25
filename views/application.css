@@ -12,19 +12,24 @@ ul{
 .home-background{
   z-index: -1;
   position: absolute;
+  background: linear-gradient(
+                     rgba(20,20,20, .5),
+                     rgba(20,20,20, .5));
   top: 0;
   left: 0;
   width: 100%;
-  height: 600px;
+  height: 70%;
   overflow: hidden;
+  background-image: url('https://res.cloudinary.com/ddwejrtgh/image/upload/v1519239149/hero_qxaymn.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  opacity: 0.9;
 }
 
-.home-background>img{
-  object-fit: cover;
+/* .home-background>img{
   width: 100%;
-  filter: brightness(80%);
   opacity: 0.5;
-}
+} */
 
 .home{
   z-index: 5;
@@ -36,9 +41,14 @@ ul{
   width: 100%;
 }
 
-.home>h1{
-  color: black;
+.home>h1, .home>p{
+  color: white;
   text-align: center;
+  text-shadow: 1px 1px 2px #000000;
+}
+
+.home>p {
+  font-size: 18px;
 }
 
 .home-page-address{
@@ -51,7 +61,9 @@ ul{
   width: 13%;
   border: 1px solid lightgray;
   border-radius: 3px;
-  background-color: white;
+  background-color: #f2ae00;
+  color: white;
+  text-shadow: 1px 1px 2px #000000;
 }
 
 .home-page-address-input{

@@ -44,18 +44,18 @@ class Home extends React.Component {
         }
         </div>
         <div className='home-background'>
-          <img src='https://res.cloudinary.com/ddwejrtgh/image/upload/v1519239149/hero_qxaymn.jpg' />
         </div>
         <div className='home'>
-          <h1>Homeco</h1>
+          <h1>All-In-One Home Service. Simplified.</h1>
+          <p>Homeco is the trusted partner for your home</p>
           <form className='home-page-address' onSubmit={(e)=>this.handleSubmit(e)}>
             <div className='home-page-address-input'>
               <div className={`hint ${this.state.addressclassName}`}>Please input address</div>
-              <input type='text' onChange={this.handleInput('address')} value={this.state.address} placeholder='Please input your homeadress to get quote'/>
+              <input type='text' onChange={this.handleInput('address')} value={this.state.address} placeholder='Please input your homeadress to get packages quote'/>
               <div className={`hint ${this.state.zipcodeclassName}`}>Please input valid zipcode</div>
               <input className='zipcode' type='text' onChange={this.handleInput('zipcode')} value={this.state.zipcode} placeholder='zipcode'/>
             </div>
-            <input type='submit' onClick={(e)=>this.handleSubmit(e)}/>
+            <input type='submit' onClick={(e)=>this.handleSubmit(e)} value='GO'/>
           </form>
         </div>
         <HomeCenter />
