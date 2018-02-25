@@ -7,6 +7,7 @@ class CalendarShow extends Component {
     this.state = {
         date: new Date()
       };
+    this.processTime = this.processTime.bind(this);
   }
 
   onChange(date) {
@@ -22,19 +23,28 @@ class CalendarShow extends Component {
   render(){
     const {date} = this.state;
     const {allSchedules} = this.props;
-    const scheduleTimes = allSchedules.map( el => this.processTime(el));
 
-    const tileContent = ({ date }) => (
-      scheduleTimes.includes(this.processTime(new Date(date).getTime())) ?
-      <p>Service Day!</p> : null);
+
+    const schedules = {};
+    allSchedules.forEach ( el => {
+      schedules[el.date.slice(0,10)]=el.type;
+    });
+
+    const tileContent = ({ date }) => {
+      const currentDate = new Date(date).toJSON().slice(0,10);
+      return Object.keys(schedules).includes(currentDate) ?
+        <p className="service-day">{schedules[currentDate]}</p> : null;
+    };
     return(
       <div className='user-calendar'>
         <h2> Services Calendar</h2>
-        <Calendar
+        <Calendar className="cal"
           onChange={(e) => this.onChange(e)}
           value={date}
           showNavigation={true}
-          tileContent={tileContent}/>
+          tileContent={tileContent}
+          />
+
       </div>
     );
   }
