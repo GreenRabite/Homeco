@@ -18,8 +18,8 @@ html
     script.
       if ($.cookie('user.email') && $.cookie('user._id')) {
         window.currentUser = {
-          email: $.cookie('user.email'),
           _id: $.cookie('user._id'),
+          email: $.cookie('user.email'),
           customerType: $.cookie('user.customerType'),
           category: $.cookie('user.category')
         };
@@ -28,6 +28,7 @@ html
       include application.css
       include contractor-page.css
       include user.css
+      include Calendar.css
 
   body
     div(id="root")

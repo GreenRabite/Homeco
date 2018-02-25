@@ -1,5 +1,5 @@
 import {RECEIVE_PROPERTY} from '../actions/property_actions';
-import {RECEIVE_PACKAGE} from '../actions/package_actions';
+import {RECEIVE_PACKAGE, CLEAR_PACKAGE} from '../actions/package_actions';
 
 const packagesReducer = (state={}, action) => {
   Object.freeze(state);
@@ -7,8 +7,14 @@ const packagesReducer = (state={}, action) => {
   switch(action.type){
     case RECEIVE_PACKAGE:
       return Object.assign({}, action.pac);
+
     case RECEIVE_PROPERTY:
       return Object.assign({}, state, action.packages);
+
+
+    case CLEAR_PACKAGE:
+      return ""
+      
     default:
       return state;
   };

@@ -7,7 +7,8 @@ import User from './user';
 const mapStateToProps = (state) => ({
   currentUser: state.session.currentUser,
   pac: state.entities.packages.pac,
-  errors: state.errors
+  errors: state.errors,
+  schedules: state.entities.schedules
 });
 
 const mapDispatchToProps = (dispatch) => ({

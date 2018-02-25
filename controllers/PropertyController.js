@@ -5,32 +5,63 @@ const Package = mongoose.model('packages');
 const async = require('async');
 const Schedule = mongoose.model('schedules');
 
+const price = {
+  "Lawn care": 1300,
+  "Garden maintenance": 1200,
+  "Fertilizing": 240,
+  "Gutter cleaning": 400,
+  "Electronic Inspection": 200,
+  "Plumbing Inspection": 200,
+  "Window cleaning": 200,
+  "Carpet cleaning": 200,
+  "Pest control": 400,
+  "House keeping": 2600,
+  "Foundation Inspection": 300,
+  "Roof Insepection": 100
+};
 
 exports.fetchPackage = function(p, res){
   let prime = [];
   let plus = [];
   let supreme = [];
-  if (p.useCode == 'SingleFamily' && (p.lotSizeSqFt - p.finishedSqFt) > 1000) {
-    prime = prime.concat(["Garden maintenance", "Carpet cleaning", "Window cleaning"]);
-    plus = plus.concat(["Garden maintenance", "Carpet cleaning", "Window cleaning"]);
-    supreme = supreme.concat(["Garden maintenance", "Carpet cleaning", "Window cleaning"]);
+  if (p.useCode != 'SingleFamily') {
+    return res.status(422).json({0: `Sorry, we don't have package provide for ${p.useCode} yet`});
+  }
+  if (p.useCode == 'SingleFamily') {
+    prime.push("Carpet cleaning", "Window cleaning", "Gutter cleaning");
+    plus.push("Garden maintenance", "Carpet cleaning", "Window cleaning", "Gutter cleaning");
+    supreme.push("Garden maintenance", "Carpet cleaning", "Window cleaning", "Gutter cleaning");
   }
   if (p.lotSizeSqFt > 5000){
-    prime = prime.concat(['Lawn care']);
-    plus = plus.concat(['Lawn care']);
-    supreme = supreme.concat(['Lawn care']);
-    plus = plus.concat(["Fertilizing"]);
-    supreme = supreme.concat(["Fertilizing"]);
+    prime.push('Lawn care');
+    plus.push('Lawn care', 'Fertilizing');
+    supreme.push('Lawn care', 'Fertilizing');
   }
   if (p.yearBuilt < 1980){
-    prime = prime.concat(["Electronic Inspection", "Plumbing Inspection"]);
-    plus = plus.concat(["Electronic Inspection", "Plumbing Inspection"]);
-    supreme = supreme.concat(["Electronic Inspection", "Plumbing Inspection"]);
-    plus = plus.concat(["Fertilizing", "Roof Insepection"]);
-    supreme = supreme.concat(["Fertilizing", "Roof Insepection", "Foundation Inspection"]);
+    prime.push("Electronic Inspection", "Plumbing Inspection");
+    plus.push("Electronic Inspection", "Plumbing Inspection", "Roof Insepection");
+    supreme.push("Electronic Inspection", "Plumbing Inspection", "Roof Insepection", "Foundation Inspection");
   }
-  supreme = supreme.concat(["Pest control","House keeping"]);
+  plus.push("Pest control");
+  supreme.push("Pest control","House keeping");
 
+  async.forEach([prime, plus, supreme], (package, callback)=>{
+    let sum = 0;
+    async.forEach(package, (service, cb)=>{
+      sum += price[service];
+      cb();
+    }, (errLoopPackage)=>{
+      if (errLoopPackage) {
+        throw errLoopPackage;
+      }
+      package.unshift(Math.floor(sum/120) * 10 + 9);
+      callback();
+    }, (err)=>{
+      if (err) {
+        res.satus(400).json(err);
+      }
+    })
+  });
   return res.json({
     property: p,
     packages: {
@@ -38,7 +69,7 @@ exports.fetchPackage = function(p, res){
       plus,
       supreme
     }
-  });
+  })
 };
 
 exports.createProperty = function(req, res){
@@ -50,10 +81,10 @@ exports.createProperty = function(req, res){
       })
     } else {
       const serviceId = [];
-      async.forEach(req.pac, (service, callback)=>{
+      async.forEach(req.pac.slice(1), (service, callback)=>{
         Service.findOne({serviceType: service}, (servErr, serv)=>{
           if (servErr) {
-            throw servErr
+            return res.status(400).json(servErr)
           } else {
             serviceId.push(serv._id);
           }
@@ -61,10 +92,10 @@ exports.createProperty = function(req, res){
         })
       }, (err)=>{
         if (err) { throw err;}
-        const newPackage = new Package({_property: property._id, _service: serviceId});
+        const newPackage = new Package({_property: property._id, _service: serviceId, price: req.pac[0]});
         newPackage.save((errSavePac, pac)=> {
           if (errSavePac) {
-            throw errSavePac
+            return res.status(400).json(errSavePac)
           } else {
             return res.json({
               pac: pac
@@ -76,10 +107,10 @@ exports.createProperty = function(req, res){
   })
 };
 
-exports.bindUser = function(req, res){
+exports.bindUser = function(req, res, ccbb){
   Property.findOne({_id: req.propertyId}, (err, property)=>{
     if (err) {
-      throw err;
+      return res.status(400).json(err);
     }
     if (property) {
       property._user = req.userId;
@@ -89,14 +120,13 @@ exports.bindUser = function(req, res){
             errors: errSaveProperty
           });
         } else {
+          // console.log('=====Binded user done==========');
           let i = 1;
           async.forEach(req.services, (service, callback)=>{
             Service.findOne({_id: service}, (errFindService, oneService)=>{
               if (errFindService) {
-                throw errFindService;
+                return res.status(400).json(errFindService);
               } else {
-                // console.log('========find service=======');
-                // console.log('=======working date update========');
                 const workDate = new Date(Date.now());
                 workDate.setDate(workDate.getDate() + (14 * i));
                 const timesInOneYear = Math.floor(365 / oneService.serviceRenderCycle);
@@ -106,8 +136,6 @@ exports.bindUser = function(req, res){
                   scheduleInOneYear.push(scheduleDate)
                   workDate.setDate(workDate.getDate() + oneService.serviceRenderCycle);
                 }
-                // console.log('~~~~~~~~~~~~~scheduleInOneYear~~~~~~~~~~~~~~');
-                // console.log(scheduleInOneYear);
                 async.forEach(scheduleInOneYear, (eachScheduleDate, cb)=>{
                   const newSchedule = new Schedule({
                     _service: service,
@@ -121,8 +149,6 @@ exports.bindUser = function(req, res){
                     if (errSaveSchedule) {
                       throw errSaveSchedule;
                     } else {
-                      // console.log('=====createSchedule========');
-                      // console.log(schedule.workDate);
                     }
                     cb(()=>{i++;});
                   })
@@ -133,10 +159,16 @@ exports.bindUser = function(req, res){
             if (errLoop) { throw errLoop; }
             Schedule.find({_user: req.userId}, (errFindSchedules, schedules)=>{
               if(errFindSchedules){ throw errFindSchedules;}
-              console.log('=========return schedules========');
-              return res.json({
-                schedules: schedules
+              result = {};
+              schedules.forEach(schedule=>{
+                result[schedule._id] = schedule;
               })
+              // console.log('========schedule create done========');
+              if (ccbb) {
+                ccbb(result);
+              } else {
+                return res.json(result);
+              }
             })
           })
         }
@@ -145,12 +177,17 @@ exports.bindUser = function(req, res){
   })
 }
 
-exports.fineOne = function(req, res){
+exports.findOne = function(req, res, cb){
   Property.findOne({_user: req.params.userId}, (err, property)=>{
     if (err) {
       throw err
     } else {
-      return res.json({property: property})
+      if (cb) {
+        // console.log('====calling back======');
+        cb(property);
+      } else {
+        return res.json({property: property})
+      }
     }
   });
 };

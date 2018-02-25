@@ -5,6 +5,7 @@ const PropertyController = require('../controllers/PropertyController');
 const PackageController = require('../controllers/PackageController');
 const ScheduleController = require('../controllers/SchedulesController');
 const bodyParser = require('body-parser');
+const UserController = require('../controllers/UserController');
 
 module.exports = (app) => {
   app.post("/api/property", (req, res)=> {
@@ -27,28 +28,51 @@ module.exports = (app) => {
         res.json(err);
       }
       if (!err && response.statusCode == 200) {
-        const result = fastXmlParser.parse(body)['SearchResults:searchresults'].response.results.result;
-        const propertyInformation = {
-          zpid: result.zpid,
-          street: result.address.street,
-          city: result.address.city,
-          state: result.address.state,
-          zipcode: result.address.zipcode,
-          lat: result.address.latitude,
-          lng: result.address.longitude,
-          lotSizeSqFt: result.lotSizeSqFt,
-          finishedSqFt: result.finishedSqFt,
-          yearBuilt: result.yearBuilt,
-          useCode: result.useCode
-        };
-        PropertyController.fetchPackage(propertyInformation, res);
+        if (fastXmlParser.parse(body)['SearchResults:searchresults'].message.code !== 0) {
+          res.status(400).json('Sorry, we cannot find your property, please try again.')
+        } else {
+          const result = fastXmlParser.parse(body)['SearchResults:searchresults'].response.results.result;
+          const propertyInformation = {
+            zpid: result.zpid,
+            street: result.address.street,
+            city: result.address.city,
+            state: result.address.state,
+            zipcode: result.address.zipcode,
+            lat: result.address.latitude,
+            lng: result.address.longitude,
+            lotSizeSqFt: result.lotSizeSqFt,
+            finishedSqFt: result.finishedSqFt,
+            yearBuilt: result.yearBuilt,
+            useCode: result.useCode
+          };
+          PropertyController.fetchPackage(propertyInformation, res);
+        }
       }
     })
   });
 
   app.get('/api/property/:userId', (req, res)=>{
-    PropertyController.fineOne(req, res);
+    PropertyController.findOne(req, res);
   })
+
+  app.get('/api/package/:userId', (req, res)=>{
+    PropertyController.findOne(req, res, (property)=>{
+      PackageController.findOneByProperty(property, res);
+    });
+    // Property.findOne({_user: req.params.userId}, (errProperty, property)=>{
+    //   if (errProperty) {
+    //     return res.send(errProperty);
+    //   } else {
+    //     Package.findOne({_property: property._id}).populate('_service').then((errPac, package)=>{
+    //       if (errPac) {
+    //         return res.send(errPac);
+    //       } else {
+    //         res.json(package);
+    //       }
+    //     });
+    //   }
+    // })
+  });
 
   app.post('/api/package', (req, res)=>{
     const pac = req.body['pac[]'];
@@ -57,8 +81,8 @@ module.exports = (app) => {
       city: req.body['property[city]'],
       state: req.body['property[state]'],
       zipcode: req.body['property[zipcode]'],
-      lat: req.body['property[latitude]'],
-      lng: req.body['property[longitude]'],
+      lat: req.body['property[lat]'],
+      lng: req.body['property[lng]'],
       lotSizeSqFt: req.body['property[lotSizeSqFt]'],
       finishedSqFt: req.body['property[finishedSqFt]'],
       yearBuilt: req.body['property[yearBuilt]'],
@@ -68,6 +92,7 @@ module.exports = (app) => {
   });
 
   app.post('/api/schedules', (req, res)=>{
+    // console.log('======bindUser in user pannel====');
     const propertyId = req.body['pac[_property]'];
     const userId = req.body['user[_id]'];
     const services = req.body['pac[_service][]'];
@@ -86,5 +111,40 @@ module.exports = (app) => {
 
   app.patch('/api/schedule', (req, res)=>{
     ScheduleController.updateSchedule(req, res);
+  })
+
+  app.post('/api/bundleUser', (req, res)=>{
+    // console.log('=======bundleUser call======');
+    const propertyId = req.body['pac[_property]'];
+    const services = req.body['pac[_service][]'];
+    const pacId = req.body['pac[_id]'];
+    const user = {
+      body: {
+        email: req.body['user[email]'],
+        password: req.body['user[password]']
+      }
+    }
+    UserController.register(user, res, (user)=>{
+      // if (errUser) {
+      //   return res.status(400).json(errUser)
+      // }
+      // console.log('========callback to bindUser=========');
+      PropertyController.bindUser({
+        propertyId: propertyId,
+        userId: user._id,
+        services: services,
+        pacId: pacId
+      }, res, (schedules)=>{
+        // console.log('~~~~~~~~ccbb~~~~~~~~~~~');
+        // if (errSchedule) {
+        //   return res.status(400).json(errSchedule)
+        // } else {
+          return res.json({
+            user: user,
+            schedules: schedules
+          });
+        // }
+      })
+    })
   })
 }
