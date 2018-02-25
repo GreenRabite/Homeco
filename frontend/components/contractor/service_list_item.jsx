@@ -59,10 +59,12 @@ class ServiceListItem extends React.Component {
       <div className="contractor-schedule-information" key={this.props.schedule._id}>
         <div>{this.getDayOfWeek(this.props.schedule.workDate)}</div>
         <div>{this.props.schedule._service.serviceType}</div>
-        <div>Due: {this.formatDate(this.props.schedule.workDate)}</div>
-        <div>{this.props.schedule._package._property.street}</div>
-        <div>{`${this.props.schedule._package._property.city}, ${this.props.schedule._package._property.state}`}</div>
-        <button onClick={this.handleOpenModal} className="button">Finished</button>
+        <div>{this.formatDate(this.props.schedule.workDate)}</div>
+        <div className="city">{`${this.props.schedule._package._property.city}, ${this.props.schedule._package._property.state}`}</div>
+        <br/>
+        <div className="btn-container">
+          <button onClick={this.handleOpenModal} className="button">Finished</button>
+        </div>
           <div className="modal-container">
             <ReactModal
               isOpen={this.state.showModal}
@@ -71,9 +73,10 @@ class ServiceListItem extends React.Component {
               className="Modal-contractor-form"
               overlayClassName="Overlay-photo-form"
               shouldCloseOnOverlayClick={true}
+              ariaHideApp={false}
               >
               <ContractorFormContainer schedule={this.props.schedule} handleCloseModal={this.handleCloseModal}/>
-              <button onClick={this.handleCloseModal}>Close Modal</button>
+
             </ReactModal>
           </div>
       </div>

@@ -7,7 +7,6 @@ class ContractorForm extends React.Component {
     this.state = this.props.schedule;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.uploadImage = this.uploadImage.bind(this);
-    debugger;
   }
 
   componentWillReceiveProps(newProps){
@@ -21,6 +20,7 @@ class ContractorForm extends React.Component {
     console.log(schedule);
     this.props.updateWorkSchedule(schedule);
     this.props.handleCloseModal();
+    this.props.fetchContractorSchedules(this.props.currentUser.category);
   }
 
   updateInput(field) {
@@ -46,30 +46,38 @@ class ContractorForm extends React.Component {
   }
 
   photoImage(url) {
-    this.setState({ ["img_url"]: url });
+    if (this.state.img_url === undefined) {
+      this.setState({["img_url"] : [url]})
+    }else {
+      let arr = this.state.img_url;
+      arr.push(url);
+      this.setState({ ["img_url"]: arr });
+    }
   }
 
   render(){
       const street = this.props.schedule._package._property.street;
       const city = this.props.schedule._package._property.city;
       const state = this.props.schedule._package._property.state;
+
       return(
-        <div>
-          <img src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?w=420&h=250&auto=compress&cs=tinysrgb"></img>
+        <div className="contractor-form-container">
+          <img src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?w=320&h=200&auto=compress&cs=tinysrgb"></img>
           <div>{street}</div>
           <div>{`${city}, ${state}`}</div>
-          <form>
-            <textarea onChange={this.updateInput("description")} placeholder="Description of Task" value={this.state.description}></textarea><br/>
+          <form >
+            <textarea cols="40" rows="2" charswidth="23" onChange={this.updateInput("description")} placeholder="Description of Task" value={this.state.description}></textarea><br/> <br/>
             <button className="button" onClick={this.uploadImage}>Upload Photo</button> <br/>
             <button className="button" onClick={this.handleSubmit}>Submit</button> <br/>
+            <br/>
             <div className="img-container">
               <img className="imgSource"src={this.state.img_url ? this.state.img_url[0] : "" } />
+              <div>Photo Uploaded: {this.state.img_url === undefined ? "0" : this.state.img_url.length}</div>
             </div>
           </form>
         </div>
       );
     }
-  // }
 }
 
 export default ContractorForm;
