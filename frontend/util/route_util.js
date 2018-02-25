@@ -30,6 +30,19 @@ const Protected = ({component: Component, path, loggedIn, exact}) => (
   />
 );
 
+const Refresh = ({ path = '/' }) => (
+    <Route
+        path={path}
+        component={({ history, location, match }) => {
+            history.replace({
+              pathname: location.pathname.substring(match.path.length),
+            });
+            return null;
+        }}
+    />
+);
+// ...location,
+
 
 const mapStateToProps = state => ({
   currentUser: state.session.currentUser,
@@ -39,3 +52,5 @@ const mapStateToProps = state => ({
 export const AuthRoute = withRouter(connect(mapStateToProps, null)(Auth));
 
 export const ProtectedRoute = withRouter(connect(mapStateToProps, null)(Protected));
+
+export const RefreshRoute = withRouter(connect(mapStateToProps, null)(Refresh));

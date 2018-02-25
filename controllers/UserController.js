@@ -8,7 +8,7 @@ const bcrypt = require('bcrypt');
 exports.register = function(req, res){
   User.findOne({email: req.body.email}, (err, user)=> {
     if (err) {
-      throw err;
+      return res.status(400).json(err);
     }
     if (user) {
       return res.status(400).send({errors: 'Email already registered'});
@@ -21,6 +21,7 @@ exports.register = function(req, res){
             errors: err
           });
         } else {
+          console.log('=======signed Up=======');
           user.password = undefined;
           res.cookie('user.email', user.email);
           res.cookie('user._id', user._id);

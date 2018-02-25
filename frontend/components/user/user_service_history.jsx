@@ -56,7 +56,7 @@ class ServiceHistory extends React.Component {
     <div className='user-servicehistory'>
       <h1>Service History</h1>
       { schedules.length < 1 ?
-        <div>No Service History Yet</div>
+        <div>You don't have Service History Yet</div>
          :
         <div>
           <button onClick={()=>this.handleLess()} className={this.state.start === 0 ? "button-disable more-button" : "more-button"}>

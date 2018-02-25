@@ -12,15 +12,20 @@ class User extends React.Component{
   }
 
   componentDidMount(){
+    debugger
     if (this.props.pac && this.props.currentUser) {
       this.props.createSchedule({
         pac: this.props.pac,
         user: this.props.currentUser
-      });
+      })
     }
   }
 
   componentWillUpdate(nextProps, nextState){
+    debugger
+    if (this.props.pac && Object.values(nextProps.schedules).length >= 1) {
+      window.location.reload();
+    }
   }
 
   handleClick(listName){

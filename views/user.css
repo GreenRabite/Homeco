@@ -46,7 +46,7 @@
   margin-left: 250px;
 }
 
-.user-schedules-index{
+.user-schedules-index, .user-servicehistory{
   display: flex;
   flex-direction: column;
   width: 382px;
@@ -55,6 +55,30 @@
 .user-schedule-detail{
   display: flex;
   justify-content: space-between;
+}
+
+.reschedule-service{
+  margin-top: 25px;
+  color: red;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: right;
+}
+
+.reschedule-service:hover{
+  text-decoration: underline;
+}
+
+.schedule-status{
+  margin-left: 228px;
+  margin-top: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #0073bb;
+}
+
+.schedule-status:hover{
+  text-decoration: underline;
 }
 
 .user-schedule-item{
@@ -134,4 +158,17 @@
   border: 1px solid lightgray;
   border-radius: 3px;
   padding: 4px 10px;
+}
+
+.service-history-img-container{
+  margin: 10px 10px 0 0;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 3px;
+}
+
+.service-history-img-container>img{
+  object-fit: cover;
+  height: 100%;
 }
