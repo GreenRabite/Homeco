@@ -1,8 +1,17 @@
-### Database
-* Do we want local or on third party coud (mLabs?)
 
-### Express
-* Nodemon as Express server?
+  // componentWillReceiveProps(newProps){
+    // if (this.state.schedules.length !== newProps.schedules.length) {
+    //   this.setState({schedules: newProps.schedules},
+    //     ()=>newProps.schedules.map((schedule)=>{
+    //       return this.props.fetchService(schedule._service);
+    //     })
+    //   );
+    // }
+    // if (this.state.services.length !== newProps.services.length) {
+    //   this.setState({services: newProps.services});
+    // }
+  // }
 
-package.json
-* "client": "npm run start"
+  {//<img className="imgSource"src={this.state.img_url ? this.state.img_url : "" } />}
+
+  //{<button onClick={this.uploadImage}>Upload Photo</button>}

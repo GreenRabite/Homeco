@@ -1,9 +1,25 @@
-export const fetchContractorSchedules = (category) => (
-  $.ajax({
-    url: `/api/schedules/cont/${category}`,
+export const fetchContractorSchedules = (category) => {
+  console.log(category);
+  return $.ajax({
+    url: `/api/fetchcontschedules/${category}`,
     method: 'GET'
-  })
-);
+  });
+};
+
+export const updateWorkSchedule = (schedule) => {
+  console.log(schedule);
+  return $.ajax({
+    url: `/api/contschedules`,
+    method: 'PATCH',
+    data: {
+      _id: schedule._id,
+      completed: schedule.completed,
+      img_url: schedule.img_url,
+      description: schedule.description
+    }
+  });
+};
+
 
 export const createSchedule = (payload) => (
  $.ajax({
