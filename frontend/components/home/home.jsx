@@ -35,7 +35,7 @@ class Home extends React.Component {
 
   render(){
     return (
-      <div>
+      <div className='home-header'>
         <div className='home-nav'>
         {this.props.currentUser ?
           <Link to='/user'><h2>My Home</h2></Link>
@@ -46,7 +46,7 @@ class Home extends React.Component {
         <div className='home-background'>
         </div>
         <div className='home'>
-          <h1>All-In-One Home Service. Simplified.</h1>
+          <h1>All-In-One Home Services. Simplified.</h1>
           <p>Homeco is the trusted partner for your home</p>
           <form className='home-page-address' onSubmit={(e)=>this.handleSubmit(e)}>
             <div className='home-page-address-input'>

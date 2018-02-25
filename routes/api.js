@@ -92,7 +92,6 @@ module.exports = (app) => {
   });
 
   app.post('/api/schedules', (req, res)=>{
-    // console.log('======bindUser in user pannel====');
     const propertyId = req.body['pac[_property]'];
     const userId = req.body['user[_id]'];
     const services = req.body['pac[_service][]'];
