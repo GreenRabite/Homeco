@@ -13,6 +13,14 @@ export const createUser = (user) => (
   })
 );
 
+export const bundleUser = (payload) => (
+  $.ajax({
+    url: '/api/bundleUser',
+    method: 'POST',
+    data: payload
+  })
+);
+
 export const createSession = (user) => (
   $.ajax({
     url: '/api/session',

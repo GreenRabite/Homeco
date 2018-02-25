@@ -22,13 +22,15 @@ class ScheduleIndexItem extends Component {
       date: "",
       className: "hidden"
     };
-    // this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
     this.reschedule = this.reschedule.bind(this);
   }
 
   handleOpenModal (e) {
-    if (e.target.className == "user-schedule-item") {
+    if (e.target.className == "user-schedule-item"
+        || e.target.className == "user-schedule-detail"
+        || e.target.className == 'reschedule-service'
+        ) {
       this.setState({ showModal: true });
     }
   }
@@ -81,6 +83,7 @@ class ScheduleIndexItem extends Component {
             <div>{schedule.serviceType}</div>
             <div>{new Date(schedule.workDate).toDateString()}</div>
           </div>
+          <p className='reschedule-service'>Reschedule Service</p>
           <ReactModal
             isOpen={this.state.showModal}
             onRequestClose={this.handleCloseModal}

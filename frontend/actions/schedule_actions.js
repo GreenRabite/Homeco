@@ -29,11 +29,11 @@ export const fetchUserSchedules = (userId, completed) => dispatch => (
       (errors) => (dispatch(receiveErrors(errors.responseJSON)))
 );
 
-export const createSchedule = (payload) => (dispatch) => (
-  APIUtilSchedule.createSchedule(payload).then(
-    (schedules)=> (dispatch(receiveSchedules(schedules)))),
-    (errors) => (dispatch(receiveErrors(errors.responseJSON)))
-);
+export const createSchedule = payload => dispatch => APIUtilSchedule.createSchedule(payload)
+  .then(
+    schedules => dispatch(receiveSchedules(schedules)),
+    errors => dispatch(receiveErrors(errors.responseJSON))
+  );
 
 export const reschedule = (id, workDate) => dispatch => APIUtilSchedule.reschedule(id, workDate)
   .then(

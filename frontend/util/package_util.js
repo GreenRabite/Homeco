@@ -5,3 +5,10 @@ export const createPackage = (payload) => (
     data: payload
   })
 );
+
+export const fetchUserPackage = (userId) => (
+  $.ajax({
+    url: `/api/package/${userId}`,
+    method: 'GET'
+  })
+);

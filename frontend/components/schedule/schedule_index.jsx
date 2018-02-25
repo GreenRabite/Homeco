@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import ScheduleIndexItem from './schedule_index_item';
 
 class ScheduleIndex extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {start: 0, end: 7, page: 1};
   }
 
   componentDidMount(){
-    if (this.props.currentUser) {
+    if (this.props.currentUser && !Object.values(this.props.schedules).length) {
       const userIdArr = this.props.currentUser._id.split(':');
       let userId;
       if (userIdArr.length > 1) {
@@ -21,7 +21,7 @@ class ScheduleIndex extends Component {
   }
 
   componentWillReceiveProps(nextProps){
-    if (!this.props.currentUser && nextProps.currentUser) {
+    if (!this.props.currentUser && nextProps.currentUser && !Object.values(this.props.schedules).length) {
       const userIdArr = nextProps.currentUser._id.split(':');
       let userId;
       if (userIdArr.length > 1) {
@@ -54,8 +54,8 @@ class ScheduleIndex extends Component {
     });
     return(
       <div className='user-schedules'>
-        <h2> Upcoming Services </h2>
-          {schedules.length > 1 ?
+        <h1> Upcoming Services </h1>
+          {schedules.length >= 1 ?
             <div className='user-schedules-index'>
               <button onClick={()=>this.handleLess()} className={this.state.start === 0 ? "button-disable more-button" : "more-button"}>
                 <i className="fas fa-chevron-up"></i>

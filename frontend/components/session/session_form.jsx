@@ -24,17 +24,33 @@ class SessionForm extends React.Component {
   handleInput(type){
     return (e) => {
       this.setState({[type]: e.target.value});
+      if (this.props.errors.length) {
+        this.props.clearErrors();
+      }
     };
   }
 
   handleClick(e){
     e.preventDefault();
-    if (this.props.formType == 'signup') {
+    if (this.props.pac && this.props.formType == 'signup') {
+      this.props.bundleUser({
+        pac: this.props.pac,
+        user: this.state
+      }).then(()=>this.props.history.push('/user'));
+    } else if (this.props.formType == 'signup') {
       this.props.createUser(this.state)
-        .then(this.props.history.push('/user'));
+        .then((errors, user)=>{
+          if (user) {
+            this.props.history.push('/user')
+          }
+        });
     } else {
       this.props.createSession(this.state)
-        .then(this.props.history.push('/user'));
+        .then((errors, user)=>{
+          if (user) {
+            this.props.history.push('/user')
+          }
+        });
     }
   }
 
@@ -51,7 +67,7 @@ class SessionForm extends React.Component {
     const text = this.props.formType == 'signup' ? 'Sign Up' : 'Log In';
     return (
       <div className='session-form'>
-        <h1>Homeco</h1>
+        <h1>{text} Homeco</h1>
         {this.props.errors.length ? (
           <div className='session-error'>
             <p>{this.props.errors[0]}</p>
@@ -60,7 +76,7 @@ class SessionForm extends React.Component {
         ) : (
           ""
         )}
-        <form>
+        <form onSubmit={(e)=>this.handleClick(e)}>
           <input id='email' onChange={this.handleInput('email')} type='text' value={this.state.email} placeholder='Email Address'/>
           <input id='passowrd' onChange={this.handleInput('password')} type='password' value={this.state.password} placeholder='Password'/>
           <input type='submit' onClick={(e)=>this.handleClick(e)}/>

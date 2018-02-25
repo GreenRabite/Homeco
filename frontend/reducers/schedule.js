@@ -1,5 +1,6 @@
 import merge from 'lodash/merge';
 import { RECEIVE_SCHEDULE, RECEIVE_SCHEDULES } from '../actions/schedule_actions';
+import {RECEIVE_BUNDLE_USER} from '../actions/session_actions';
 
 const scheduleReducer = (state={}, action) => {
   let newState={};
@@ -11,6 +12,9 @@ const scheduleReducer = (state={}, action) => {
       return newState;
 
     case RECEIVE_SCHEDULES:
+      return merge({}, action.schedules);
+
+    case RECEIVE_BUNDLE_USER:
       return merge({}, action.schedules);
 
     default:
