@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "description": "## Overview",
   "main": "entry.js",
+  "engines": {
+    "node": "6.10.1",
+    "npm": "3.10.10"    
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "webpack"   
+    "postinstall": "webpack"
   },
   "repository": {
     "type": "git",
