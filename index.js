@@ -10,6 +10,7 @@ require('./models/Schedule');
 require('./models/Service');
 require('./models/Property');
 require('./models/Package');
+require('./models/Payment');
 require("./services/passport");
 
 
