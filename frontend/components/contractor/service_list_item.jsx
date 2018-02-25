@@ -56,7 +56,7 @@ class ServiceListItem extends React.Component {
 
   render(){
     return (
-      <div className="service-list-items" key={this.props.schedule._id}>
+      <div className="contractor-schedule-information" key={this.props.schedule._id}>
         <div>{this.getDayOfWeek(this.props.schedule.workDate)}</div>
         <div>{this.props.schedule._service.serviceType}</div>
         <div>Due: {this.formatDate(this.props.schedule.workDate)}</div>

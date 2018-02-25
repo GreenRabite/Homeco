@@ -95,22 +95,11 @@ module.exports = (app) => {
       if (err) {
         return res.send({errors: err});
       } else {
-        return res.json(schedules)
+        return res.json(schedules);
       }
     });
   });
 
-<<<<<<< HEAD
-  app.get('/api/oneschedule', (req, res)=>{
-    Schedule.find({id: res.body.id}, (err, schedules)=>{
-      if (err) {
-        return res.send({errors: err});
-      } else {
-        return res.json(schedules)
-      }
-    });
-  });
-=======
   app.patch('/api/service', (req, res)=>{
     console.log(req.body);
     Service.findByIdAndUpdate(
@@ -127,5 +116,4 @@ module.exports = (app) => {
   });
 
 
->>>>>>> 3f3d21b7da880ac84cb43578d7673057b3160978
 };

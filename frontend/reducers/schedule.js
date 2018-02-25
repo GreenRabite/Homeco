@@ -1,10 +1,6 @@
 import merge from 'lodash/merge';
-<<<<<<< HEAD
 import { RECEIVE_SCHEDULE, RECEIVE_SCHEDULES, RECEIVE_ONE_SCHEDULE } from '../actions/schedule_actions';
-=======
-import { RECEIVE_SCHEDULE, RECEIVE_SCHEDULES } from '../actions/schedule_actions';
 import {RECEIVE_BUNDLE_USER} from '../actions/session_actions';
->>>>>>> 3f3d21b7da880ac84cb43578d7673057b3160978
 
 const scheduleReducer = (state={}, action) => {
   let newState={};
