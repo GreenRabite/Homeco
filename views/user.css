@@ -26,7 +26,7 @@
   margin-left: 250px;
 }
 
-.property-information{
+.property-information, .user-package-detail{
   margin-top: 100px;
   border: 1px solid lightgray;
   border-radius: 5px;
@@ -42,7 +42,7 @@
   padding-left: 30px;
 }
 
-.user-schedules, .user-payment, .user-servicehistory{
+.user-schedules, .user-payment, .user-servicehistory, .user-package{
   margin-left: 250px;
 }
 
@@ -171,4 +171,18 @@
 .service-history-img-container>img{
   object-fit: cover;
   height: 100%;
+}
+
+strong{
+  font-size: 24px;
+  padding-left: 10px;
+}
+
+.user-package-service-list{
+  font-weight: bold;
+}
+
+.user-package-service-list>li{
+  font-weight: normal;
+  padding: 10px;
 }

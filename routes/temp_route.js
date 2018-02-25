@@ -27,14 +27,27 @@ module.exports = (app) => {
   });
 
   app.get('/api/packages', (req, res)=>{
-    Package.find({}, (err, packages)=>{
+    Package.find({}, (err, pacakges)=>{
       if (err) {
         return res.send({errors: err});
       } else {
-        return res.json(packages);
+        return res.json(pacakges);
       }
     });
   });
+
+
+  // app.get('/api/packages/:propertyId', (req, res)=>{
+  //   Package.find({_property: req.params.propertyId}, (err, pacakge)=>{
+  //     if (err) {
+  //       return res.json(err);
+  //     } else {
+  //       return res.json(pacakge)
+  //     }
+  //   })
+  // });
+
+
 
   app.delete('/api/packages', (req, res)=>{
     Package.findOneAndRemove({_id: req.body.id}, (err, packages)=>{

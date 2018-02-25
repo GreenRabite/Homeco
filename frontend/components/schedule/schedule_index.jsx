@@ -54,7 +54,7 @@ class ScheduleIndex extends Component {
     });
     return(
       <div className='user-schedules'>
-        <h2> Upcoming Services </h2>
+        <h1> Upcoming Services </h1>
           {schedules.length >= 1 ?
             <div className='user-schedules-index'>
               <button onClick={()=>this.handleLess()} className={this.state.start === 0 ? "button-disable more-button" : "more-button"}>

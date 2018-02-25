@@ -14,7 +14,7 @@ class UserHome extends React.Component {
     } else {
       userId = this.props.currentUser._id;
     }
-    this.props.fetchProperty(userId)
+    this.props.fetchProperty(userId);
   }
 
   render(){

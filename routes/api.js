@@ -52,8 +52,27 @@ module.exports = (app) => {
   });
 
   app.get('/api/property/:userId', (req, res)=>{
-    PropertyController.fineOne(req, res);
+    PropertyController.findOne(req, res);
   })
+
+  app.get('/api/package/:userId', (req, res)=>{
+    PropertyController.findOne(req, res, (property)=>{
+      PackageController.findOneByProperty(property, res);
+    });
+    // Property.findOne({_user: req.params.userId}, (errProperty, property)=>{
+    //   if (errProperty) {
+    //     return res.send(errProperty);
+    //   } else {
+    //     Package.findOne({_property: property._id}).populate('_service').then((errPac, package)=>{
+    //       if (errPac) {
+    //         return res.send(errPac);
+    //       } else {
+    //         res.json(package);
+    //       }
+    //     });
+    //   }
+    // })
+  });
 
   app.post('/api/package', (req, res)=>{
     const pac = req.body['pac[]'];

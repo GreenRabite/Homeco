@@ -19,3 +19,9 @@ export const createPackage = (payload) => dispatch => APIUtilPackage.createPacka
     pac => dispatch(receivePackage(pac)),
     errors => dispatch(receiveErrors(errors.responseJSON))
   );
+
+export const fetchUserPackage = (userId) => dispatch => APIUtilPackage.fetchUserPackage(userId)
+  .then(
+    pac => dispatch(receivePackage(pac)),
+    errors => dispatch(receiveErrors(errors.responseJSON))
+  );

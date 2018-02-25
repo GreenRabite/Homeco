@@ -4,6 +4,7 @@ import UpcomingService from '../schedule/upcoming_services';
 import PaymentContainer from './user_payment_container';
 import UserServiceHistoryContainer from './user_service_history_container';
 import UserComplainContainer from './user_complain_container';
+import UserPackageContainer from './user_package_container';
 
 class User extends React.Component{
   constructor(){
@@ -41,6 +42,7 @@ class User extends React.Component{
           <ul>
             <li className={this.state.listName == 'UpcomingService' ? 'clicked' : ''} onClick={()=>this.handleClick('UpcomingService')}>Upcoming Service</li>
             <li className={this.state.listName == 'UserHomeContainer' ? 'clicked' : ''} onClick={()=>this.handleClick('UserHomeContainer')}>My Home</li>
+            <li className={this.state.listName == 'Package' ? 'clicked' : ''} onClick={()=>this.handleClick('Package')}>My Package</li>
             <li className={this.state.listName == 'Payment' ? 'clicked' : ''} onClick={()=>this.handleClick('Payment')}>Payment</li>
             <li className={this.state.listName == 'ServiceHistory' ? 'clicked' : ''} onClick={()=>this.handleClick('ServiceHistory')}>Service History</li>
             <li className={this.state.listName == 'Complain' ? 'clicked' : ''} onClick={()=>this.handleClick('Complain')}>Complain</li>
@@ -52,6 +54,7 @@ class User extends React.Component{
         { this.state.listName == 'Payment' ? <PaymentContainer /> : ""}
         { this.state.listName == 'ServiceHistory' ? <UserServiceHistoryContainer /> : ""}
         { this.state.listName == 'Complain' ? <UserComplainContainer /> : ""}
+        { this.state.listName == 'Package' ? <UserPackageContainer /> : ""}
       </div>
     )
   }
