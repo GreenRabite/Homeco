@@ -36,7 +36,7 @@ class SessionForm extends React.Component {
       this.props.bundleUser({
         pac: this.props.pac,
         user: this.state
-      }).then(this.props.history.push('/user'));
+      }).then(()=>this.props.history.push('/user'));
     } else if (this.props.formType == 'signup') {
       this.props.createUser(this.state)
         .then((errors, user)=>{

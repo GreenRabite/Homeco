@@ -92,7 +92,7 @@ exports.createProperty = function(req, res){
         })
       }, (err)=>{
         if (err) { throw err;}
-        const newPackage = new Package({_property: property._id, _service: serviceId});
+        const newPackage = new Package({_property: property._id, _service: serviceId, price: req.pac[0]});
         newPackage.save((errSavePac, pac)=> {
           if (errSavePac) {
             return res.status(400).json(errSavePac)
