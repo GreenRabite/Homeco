@@ -37,10 +37,14 @@ class Home extends React.Component {
     return (
       <div className='home-header'>
         <div className='home-nav'>
+        <h1><i className="fas fa-home"></i>Homeco</h1>
         {this.props.currentUser ?
           <Link to='/user'><h2>My Home</h2></Link>
            :
-          <Link to='/login'><h2>Log In</h2></Link>
+          <div className='home-header-login'>
+            <p>Already our customer?</p>
+            <Link to='/login'><h3>Log In</h3></Link>
+          </div>
         }
         </div>
         <div className='home-background'>
