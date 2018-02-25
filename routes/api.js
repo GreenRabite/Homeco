@@ -29,7 +29,7 @@ module.exports = (app) => {
       }
       if (!err && response.statusCode == 200) {
         if (fastXmlParser.parse(body)['SearchResults:searchresults'].message.code !== 0) {
-          res.status(400).json('Sorry, we cannot find your property, please try again.')
+          res.status(400).json({0: 'Sorry, we cannot find your property, please try again.'})
         } else {
           const result = fastXmlParser.parse(body)['SearchResults:searchresults'].response.results.result;
           const propertyInformation = {
