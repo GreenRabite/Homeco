@@ -107,7 +107,7 @@ exports.createProperty = function(req, res){
   })
 };
 
-exports.bindUser = function(req, res){
+exports.bindUser = function(req, res, ccbb){
   Property.findOne({_id: req.propertyId}, (err, property)=>{
     if (err) {
       return res.status(400).json(err);
@@ -164,7 +164,11 @@ exports.bindUser = function(req, res){
                 result[schedule._id] = schedule;
               })
               console.log('========schedule create done========');
-              return res.json(result);
+              if (ccbb) {
+                ccbb(result);
+              } else {
+                return res.json(result);
+              }
             })
           })
         }

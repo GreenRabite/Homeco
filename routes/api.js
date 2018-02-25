@@ -5,6 +5,7 @@ const PropertyController = require('../controllers/PropertyController');
 const PackageController = require('../controllers/PackageController');
 const ScheduleController = require('../controllers/SchedulesController');
 const bodyParser = require('body-parser');
+const UserController = require('../controllers/UserController');
 
 module.exports = (app) => {
   app.post("/api/property", (req, res)=> {
@@ -72,6 +73,7 @@ module.exports = (app) => {
   });
 
   app.post('/api/schedules', (req, res)=>{
+    // console.log('======bindUser in user pannel====');
     const propertyId = req.body['pac[_property]'];
     const userId = req.body['user[_id]'];
     const services = req.body['pac[_service][]'];
@@ -90,5 +92,40 @@ module.exports = (app) => {
 
   app.patch('/api/schedule', (req, res)=>{
     ScheduleController.updateSchedule(req, res);
+  })
+
+  app.post('/api/bundleUser', (req, res)=>{
+    // console.log('=======bundleUser call======');
+    const propertyId = req.body['pac[_property]'];
+    const services = req.body['pac[_service][]'];
+    const pacId = req.body['pac[_id]'];
+    const user = {
+      body: {
+        email: req.body['user[email]'],
+        password: req.body['user[password]']
+      }
+    }
+    UserController.register(user, res, (user)=>{
+      // if (errUser) {
+      //   return res.status(400).json(errUser)
+      // }
+      // console.log('========callback to bindUser=========');
+      PropertyController.bindUser({
+        propertyId: propertyId,
+        userId: user._id,
+        services: services,
+        pacId: pacId
+      }, res, (schedules)=>{
+        // console.log('~~~~~~~~ccbb~~~~~~~~~~~');
+        // if (errSchedule) {
+        //   return res.status(400).json(errSchedule)
+        // } else {
+          return res.json({
+            user: user,
+            schedules: schedules
+          });
+        // }
+      })
+    })
   })
 }

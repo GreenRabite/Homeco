@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 
-exports.register = function(req, res){
+exports.register = function(req, res, cb){
   User.findOne({email: req.body.email}, (err, user)=> {
     if (user) {
       return res.status(400).json(['Email already registered']);
@@ -16,13 +16,18 @@ exports.register = function(req, res){
         if (err) {
           return res.status(400).json([errSaveNewUser]);
         } else {
-          console.log('=======signed Up=======');
+          // console.log('=======signed Up=======');
           user.password = undefined;
           res.cookie('user.email', user.email);
           res.cookie('user._id', user._id);
           res.cookie('user.customerType', user.customerType);
           res.cookie('user.category', user.category);
-          return res.json(user);
+          // console.log(user);
+          if (cb) {
+            cb(user)
+          } else {
+            return res.json(user);
+          }
         }
       });
     }
