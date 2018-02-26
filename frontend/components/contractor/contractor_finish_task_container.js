@@ -5,7 +5,7 @@ import { fetchFinishSchedules } from './../../actions/schedule_actions';
 const mapStateToProps = (state,ownProps) => {
   return {
     currentUser: state.session.currentUser,
-    schedules: state.session.schedules
+    schedules: state.entities.schedules
   };
 };
 

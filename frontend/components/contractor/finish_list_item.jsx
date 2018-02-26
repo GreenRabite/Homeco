@@ -28,7 +28,6 @@ class FinishListItem extends React.Component{
   }
 
   render(){
-    debugger;
     return(
         <div className="contractor-schedule-information" key={this.props.schedule._id}>
           <div className="service-list-modal">
@@ -42,3 +41,5 @@ class FinishListItem extends React.Component{
     );
   }
 }
+
+export default FinishListItem;

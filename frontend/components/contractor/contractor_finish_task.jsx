@@ -29,11 +29,9 @@ class ContractorFinishTask extends React.Component{
       }
     }
     return(
-      <div>
-        <div className="contractor-task-container">
-          <h1>Finished Tasks</h1>
-          {FinishListItems}
-          </div>
+      <div className="contractor-task-container">
+        <h1>Finished Tasks</h1>
+        {FinishListItems}
       </div>
     );
   }
