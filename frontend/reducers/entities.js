@@ -13,7 +13,7 @@ const entitiesReducer = combineReducers({
   schedules: scheduleReducer,
   services: serviceReducer,
   payment: paymentReducer,
-  complain: complainReducer
+  complains: complainReducer
 });
 
 export default entitiesReducer;

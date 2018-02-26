@@ -11,8 +11,8 @@ export const receiveComplain = (complain) => ({
 });
 
 export const receiveComplains = (complains) => ({
-  type: RECEIVE_COMPLAINs,
-  complain: complains
+  type: RECEIVE_COMPLAINS,
+  complains: complains
 });
 
 export const fetchComplains = userId => dispatch => APIUtilComplain.fetchComplains(userId)

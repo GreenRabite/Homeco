@@ -4,12 +4,13 @@ const complainReducer = (state={}, action)=>{
   Object.freeze(state);
   let newState;
   switch (action.type) {
-    case RECEIVE_COMPLAIN:
+    case RECEIVE_COMPLAINS:
       return Object.assign({}, action.complains);
 
-    case RECEIVE_COMPLAINS:
+    case RECEIVE_COMPLAIN:
+      newState = Object.assign({}, state)
       newState[action.complain._id] = action.complain;
-      return Object.assign({}, state, newState);
+      return newState;
 
     default:
       return state;

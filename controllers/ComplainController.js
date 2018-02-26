@@ -6,7 +6,9 @@ exports.findOneByUserId = function(req, res){
     if (err) {
       return res.status(400).json(err)
     } else {
-      return res.json(complains);
+      const result = {};
+      complains.forEach(complain=>result[complain._id] = complain)
+      return res.json(result);
     }
   })
 };
