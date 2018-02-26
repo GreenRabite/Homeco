@@ -186,3 +186,33 @@ strong{
   font-weight: normal;
   padding: 10px;
 }
+
+.payment-input{
+  font-size: 18px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-input label{
+  margin-top: 15px;
+}
+
+.payment-input input {
+  font-size: 18px;
+  margin-top: 15px;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+  padding: 10px;
+  width: 100%;
+}
+.payment-input input[type='submit'] {
+  margin-top: 35px;
+  width: 100%;
+}
+
+.payment-input input[type='submit']:hover {
+  background-color: gray;
+  color: white;
+  font-weight: bold;
+}

@@ -5,7 +5,7 @@ const propertyReducer = (state={}, action) => {
   let newState;
   switch(action.type){
     case RECEIVE_PROPERTY:
-      return Object.assign({}, state, action.property)
+      return Object.assign({}, state, action.property);
     default:
       return state;
   };

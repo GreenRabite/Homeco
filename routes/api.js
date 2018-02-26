@@ -149,6 +149,7 @@ module.exports = (app) => {
   })
 
   app.get('/api/payment/:userId', (req, res)=>{
+    console.log('==fetching payment by userid=======');
     PaymentController.findOneByUserId(req, res);
   })
 

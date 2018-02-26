@@ -7,7 +7,9 @@ exports.findOneByUserId = function(req, res){
       return res.status(400).json(err)
     } else {
       if (payment) {
-        payment.cardNumber = payment.cardNumber.slice(payment.cardNumber-4);
+        payment.cardNumber = payment.cardNumber.slice(payment.cardNumber.length-4);
+      } else {
+        payment = {}
       }
       return res.json(payment)
     }

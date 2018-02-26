@@ -14,7 +14,9 @@ class UserPackage extends React.Component {
     } else {
       userId = this.props.currentUser._id;
     }
-    this.props.fetchUserPackage(userId);
+    if (!this.props.pac._id) {
+      this.props.fetchUserPackage(userId);
+    }
   }
 
   render(){

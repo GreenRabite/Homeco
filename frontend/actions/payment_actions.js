@@ -4,8 +4,13 @@ import {receiveErrors} from './error_actions';
 
 export const RECEIVE_PAYMENT = 'RECEIVE_PAYMENT';
 
+export const receivePayment = (payment) => ({
+  type: RECEIVE_PAYMENT,
+  payment: payment
+});
+
 export const fetchPayment = userId => dispatch => APIUtilPayment.fetchPayment(userId)
   .then(
-    paymet => dispatch(receivePayment(payment)),
+    payment => dispatch(receivePayment(payment)),
     errors => dispatch(receiveErrors(errors.responseJSON))
   );
