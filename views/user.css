@@ -26,7 +26,7 @@
   margin-left: 250px;
 }
 
-.property-information, .user-package-detail{
+.property-information, .user-package-detail, .user-payment-info{
   margin-top: 100px;
   border: 1px solid lightgray;
   border-radius: 5px;
@@ -42,7 +42,7 @@
   padding-left: 30px;
 }
 
-.user-schedules, .user-payment, .user-servicehistory, .user-package{
+.user-schedules, .user-payment, .user-complain, .user-servicehistory, .user-package{
   margin-left: 250px;
 }
 
@@ -185,4 +185,97 @@ strong{
 .user-package-service-list>li{
   font-weight: normal;
   padding: 10px;
+}
+
+.payment-input{
+  font-size: 18px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-input label{
+  margin-top: 15px;
+}
+
+.payment-input input {
+  font-size: 18px;
+  margin-top: 15px;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+  padding: 10px;
+  width: 100%;
+}
+.payment-input input[type='submit'] {
+  margin-top: 35px;
+  width: 100%;
+}
+
+.payment-input input[type='submit']:hover, .user-complain-form input[type='submit']:hover {
+  background-color: gray;
+  color: white;
+  font-weight: bold;
+}
+
+.user-payment-info{
+  border-radius: 10px;
+  padding: 40px 50px;
+}
+
+.user-payment-info>p{
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.user-payment-info-bottom{
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-payment-info-logo{
+  padding: 10px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+}
+
+.user-complain-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 350px;
+  margin-left: 100px;
+}
+
+textarea{
+  height: 300px;
+  resize: vertical;
+}
+
+.user-complain-form input, textarea{
+  margin-top: 15px;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid lightgray;
+  border-radius: 3px;
+}
+
+.user-complain-info{
+  display: flex;
+}
+
+.user-complain-item{
+  width:350px;
+  padding: 10px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.user-complain-item:hover{
+  box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
+}
+
+.complain-title{
+  font-weight: bold;
 }

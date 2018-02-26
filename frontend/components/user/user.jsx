@@ -53,8 +53,8 @@ class User extends React.Component{
         { this.state.listName == 'UpcomingService' ? <UpcomingService /> : ""}
         { this.state.listName == 'Payment' ? <PaymentContainer /> : ""}
         { this.state.listName == 'ServiceHistory' ? <UserServiceHistoryContainer /> : ""}
-        { this.state.listName == 'Complain' ? <UserComplainContainer /> : ""}
         { this.state.listName == 'Package' ? <UserPackageContainer /> : ""}
+        { this.state.listName == 'Complain' ? <UserComplainContainer /> : ""}
       </div>
     )
   }
