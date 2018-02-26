@@ -42,18 +42,41 @@ Introducing **Homeco**, an all-in-one home service provider that aims to be both
   * Contractor GUI Interface
     * Payment Control Panel displaying services provided
   * Users can log complaints if services does not reach their expectations
+  
+## Wireframes
+![](https://github.com/GreenRabite/Homeco/blob/master/wireframes/Screenshot%20from%202018-02-16%2012-28-47.png?raw=true)
+![](https://github.com/GreenRabite/Homeco/blob/master/wireframes/Screenshot%20from%202018-02-16%2012-28-57.png?raw=true)
+![](https://github.com/GreenRabite/Homeco/blob/master/wireframes/Screenshot%20from%202018-02-16%2012-29-10.png?raw=true)
+![](https://github.com/GreenRabite/Homeco/blob/master/wireframes/Screenshot%20from%202018-02-16%2012-29-20.png?raw=true)
+![](https://github.com/GreenRabite/Homeco/blob/master/wireframes/Screenshot%20from%202018-02-16%2012-29-29.png?raw=true)
 
-## Screenshots
-* Contractor GUI Interface
+## Timeline
+### Day 0
+  - [ ] Project Proposal
+  - [ ] Learn Node.js, Express, MongoDB
+  - [ ] Setup node modules and Webpack
 
-  ![Contractor GUI Interface](https://media.giphy.com/media/fdFYtQjR7NcFRYDdIp/giphy.gif)
+### Over Weekend
+  - [ ] Finish Authentication
+  - [ ] Setup NoSQL-type database
+  - [ ] Basic HTML/CSS
 
-* Contractor Completed Tasks
+### Day 1 & 2
+  - [ ] Start service analysis and packages services for User
+  - [ ] Make AJAX call to get as much information about property
+  - [ ] Basic HTML/CSS
 
-  ![Contractor Completed Tasks](https://media.giphy.com/media/fQGw3lV9s484LkbmV2/giphy.gif)
+### Day 3
+  - [ ] User GUI Interface
 
-  ![](https://github.com/GreenRabite/Homeco/blob/production-readme/doc/screenshots/Screen%20Shot%202018-02-25%20at%2023.44.44.png)
-  ![](https://github.com/GreenRabite/Homeco/blob/production-readme/doc/screenshots/Screen%20Shot%202018-02-25%20at%2023.47.30.png)
-  ![](https://github.com/GreenRabite/Homeco/blob/production-readme/doc/screenshots/Screen%20Shot%202018-02-25%20at%2023.48.17.png)
-  ![](https://github.com/GreenRabite/Homeco/blob/production-readme/doc/screenshots/Screen%20Shot%202018-02-25%20at%2023.50.37.png)
-  ![](https://github.com/GreenRabite/Homeco/blob/production-readme/doc/screenshots/Screen%20Shot%202018-02-26%20at%2000.20.23.png)
+### Day 4
+  - [ ] Contractor GUI Interface
+  - [ ] Allow Contractor to upload pictures
+
+### Day 5
+  - [ ] Fixed Bugs
+  - [ ] Refactor Code and optimize logic
+
+### Final Weekend
+  - [ ] Deploy on Heroku
+  - [ ] Finish styling and better UI
