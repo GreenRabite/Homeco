@@ -61,6 +61,7 @@ class UserComplain extends React.Component {
         </div>
          : ""}
         <form onSubmit={(e)=>this.handleSubmit(e)} className='user-complain-form'>
+          <h3>Submit a new complain</h3>
           <label>Title</label>
           <input onChange={this.handleInput('title')} value={this.state.title} type='text'/>
           <textarea onChange={this.handleInput('body')} value={this.state.body} cols="30" rows="5"/>
