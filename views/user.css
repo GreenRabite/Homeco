@@ -219,7 +219,7 @@ strong{
 
 .user-payment-info{
   border-radius: 10px;
-  padding: 50px;
+  padding: 40px 50px;
 }
 
 .user-payment-info>p{
@@ -228,6 +228,7 @@ strong{
 }
 
 .user-payment-info-bottom{
+  margin-top: 30px;
   display: flex;
   justify-content: space-between;
 }
