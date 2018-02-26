@@ -46,3 +46,11 @@ export const reschedule = (id, workDate) => (
     }
   })
 );
+
+export const fetchFinishSchedules = (category) => {
+  console.log(category);
+  return $.ajax({
+    url: `/api/finishschedules/${category}`,
+    method: 'GET'
+  });
+};

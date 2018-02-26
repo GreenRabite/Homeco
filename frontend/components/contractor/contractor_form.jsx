@@ -59,6 +59,7 @@ class ContractorForm extends React.Component {
       const street = this.props.schedule._package._property.street;
       const city = this.props.schedule._package._property.city;
       const state = this.props.schedule._package._property.state;
+      const categoryType = this.props.schedule._service.category;
       let serviceCategoryIcon = {
         "contractor": "http://res.cloudinary.com/greenrabite/image/upload/v1519610083/02_contractor.png",
         "landscape": "http://res.cloudinary.com/greenrabite/image/upload/v1519610082/01_lawn_care.svg",
@@ -70,6 +71,7 @@ class ContractorForm extends React.Component {
           <div>
             <img className="icon-container" src={`${serviceCategoryIcon[this.props.schedule._service.category]}`}></img>
           </div>
+          <b><div className="modal-category-type">{categoryType}</div></b>
           <div>{street}</div>
           <div>{`${city}, ${state}`}</div>
           <form >

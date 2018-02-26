@@ -57,7 +57,7 @@ class ServiceListItem extends React.Component {
   render(){
     return (
       <div className="contractor-schedule-information" key={this.props.schedule._id}>
-        <div onClick={this.handleOpenModal}>
+        <div className="service-list-modal" onClick={this.handleOpenModal}>
           <div><b>{this.getDayOfWeek(this.props.schedule.workDate)}</b></div>
           <div>{this.props.schedule._service.serviceType}</div>
           <div>{this.formatDate(this.props.schedule.workDate)}</div>

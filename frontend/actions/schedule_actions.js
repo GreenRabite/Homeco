@@ -55,3 +55,9 @@ export const reschedule = (id, workDate) => dispatch => APIUtilSchedule.reschedu
     schedule => dispatch(receiveSchedule(schedule)),
     errors => dispatch(receiveErrors(errors))
   );
+
+export const fetchFinishSchedules = (category) => (dispatch) => {
+  return APIUtilSchedule.fetchFinishSchedules(category).then(
+    (schedules)=> (dispatch(receiveSchedules(schedules)))),
+    (errors) => (dispatch(receiveErrors(errors.responseJSON)));
+};
