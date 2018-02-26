@@ -11,6 +11,7 @@ require('./models/Service');
 require('./models/Property');
 require('./models/Package');
 require('./models/Payment');
+require('./models/Complain');
 require("./services/passport");
 
 

@@ -4,13 +4,16 @@ import propertyReducer from './property';
 import scheduleReducer from './schedule';
 import serviceReducer from './service';
 import paymentReducer from './payment';
+import complainReducer from './complain';
+
 
 const entitiesReducer = combineReducers({
   property: propertyReducer,
   packages: packagesReducer,
   schedules: scheduleReducer,
   services: serviceReducer,
-  payment: paymentReducer
+  payment: paymentReducer,
+  complain: complainReducer
 });
 
 export default entitiesReducer;

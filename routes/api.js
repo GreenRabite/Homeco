@@ -7,6 +7,7 @@ const ScheduleController = require('../controllers/SchedulesController');
 const bodyParser = require('body-parser');
 const UserController = require('../controllers/UserController');
 const PaymentController = require('../controllers/PaymentController');
+const ComplainController = require('../controllers/ComplainController');
 
 module.exports = (app) => {
   app.post("/api/property", (req, res)=> {
@@ -155,4 +156,12 @@ module.exports = (app) => {
   app.post('/api/payment', (req, res)=>{
     PaymentController.createPayment(req, res);
   });
+
+  app.get('/api/complains/:userId', (req, res)=>{
+    ComplainController.findOneByUserId(req, res);
+  })
+
+  app.post('/api/complain', (req, res)=>{
+    ComplainController.createComplain(req, res);
+  })
 }

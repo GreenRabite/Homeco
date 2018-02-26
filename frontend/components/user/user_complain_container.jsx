@@ -1,13 +1,16 @@
 import {connect} from 'react-redux';
 import UserComplain from './user_complain';
+import {fetchUserSchedules} from '../../actions/schedule_actions';
 
 
 const mapStateToProps = (state) => ({
-  schedules: state.entities.schedules,
-  currentUser: state.session.currentUser
+  currentUser: state.session.currentUser,
+  schedules: state.entities.schedules
+
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  fetchUserSchedules: (userId, completed) => dispatch(fetchUserSchedules(userId, completed)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserComplain);
