@@ -3,9 +3,14 @@
   "version": "1.0.0",
   "description": "## Overview",
   "main": "entry.js",
+  "engines": {
+    "node": "6.10.1",
+    "npm": "3.10.10"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack --watch"
+    "postinstall": "webpack",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -31,7 +36,6 @@
     "cloudinary": "^1.10.0",
     "connect-flash": "^0.1.1",
     "cookie-session": "^2.0.0-beta.3",
-    "css-loader": "^0.28.9",
     "express": "^4.16.2",
     "fast-xml-parser": "^3.2.1",
     "figaro": "^0.1.10",
