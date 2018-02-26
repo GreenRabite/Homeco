@@ -14,3 +14,9 @@ export const fetchPayment = userId => dispatch => APIUtilPayment.fetchPayment(us
     payment => dispatch(receivePayment(payment)),
     errors => dispatch(receiveErrors(errors.responseJSON))
   );
+
+export const createPayment = payment => dispatch => APIUtilPayment.createPayment(payment)
+  .then(
+    payment => dispatch(receivePayment(payment)),
+    errors => dispatch(receiveErrors(errors.responseJSON))
+  );

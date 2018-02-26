@@ -17,6 +17,13 @@ exports.findOneByUserId = function(req, res){
 };
 
 exports.createPayment = function(req, res){
-  console.log('======creating Payment=======');
-
+  const newPayment = new Payment(req.body);
+  newPayment.save((err, payment)=>{
+    if (err) {
+      return res.status(400).json({errors: err})
+    } else {
+      payment.cardNumber = payment.cardNumber.slice(payment.cardNumber.length-4);
+      return res.json(payment);
+    }
+  })
 };

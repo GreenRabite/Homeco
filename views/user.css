@@ -26,7 +26,7 @@
   margin-left: 250px;
 }
 
-.property-information, .user-package-detail{
+.property-information, .user-package-detail, .user-payment-info{
   margin-top: 100px;
   border: 1px solid lightgray;
   border-radius: 5px;
@@ -215,4 +215,25 @@ strong{
   background-color: gray;
   color: white;
   font-weight: bold;
+}
+
+.user-payment-info{
+  border-radius: 10px;
+  padding: 50px;
+}
+
+.user-payment-info>p{
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.user-payment-info-bottom{
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-payment-info-logo{
+  padding: 10px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
 }

@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import Payment from './user_payment';
-import {fetchPayment} from '../../actions/payment_actions';
+import {fetchPayment, createPayment} from '../../actions/payment_actions';
 import {fetchUserPackage} from '../../actions/package_actions';
 
 const mapStateToProps = (state) => ({
@@ -11,7 +11,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchPayment: (userId) => dispatch(fetchPayment(userId)),
-  fetchUserPackage: (userId) => dispatch(fetchUserPackage(userId))
+  fetchUserPackage: (userId) => dispatch(fetchUserPackage(userId)),
+  createPayment: (payment) => dispatch(createPayment(payment))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Payment);

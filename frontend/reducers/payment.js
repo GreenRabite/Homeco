@@ -4,7 +4,7 @@ const paymentReducer = (state={}, action)=>{
   Object.freeze(state);
   let newState;
   switch (action.type) {
-    case paymentReducer:
+    case RECEIVE_PAYMENT:
       return Object.assign({}, action.payment);
     default:
       return state;
