@@ -223,3 +223,8 @@ a {
   display: flex;
   justify-content: space-between;
 }
+
+.textarea-fill{
+  width: 70%;
+  height: 50px;
+}

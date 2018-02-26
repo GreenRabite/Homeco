@@ -59,7 +59,7 @@ class ContractorForm extends React.Component {
       const street = this.props.schedule._package._property.street;
       const city = this.props.schedule._package._property.city;
       const state = this.props.schedule._package._property.state;
-      const categoryType = this.props.schedule._service.category;
+      const categoryType = this.props.schedule._service.serviceType;
       let serviceCategoryIcon = {
         "contractor": "http://res.cloudinary.com/greenrabite/image/upload/v1519610083/02_contractor.png",
         "landscape": "http://res.cloudinary.com/greenrabite/image/upload/v1519610082/01_lawn_care.svg",
@@ -75,7 +75,7 @@ class ContractorForm extends React.Component {
           <div>{street}</div>
           <div>{`${city}, ${state}`}</div>
           <form >
-            <textarea cols="40" rows="4" charswidth="23" onChange={this.updateInput("description")} placeholder="Description of Services Rendered" value={this.state.description}></textarea><br/>
+            <textarea className="textarea-fill" cols="6" rows="4" charswidth="23" onChange={this.updateInput("description")} placeholder="Description of Services Rendered" value={this.state.description}></textarea><br/>
             <button className="button" onClick={this.uploadImage}>Upload Photo</button> <br/>
             <button className="button" onClick={this.handleSubmit}>Submit</button> <br/>
             <br/>

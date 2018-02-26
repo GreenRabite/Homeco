@@ -44,5 +44,10 @@ Introducing **Homeco**, an all-in-one home service provider that aims to be both
   * Users can log complaints if services does not reach their expectations
 
 ## Screenshots
+* Contractor GUI Interface
 
-  
+  ![Contractor GUI Interface](https://media.giphy.com/media/fdFYtQjR7NcFRYDdIp/giphy.gif)
+
+* Contractor Completed Tasks
+
+  ![Contractor Completed Tasks](https://media.giphy.com/media/fQGw3lV9s484LkbmV2/giphy.gif)
