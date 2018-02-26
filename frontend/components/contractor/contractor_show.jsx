@@ -32,7 +32,7 @@ class ContractorShow extends React.Component {
     }
     return(
       <div className="contractor-container">
-        <ContractorNavBar/>
+        <ContractorNavBar logout={this.props.logout}/>
         <div className="contractor-task-container">
             <h1>My Tasks</h1>
             {ServiceListItems}
