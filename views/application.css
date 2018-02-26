@@ -240,6 +240,10 @@ a:hover{
   flex-direction: column;
 }
 
+.session-form>h1{
+  margin-bottom: 50px;
+}
+
 .session-form>form{
   justify-content: space-between;
   display: flex;
@@ -252,6 +256,12 @@ a:hover{
   border: 1px solid lightgray;
   border-radius: 5px;
   padding: 10px;
+}
+
+.session-form input[type='submit']:hover{
+  background-color: gray;
+  font-weight: bold;
+  color: white;
 }
 
 .home-header{
@@ -347,6 +357,14 @@ a:hover{
   border-top-color: #555;
   opacity: 0.9;
   z-index: 1;
+}
+
+.session-error{
+  width: 100%;
+  align-items: center;
+  color: red;
+  display: flex;
+  justify-content: space-between;
 }
 
 .hidden{

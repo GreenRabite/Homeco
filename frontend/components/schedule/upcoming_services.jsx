@@ -5,9 +5,8 @@ import CalendarContainer from '../calendar/calendar_container';
 const UpcomingServices = () => (
   <div className="upcoming-services">
     <ScheduleContainer />
+    <CalendarContainer />
   </div>
 );
 
 export default UpcomingServices;
-
-// <CalendarContainer />

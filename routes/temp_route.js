@@ -3,6 +3,7 @@ const Service = mongoose.model('services');
 const Property = mongoose.model('properties');
 const Package = mongoose.model('packages');
 const Schedule = mongoose.model('schedules');
+const Payment = mongoose.model('payments');
 
 module.exports = (app) => {
 
@@ -115,5 +116,24 @@ module.exports = (app) => {
       });
   });
 
+  app.get('/api/payments', (req, res)=>{
+    Payment.find({}, (err, payments)=>{
+      if (err) {
+        return  res.json(err);
+      } else {
+        return res.json(payments);
+      }
+    })
+  })
+
+  app.delete('/api/payment/:userId', (req, res)=>{
+    Payment.findOneAndRemove({_user: req.params.userId}, (err, payment)=>{
+      if (err) {
+        return res.json({errors: err})
+      } else {
+        return res.json(payment)
+      }
+    })
+  })
 
 };

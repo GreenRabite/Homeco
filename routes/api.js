@@ -6,6 +6,8 @@ const PackageController = require('../controllers/PackageController');
 const ScheduleController = require('../controllers/SchedulesController');
 const bodyParser = require('body-parser');
 const UserController = require('../controllers/UserController');
+const PaymentController = require('../controllers/PaymentController');
+const ComplainController = require('../controllers/ComplainController');
 
 module.exports = (app) => {
   app.post("/api/property", (req, res)=> {
@@ -29,7 +31,7 @@ module.exports = (app) => {
       }
       if (!err && response.statusCode == 200) {
         if (fastXmlParser.parse(body)['SearchResults:searchresults'].message.code !== 0) {
-          res.status(400).json('Sorry, we cannot find your property, please try again.')
+          res.status(400).json({0: 'Sorry, we cannot find your property, please try again.'})
         } else {
           const result = fastXmlParser.parse(body)['SearchResults:searchresults'].response.results.result;
           const propertyInformation = {
@@ -145,5 +147,21 @@ module.exports = (app) => {
         // }
       })
     })
+  })
+
+  app.get('/api/payment/:userId', (req, res)=>{
+    PaymentController.findOneByUserId(req, res);
+  })
+
+  app.post('/api/payment', (req, res)=>{
+    PaymentController.createPayment(req, res);
+  });
+
+  app.get('/api/complains/:userId', (req, res)=>{
+    ComplainController.findOneByUserId(req, res);
+  })
+
+  app.post('/api/complain', (req, res)=>{
+    ComplainController.createComplain(req, res);
   })
 }
