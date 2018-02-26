@@ -95,7 +95,7 @@ module.exports = (app) => {
       if (err) {
         return res.send({errors: err});
       } else {
-        return res.json(schedules)
+        return res.json(schedules);
       }
     });
   });

@@ -1,4 +1,4 @@
-//prod.js - don't commit this
+//prod.js - for heroku
 
 module.exports = {
   googleClientID : process.env.GOOGLE_CLIENT_ID,

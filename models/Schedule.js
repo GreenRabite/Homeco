@@ -18,13 +18,21 @@ const scheduleSchema = new Schema({
   },
   workDate: Date,
   _user: {
-     type: Schema.Types.ObjectId,
-     ref: 'users'
-   },
-   completed: {
-     type: Boolean,
-     default: false
-   },
+   type: Schema.Types.ObjectId,
+   ref: 'users'
+  },
+ completed: {
+   type: Boolean,
+   default: false
+  },
+  description: {
+    type: String,
+    default: ""
+  },
+  img_url: {
+    type: Array,
+    default: []
+  },
   created: {
     type: Date,
     default: Date.now

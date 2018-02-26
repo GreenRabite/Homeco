@@ -26,6 +26,162 @@
 }
 
 .service-history-container {
+  margin-left: 155px;
+  margin-top: 5px;
+}
+
+.service-list-items {
+  height: 200px;
+  width: 300px;
+  border: 1px solid black;
+}
+
+.button{
+  background-color: #269CE9;
+  /*backg=round-color: #552583;*/
+  border-color: #269CE9;
+  /*border-color: #552583;*/
+  width: 150px;
+  height: 25px;
+  border-radius: 10px;
+
+}
+
+.button:hover{
+  /*background-color: #552583;*/
+  background-color: #269CE9;
+  opacity: .8;
+}
+
+.button:active{
+  /*background: #562790;*/
+  background-color: #395998;
+  border-color: #552583;
+}
+
+.contractor-upload-panel{
+  position: fixed;
+  margin-left: 660px;
+  margin-top: 5%;
+  height: 70%;
+  width: 55%;
+  border: 1px solid black;
+  background-color: lightblue;
+}
+
+.Overlay-photo-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.65);
+}
+
+.modal-container {
+	/*background-color: #EDEDED;*/
+	background-color: #black;
+
+}
+
+.Modal-contractor-form {
+  position: absolute;
+  width: 400px;
+  height: 525px;
+  background-color: #fff;
+  /*background: linear-gradient(to right, #f5f7fa , #c3cfe2);*/
+  background-color: #E8EAEE;
+  top: 20%;
+  left: 50%;
+  margin-left: -220px;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.img-container{
+  /*width: 100%;*/
+  width: 400px;
+  height: 150px;
+  /*display:flex;*/
+
+  /*border: 1px solid;*/
+  /*margin-top: 150px;*/
+}
+
+.img-container img{
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.contractor-schedule-information{
   margin-left: 250px;
-  margin-top: 150px;
+  margin-top: 10px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 15px;
+  width: 300px;
+}
+
+.contractor-schedule-information:hover{
+  box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
+}
+
+.contractor-schedule-information td{
+  padding-left: 30px;
+}
+
+.contractor-panel{
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 200px;
+  background-color: lightgray;
+  height: 100%;;
+  margin-top: -1px;
+  /*border: 1px solid black;*/
+}
+
+
+.contractor-panel li{
+  text-transform: uppercase;
+  padding: 10px 10px 10px 20px;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: #666;
+}
+
+.contractor-panel li:first-child{
+  margin-top: 20px;
+}
+
+.clicked{
+  background-color: white;
+}
+
+.contractor-panel li:hover{
+  background-color: white;
+}
+
+.contractor-task-container h1{
+  color: #666;
+  font-size: 2em;
+  margin-left: 225px;
+  display: block;
+}
+
+.city{
+  text-transform: uppercase;
+}
+
+.btn-container{
+  display: flex;
+  justify-content: space-around;
+}
+
+.contractor-form-container{
+  text-align: center;
 }
