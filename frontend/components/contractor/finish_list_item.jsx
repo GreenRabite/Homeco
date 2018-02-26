@@ -30,12 +30,15 @@ class FinishListItem extends React.Component{
   render(){
     return(
         <div className="contractor-schedule-information" key={this.props.schedule._id}>
-          <div className="service-list-modal">
-            <div><b>{this.getDayOfWeek(this.props.schedule.workDate)}</b></div>
-            <div>{this.props.schedule._service.serviceType}</div>
-            <div>{this.formatDate(this.props.schedule.workDate)}</div>
-            <div className="city">{`${this.props.schedule._package._property.city}, ${this.props.schedule._package._property.state}`}</div>
-            <br/>
+          <div className="finish-task service-list-modal">
+            <div className="">
+              <div><b>{this.getDayOfWeek(this.props.schedule.workDate)}</b></div>
+              <div>{this.props.schedule._service.serviceType}</div>
+              <div>{this.formatDate(this.props.schedule.workDate)}</div>
+              <div className="city">{`${this.props.schedule._package._property.city}, ${this.props.schedule._package._property.state}`}</div>
+              <br/>
+            </div>
+            <img className="icon-container2" src="http://res.cloudinary.com/greenrabite/image/upload/v1519633901/checkmark.svg"></img>
           </div>
       </div>
     );

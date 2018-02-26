@@ -1,8 +1,7 @@
 import React from 'react';
-import ContractorNavBar from './contractor_nav';
+// import ContractorNavBar from './contractor_nav';
 import ContractorFinishTaskContainer from './contractor_finish_task_container';
 import ContractorTaskContainer from './contractor_task_container';
-import ServiceListItem from './service_list_item';
 
 class ContractorShow extends React.Component {
   constructor(props) {

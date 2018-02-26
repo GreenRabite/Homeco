@@ -17,10 +17,9 @@ class ContractorFinishTask extends React.Component{
       const sortSchedules = schedules.sort(function(a, b) {
         const c = new Date(a.workDate);
         const d = new Date(b.workDate);
-        return c-d;
+        return d-c;
       });
       if(schedules.length > 0){
-        debugger;
         FinishListItems = sortSchedules.map((schedule)=>{
           return(
             <FinishListItem schedule={schedule} key={schedule._id} />

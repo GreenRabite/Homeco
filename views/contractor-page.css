@@ -196,6 +196,16 @@ a {
   /*margin-top: 18px;*/
 }
 
+.icon-container2 {
+  width: 75px;
+  height: 75px;
+  /*border-radius: 50%;*/
+  object-fit: cover;
+  -webkit-filter: drop-shadow(2px 2px 2px #222 );
+  filter: drop-shadow(2.5px 5px 5px #222);
+  /*margin-top: 18px;*/
+}
+
 .modal-category-type{
   text-transform: uppercase;
   text-decoration-style: dashed;
@@ -207,4 +217,9 @@ a {
   left: 0;
   right: 0;
   cursor: pointer;
+}
+
+.finish-task{
+  display: flex;
+  justify-content: space-between;
 }
