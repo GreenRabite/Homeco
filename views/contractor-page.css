@@ -185,3 +185,13 @@ a {
 .contractor-form-container{
   text-align: center;
 }
+
+.icon-container {
+  width: 175px;
+  height: 175px;
+  /*border-radius: 50%;*/
+  object-fit: cover;
+  -webkit-filter: drop-shadow(2px 2px 2px #222 );
+  filter: drop-shadow(2.5px 5px 5px #222);
+  /*margin-top: 18px;*/
+}
