@@ -2,6 +2,8 @@
 
 ## Overview
 
+[Homeco live](http://homeco.club/)
+
 ### Background
 
 Homeowners face a huge burden with their property maintenance often dealing with scores of different contractors and different form of bill payments. And contracting existing third party providers for home service can be costly and inconvenient, leading to more headaches then they solve. What if we told you, there was a better way to deal with this?
@@ -44,10 +46,16 @@ Introducing **Homeco**, an all-in-one home service provider that aims to be both
   * Users can log complaints if services does not reach their expectations
 
 ## Screenshots
+* Contractor GUI Interface
+
+  ![Contractor GUI Interface](https://media.giphy.com/media/fdFYtQjR7NcFRYDdIp/giphy.gif)
+
+* Contractor Completed Tasks
+
+  ![Contractor Completed Tasks](https://media.giphy.com/media/fQGw3lV9s484LkbmV2/giphy.gif)
 
   ![](https://github.com/GreenRabite/Homeco/blob/production-readme/doc/screenshots/Screen%20Shot%202018-02-25%20at%2023.44.44.png)
   ![](https://github.com/GreenRabite/Homeco/blob/production-readme/doc/screenshots/Screen%20Shot%202018-02-25%20at%2023.47.30.png)
   ![](https://github.com/GreenRabite/Homeco/blob/production-readme/doc/screenshots/Screen%20Shot%202018-02-25%20at%2023.48.17.png)
   ![](https://github.com/GreenRabite/Homeco/blob/production-readme/doc/screenshots/Screen%20Shot%202018-02-25%20at%2023.50.37.png)
   ![](https://github.com/GreenRabite/Homeco/blob/production-readme/doc/screenshots/Screen%20Shot%202018-02-26%20at%2000.20.23.png)
-

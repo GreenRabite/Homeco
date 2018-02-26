@@ -118,3 +118,13 @@ exports.updateWorkSchedule = function(req, res){
         },(err)=>(res.send(err)));
   }
 };
+
+exports.fetchFinishSchedules = function(req,res){
+  Schedule.find({
+    category: req.params.category,
+    completed: true
+  }).populate("_service").populate({path:'_package', populate:{path:'_property'}}).
+  lean().then((schedule)=>{
+    res.send(schedule);
+  },(err)=>(res.send(err)));
+};

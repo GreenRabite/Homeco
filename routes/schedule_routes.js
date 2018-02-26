@@ -15,4 +15,8 @@ module.exports = (app) => {
     SchedulesController.updateWorkSchedule(req,res);
   });
 
+  app.get(`/api/finishschedules/:category`, (req, res)=>{
+    SchedulesController.fetchFinishSchedules(req,res);
+  });
+
 };

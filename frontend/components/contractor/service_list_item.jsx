@@ -57,13 +57,12 @@ class ServiceListItem extends React.Component {
   render(){
     return (
       <div className="contractor-schedule-information" key={this.props.schedule._id}>
-        <div>{this.getDayOfWeek(this.props.schedule.workDate)}</div>
-        <div>{this.props.schedule._service.serviceType}</div>
-        <div>{this.formatDate(this.props.schedule.workDate)}</div>
-        <div className="city">{`${this.props.schedule._package._property.city}, ${this.props.schedule._package._property.state}`}</div>
-        <br/>
-        <div className="btn-container">
-          <button onClick={this.handleOpenModal} className="button">Finished</button>
+        <div className="service-list-modal" onClick={this.handleOpenModal}>
+          <div><b>{this.getDayOfWeek(this.props.schedule.workDate)}</b></div>
+          <div>{this.props.schedule._service.serviceType}</div>
+          <div>{this.formatDate(this.props.schedule.workDate)}</div>
+          <div className="city">{`${this.props.schedule._package._property.city}, ${this.props.schedule._package._property.state}`}</div>
+          <br/>
         </div>
           <div className="modal-container">
             <ReactModal
