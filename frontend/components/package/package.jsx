@@ -81,7 +81,7 @@ class Package extends React.Component{
               </div>
               <div>
                 <div className='package-price'>{packages.supreme[0]}<p> / month</p></div>
-                <button onClick={()=>this.handleClick('supreme')}>Choose this plan</button>
+                <button id='demo-select-package' onClick={()=>this.handleClick('supreme')}>Choose this plan</button>
               </div>
             </div>
           </div>

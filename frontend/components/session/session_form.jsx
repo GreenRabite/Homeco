@@ -78,8 +78,8 @@ class SessionForm extends React.Component {
         )}
         <form onSubmit={(e)=>this.handleClick(e)}>
           <input id='email' onChange={this.handleInput('email')} type='text' value={this.state.email} placeholder='Email Address'/>
-          <input id='passowrd' onChange={this.handleInput('password')} type='password' value={this.state.password} placeholder='Password'/>
-          <input type='submit' value={text} onClick={(e)=>this.handleClick(e)}/>
+          <input id='password' onChange={this.handleInput('password')} type='password' value={this.state.password} placeholder='Password'/>
+          <input id='demo-login-signup' type='submit' value={text} onClick={(e)=>this.handleClick(e)}/>
         </form>
       </div>
     );

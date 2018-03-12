@@ -54,6 +54,31 @@ class Home extends React.Component {
             })
             setTimeout(()=>{
               this.handleSubmit(e);
+              setTimeout(()=>{
+                $('#demo-select-package').css({
+                  'background-color': 'lightgray',
+                })
+                setTimeout(()=>{
+                  this.props.history.push('/signup');
+                  setTimeout(()=>{
+                    $('#email').val('demo_user@homeco.club')
+                    setTimeout(()=>{
+                      $('#password').val('password')
+                      setTimeout(()=>{
+                        $('#demo-login-signup').css({
+                          'background-color': 'gray',
+                          'font-weight': 'bold',
+                          'color': 'white',
+                        });
+                        setTimeout(()=>{
+                          this.props.createSession({email: 'demo_user@homeco.club', password: 'password'})
+                            .then(()=>this.props.history.push('/user'))
+                        }, 1000)
+                      },1000)
+                    },1000)
+                  }, 1000)
+                }, 1000)
+              }, 1000)
             }, 1000)
           }, 1000)
         }, 1000)
