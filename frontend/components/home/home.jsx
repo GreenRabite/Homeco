@@ -84,7 +84,24 @@ class Home extends React.Component {
         }, 1000)
       }, 1000)
     } else {
-
+      this.props.history.push('/login');
+      setTimeout(()=>{
+        $('#email').val('contractor_demo@homeco.club')
+        setTimeout(()=>{
+          $('#password').val('password')
+          setTimeout(()=>{
+            $('#demo-login-signup').css({
+              'background-color': 'gray',
+              'font-weight': 'bold',
+              'color': 'white',
+            });
+            setTimeout(()=>{
+              this.props.createSession({email: 'contractor_demo@homeco.club', password: 'password'})
+                .then(()=>this.props.history.push('/contractor/main'))
+            }, 1000)
+          }, 1000)
+        }, 1000)
+      }, 1000)
     }
   }
 
