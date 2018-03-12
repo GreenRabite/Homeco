@@ -47,7 +47,7 @@ class ContractorForm extends React.Component {
 
   photoImage(url) {
     if (this.state.img_url === undefined) {
-      this.setState({["img_url"] : [url]})
+      this.setState({["img_url"] : [url]});
     }else {
       let arr = this.state.img_url;
       arr.push(url);
