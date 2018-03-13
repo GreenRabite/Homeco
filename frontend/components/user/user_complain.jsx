@@ -3,7 +3,11 @@ import React from 'react';
 class UserComplain extends React.Component {
   constructor(){
     super();
-    this.state = {title: '', body: ''};
+    this.state = {
+      title: '',
+      body: '',
+      error: ''
+    };
     this.handleInput = this.handleInput.bind(this);
   }
 
@@ -24,6 +28,9 @@ class UserComplain extends React.Component {
   }
 
   handleInput(type){
+    if (this.state.error) {
+      this.setState({'error': ''})
+    }
     return (e)=>{
       this.setState({[type]: e.target.value});
     }
@@ -32,7 +39,7 @@ class UserComplain extends React.Component {
   handleSubmit(e){
     e.preventDefault();
     if (!this.state.body || !this.state.title) {
-
+      this.setState({'error': 'Please input the reason of your complain'})
     } else {
       const userId = this.userId();
       const complain = Object.assign(this.state, {
@@ -64,6 +71,7 @@ class UserComplain extends React.Component {
           <h3>Submit a new complain</h3>
           <label>Title</label>
           <input onChange={this.handleInput('title')} value={this.state.title} type='text'/>
+          {this.state.error ? <div className='user-complain-error'>{this.state.error}</div> : ""}
           <textarea onChange={this.handleInput('body')} value={this.state.body} cols="30" rows="5"/>
           <input onClick={(e)=>this.handleSubmit(e)} type='submit' value='Submit'/>
         </form>

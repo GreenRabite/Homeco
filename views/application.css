@@ -11,6 +11,7 @@ ul{
 
 .home-nav{
   width: 100%;
+  min-width: 960px;
   margin: auto;
   align-items: center;
   height: 50px;
