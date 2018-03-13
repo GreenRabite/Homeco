@@ -50,15 +50,15 @@ class UserComplain extends React.Component {
     <div className='user-complain'>
       <h1>Complain</h1>
         <div className='user-complain-info'>
-        {complains.length > 1 ?
-        <div className=''>
-          {complains.map((complain, idx)=>
-            <div className='user-complain-item' key={idx}>
-              <p className='complain-title'>{complain.title}</p>
-              <p>{complain.body}</p>
-              <p>status: {complain.process ? 'processing' : 'received'}</p>
-            </div>)}
-        </div>
+        {complains.length > 0 ?
+          <div className=''>
+            {complains.map((complain, idx)=>
+              <div className='user-complain-item' key={idx}>
+                <p className='complain-title'>{complain.title}</p>
+                <p>{complain.body}</p>
+                <p>status: {complain.process ? 'processing' : 'received'}</p>
+              </div>)}
+          </div>
          : ""}
         <form onSubmit={(e)=>this.handleSubmit(e)} className='user-complain-form'>
           <h3>Submit a new complain</h3>

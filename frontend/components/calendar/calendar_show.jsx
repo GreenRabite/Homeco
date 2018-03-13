@@ -44,7 +44,6 @@ class CalendarShow extends Component {
           showNavigation={true}
           tileContent={tileContent}
           />
-
       </div>
     );
   }

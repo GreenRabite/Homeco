@@ -108,5 +108,6 @@ button.react-calendar__tile--active:enabled:focus {
 }
 
 .service-day{
-  background-color: lightgreen;
+  font-size: 12px;
+  background-color: #52D1DC;
 }
