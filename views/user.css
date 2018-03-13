@@ -279,3 +279,11 @@ textarea{
 .complain-title{
   font-weight: bold;
 }
+
+.user-calendar{
+  margin-top: 15px;
+}
+
+.user-calendar h2{
+  margin-left: 50px;
+}
