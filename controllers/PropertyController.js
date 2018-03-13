@@ -120,7 +120,6 @@ exports.bindUser = function(req, res, ccbb){
             errors: errSaveProperty
           });
         } else {
-          // console.log('=====Binded user done==========');
           let i = 1;
           async.forEach(req.services, (service, callback)=>{
             Service.findOne({_id: service}, (errFindService, oneService)=>{
@@ -163,7 +162,6 @@ exports.bindUser = function(req, res, ccbb){
               schedules.forEach(schedule=>{
                 result[schedule._id] = schedule;
               })
-              // console.log('========schedule create done========');
               if (ccbb) {
                 ccbb(result);
               } else {
