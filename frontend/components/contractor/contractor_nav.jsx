@@ -18,6 +18,13 @@ class ContractorNavBar extends React.Component{
   render(){
     return(
       <nav>
+        <div className='user-avatar'>
+          <a href='/#/'>
+            <div className='user-avatar-container'>
+              <img src='http://alan-topnotch.com/wp-content/uploads/2017/03/cropped-tools.png' />
+            </div>
+          </a>
+        </div>
         <ul className="contractor-panel">
           <li className={this.state.listName == 'My Tasks' ? 'clicked' : ''} onClick={()=>this.handleClick('My Tasks')}>My Tasks</li>
           <li className={this.state.listName == 'Schedule' ? 'clicked' : ''} onClick={()=>this.handleClick('Schedule')}>Schedule</li>

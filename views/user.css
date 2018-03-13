@@ -279,3 +279,30 @@ textarea{
 .complain-title{
   font-weight: bold;
 }
+
+.user-calendar{
+  margin-top: 15px;
+}
+
+.user-calendar h2{
+  margin-left: 50px;
+}
+
+.user-avatar-container{
+  width: 100px;
+  height: 100px;
+  margin: 50px auto;
+  border-radius: 50%;
+  background-color: white;
+  overflow: hidden;
+  padding: 15px;
+}
+
+.user-avatar-container img{
+  object-fit: cover;
+  height: 100%;
+}
+
+.user-avatar a{
+  cursor: pointer;
+}

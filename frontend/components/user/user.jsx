@@ -39,6 +39,13 @@ class User extends React.Component{
     return (
       <div>
         <div className='user-pannel'>
+          <div className='user-avatar'>
+            <a href='/#/'>
+              <div className='user-avatar-container'>
+                <img src='https://image.flaticon.com/icons/svg/25/25694.svg' />
+              </div>
+            </a>
+          </div>
           <ul>
             <li className={this.state.listName == 'UpcomingService' ? 'clicked' : ''} onClick={()=>this.handleClick('UpcomingService')}>Upcoming Service</li>
             <li className={this.state.listName == 'UserHomeContainer' ? 'clicked' : ''} onClick={()=>this.handleClick('UserHomeContainer')}>My Home</li>
