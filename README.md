@@ -56,7 +56,7 @@ Introducing **Homeco**, an all-in-one home service provider that aims to be both
 
 * Demo User Login
 
-  ![Demo User Login](https://media.giphy.com/media/fQGw3lV9s484LkbmV2/giphy.gif)
+  ![Demo User Login](https://github.com/GreenRabite/Homeco/blob/contractor_fin_tasks/assets/gifs/demo_user.gif)
 
   ![](https://github.com/GreenRabite/Homeco/blob/production-readme/doc/screenshots/Screen%20Shot%202018-02-25%20at%2023.44.44.png)
   ![](https://github.com/GreenRabite/Homeco/blob/production-readme/doc/screenshots/Screen%20Shot%202018-02-25%20at%2023.47.30.png)
