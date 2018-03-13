@@ -109,21 +109,21 @@ class Home extends React.Component {
     return (
       <div className='home-header'>
         <div className='home-nav'>
-        <h1><i className="fas fa-home"></i>Homeco</h1>
-        {this.props.currentUser ?
-          <Link to='/user'><h2>My Home</h2></Link>
-           :
-          <div className='home-header-login'>
-            <p>Already our customer?</p>
-            <Link to='/login'><h3>Log In</h3></Link>
-            <div onClick={(e)=>this.demoLogin(e, 'user')}>
-              <h3>Demo_User</h3>
+          <h1><i className="fas fa-home"></i>Homeco</h1>
+          {this.props.currentUser ?
+            <Link to='/user'><h2>My Home</h2></Link>
+             :
+            <div className='home-header-login'>
+              <p>Already our customer?</p>
+              <Link to='/login'><h3>Log In</h3></Link>
+              <div onClick={(e)=>this.demoLogin(e, 'user')}>
+                <h3>Demo_User</h3>
+              </div>
+              <div onClick={(e)=>this.demoLogin(e, 'contructor')}>
+                <h3>Demo_Contructor</h3>
+              </div>
             </div>
-            <div onClick={(e)=>this.demoLogin(e, 'contructor')}>
-              <h3>Demo_Contructor</h3>
-            </div>
-          </div>
-        }
+          }
         </div>
         <div className='home-background'>
         </div>

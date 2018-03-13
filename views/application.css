@@ -10,13 +10,21 @@ ul{
 }
 
 .home-nav{
-  width: 90%;
+  width: 100%;
   margin: auto;
   align-items: center;
   height: 50px;
   display: flex;
   justify-content: space-between;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  background-color: white;
+  opacity: 0.9;
+}
 
+.home-nav h1{
+  margin-left: 5%;
 }
 
 .home-nav i{
@@ -28,6 +36,7 @@ ul{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-right: 5%;
 }
 
 .home-header-login>p{
@@ -243,12 +252,19 @@ a:hover{
 }
 
 .session-form{
-  width: 20%;
-  margin-top: 200px;
-  margin-left: 30%;
-  height: 300px;
+  width: 40%;
+  height: 400px;
   display: flex;
   flex-direction: column;
+}
+
+.session-form p{
+  font-size: 12px;
+}
+
+.session-form a{
+  color: blue;
+  cursor: pointer;
 }
 
 .session-form>h1{
@@ -449,4 +465,41 @@ a:hover{
 
 .home-center>p{
   font-size: 18px;
+}
+
+.session-form-header{
+  background-color: lightgray;
+  height: 70px;
+  text-align: center;
+}
+
+.session-form-header a{
+  color: white;
+  margin-left: 50%;
+}
+
+.session-form-img-container{
+  border-radius: 50%;
+  overflow: hidden;
+  height: 400px;
+  width: 400px;
+}
+
+.session-form-img-container img{
+  object-fit: cover;
+  height: 100%;
+  opacity: 0.6;
+}
+
+.session-form-img-container img:hover{
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+.session-form-center{
+  margin: 200px auto;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
