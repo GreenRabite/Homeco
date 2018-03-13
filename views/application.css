@@ -24,7 +24,11 @@ ul{
 }
 
 .home-nav h1{
-  margin-left: 5%;
+  margin-left: 10%;
+}
+
+.home-nav>a{
+  margin-right: 10%;
 }
 
 .home-nav i{
@@ -113,7 +117,7 @@ ul{
 .home-page-address>input{
   width: 13%;
   border: 1px solid #1bcce8;
-  border-radius: 3px;
+  border-radius: 5px;
   background-color: #1bcce8;
   color: white;
   cursor: pointer;
@@ -451,6 +455,7 @@ a:hover{
   flex-direction: column;
   justify-content: space-around;
   text-align: left;
+  cursor: pointer;
 }
 
 .home-center-detail-description-item:hover h2{
