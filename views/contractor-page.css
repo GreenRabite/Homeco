@@ -37,10 +37,8 @@
 }
 
 .button{
-  background-color: #269CE9;
-  /*backg=round-color: #552583;*/
-  border-color: #269CE9;
-  /*border-color: #552583;*/
+  background-color: #52D1DC;
+  border-color: #52D1DC;
   width: 150px;
   height: 25px;
   border-radius: 10px;
@@ -88,9 +86,9 @@
   position: absolute;
   width: 400px;
   height: 550px;
-  background-color: #fff;
+  /*background-color: #fff;*/
   /*background: linear-gradient(to right, #f5f7fa , #c3cfe2);*/
-  background-color: #E8EAEE;
+  background-color: #BBBBBF;
   top: 20%;
   left: 50%;
   margin-left: -220px;
@@ -228,4 +226,14 @@ a {
 .textarea-fill{
   width: 70%;
   height: 50px;
+}
+
+.contractor-schedules{
+  margin-left: 200px;
+}
+
+.contractor-schedules p {
+  width: 35%;
+  margin-left: 30px;
+  margin-top: 20px;
 }

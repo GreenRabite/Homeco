@@ -1,6 +1,7 @@
 import React from 'react';
 // import ContractorNavBar from './contractor_nav';
 import ContractorFinishTaskContainer from './contractor_finish_task_container';
+import ContractorSchedule from './contractor_schedule';
 import ContractorTaskContainer from './contractor_task_container';
 
 class ContractorShow extends React.Component {
@@ -23,6 +24,13 @@ class ContractorShow extends React.Component {
         <div className="contractor-container">
           <nav>
             <ul className="contractor-panel">
+              <div className='user-avatar'>
+                <a href='/#/'>
+                  <div className='user-avatar-container'>
+                    <img src='http://alan-topnotch.com/wp-content/uploads/2017/03/cropped-tools.png' />
+                  </div>
+                </a>
+              </div>
               <li className={this.state.listName == 'My Tasks' ? 'clicked' : ''} onClick={()=>this.handleClick('My Tasks')}>My Tasks</li>
               <li className={this.state.listName == 'Schedule' ? 'clicked' : ''} onClick={()=>this.handleClick('Schedule')}>Schedule</li>
               <li className={this.state.listName == 'Finished Tasks' ? 'clicked' : ''} onClick={()=>this.handleClick('Finished Tasks')}>Finished Tasks</li>
@@ -31,6 +39,7 @@ class ContractorShow extends React.Component {
             </ul>
           </nav>
           {this.state.listName === 'My Tasks' ? <ContractorTaskContainer /> : ""}
+          {this.state.listName === 'Schedule' ? <ContractorSchedule /> : ""}
           {this.state.listName === 'Finished Tasks' ? <ContractorFinishTaskContainer /> : ""}
         </div>
 
