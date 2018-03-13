@@ -306,3 +306,8 @@ textarea{
 .user-avatar a{
   cursor: pointer;
 }
+
+.user-complain-error{
+  color: red;
+  font-size: 14px;
+}

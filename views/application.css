@@ -11,6 +11,7 @@ ul{
 
 .home-nav{
   width: 100%;
+  min-width: 960px;
   margin: auto;
   align-items: center;
   height: 50px;
@@ -74,6 +75,7 @@ ul{
   top: 50px;
   left: 0;
   width: 100%;
+  min-width: 960px;
   height: 70%;
   overflow: hidden;
   background-image: url('https://res.cloudinary.com/ddwejrtgh/image/upload/v1520956849/IMG_0762_gqpfuc.jpg');
@@ -296,7 +298,9 @@ a:hover{
 }
 
 .home-header{
-  height: 70%;
+  margin-top: 10%;
+  /* height: 70%; */
+  min-width: 960px;
 }
 
 .home-center{
